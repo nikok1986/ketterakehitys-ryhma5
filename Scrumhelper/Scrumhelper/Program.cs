@@ -17,7 +17,7 @@ namespace Scrumhelper
             private Kayttajatarina[] kayttajatarinat;
             private Tehtava[] tehtavat;
 
-            private int MAX_NMB = 10000;           
+            private int MAX_NMB = 9999;           
 
             public Administration()
             {
@@ -61,7 +61,7 @@ namespace Scrumhelper
             private DateTime lopetusPvm;
             private Tiimi[] tiimit;
 
-            private int MAX_NMB = 10000;
+            private int MAX_NMB = 9999;
 
             public Projekti()
             {
