@@ -1,0 +1,3 @@
+C:\Users\storm\OneDrive\Documents\koulu\2022 syksy\Ketterä ohjelmistoprojekti\ketterakehitys-ryhma5\Scrumhelper\Scrumhelper\obj\Debug\Scrumhelper.csproj.AssemblyReference.cache
+C:\Users\storm\OneDrive\Documents\koulu\2022 syksy\Ketterä ohjelmistoprojekti\ketterakehitys-ryhma5\Scrumhelper\Scrumhelper\obj\Debug\Scrumhelper.csproj.SuggestedBindingRedirects.cache
+C:\Users\storm\OneDrive\Documents\koulu\2022 syksy\Ketterä ohjelmistoprojekti\ketterakehitys-ryhma5\Scrumhelper\Scrumhelper\obj\Debug\Scrumhelper.csproj.CoreCompileInputs.cache
