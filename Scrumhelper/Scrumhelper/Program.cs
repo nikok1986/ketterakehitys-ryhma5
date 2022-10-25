@@ -146,11 +146,11 @@ namespace Scrumhelper
             private DateTime aloitusPvm;
             private DateTime lopetusPvm;
             private Kayttajatarina[] kayttajatarinat;
-            private int MAX_NMB = 9999;
+            private int MAX_STORY = 9999;
             
             public Sprintti()
             {
-                kayttajatarinat = new Kayttajatarina[MAX_NMB];
+                kayttajatarinat = new Kayttajatarina[MAX_STORY];
                 SprinttiID = 0000;
                 nimi= null;
                 sprinttiInfo = null;
@@ -234,16 +234,70 @@ namespace Scrumhelper
             private int prioriteettiTaso;
             private int tila;
             private Tehtava[] tehtavat;
-            private int MAX_NMB = 9999;
+            private int MAX_TASK = 10;
 
             public Kayttajatarina()
             {
-                tehtavat = new Tehtava[MAX_NMB];
+                tehtavat = new Tehtava[MAX_TASK];
                 storyID = 0000;
                 nimi = null;
                 storyInfo = null;
                 prioriteettiTaso = 0;
                 tila = 0;
+            }
+            public void SetStoryInfo(string info)
+            {
+                storyInfo = info;
+            }
+            public bool AddTehtava(Tehtava task)
+            {
+                int n = 0;
+                while (n < MAX_TASK)
+                    n++;
+                if (n < MAX_TASK)
+                {
+                    tehtavat[n] = task;
+                    return true;
+                }
+                else
+                    return false;
+            }
+            public void RemoveTehtava(Tehtava task)
+            {
+                int n = 0;
+                while (n < MAX_TASK)
+                {
+                    if (tehtavat[n] == task)
+                        tehtavat[n] = null;
+                    n++;
+                }
+            }
+            public string GetStoryInfo()
+            {
+                StringBuilder sb = new StringBuilder(storyInfo + "\nKäyttäjätarinan tehtävät: ");
+                sb.AppendLine();
+                foreach (Tehtava task in tehtavat)
+                    if (task != null)
+                        sb.AppendLine(task.ToString());
+                return sb.ToString();
+            }
+            public double CheckTila()
+            {
+                int i = 0;
+                int j = 0;
+                for (int k = 0; k < MAX_TASK; k++)
+                {
+                    if (tehtavat[k] != null && tehtavat[k].CheckState(true))
+                    {
+                        i++;
+                    }
+                }
+                for (int l = 0; l < MAX_TASK; l++)
+                {
+                    if (tehtavat[l] != null)
+                        j++;
+                }
+                return (i / j) * 100;
             }
         }
         public class Tehtava
@@ -304,6 +358,15 @@ namespace Scrumhelper
                 else
                     tila = 0;
             }
+            public bool CheckState()
+            {
+                if (tila == 0)
+                    return false;
+                if (tila == 1)
+                    return true;
+                else
+                    return false;
+            }
             public void SetPrioriteetti(int i)
             {
                 if (prioriteettiTaso >= 0 && prioriteettiTaso <= 5)
@@ -329,6 +392,11 @@ namespace Scrumhelper
             public void SetTaskKesto(double time)
             {
                 taskKesto = time;
+            }
+
+            internal bool CheckState(bool v)
+            {
+                throw new NotImplementedException();
             }
         }
         static void Main(string[] args)
