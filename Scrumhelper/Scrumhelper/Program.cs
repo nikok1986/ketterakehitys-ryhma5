@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.OleDb;
 using System.Data;
+using static Scrumhelper.Program;
 
 namespace Scrumhelper
 {
@@ -167,6 +168,33 @@ namespace Scrumhelper
                 else
                     return "Id needs to be a number between 0000 and 9999";
             }
+            public void SetStoryInfo(string info)
+            {
+                sprinttiInfo = info;
+            }
+            public bool AddKayttajatarina(Kayttajatarina story)
+            {
+                int n = 0;
+                while (n < MAX_STORY)
+                    n++;
+                if (n < MAX_STORY)
+                {
+                    kayttajatarinat[n] = story;
+                    return true;
+                }
+                else
+                    return false;
+            }
+            public void RemoveKayttajatarina(Kayttajatarina story)
+            {
+                int n = 0;
+                while (n < MAX_STORY)
+                {
+                    if (kayttajatarinat[n] == story)
+                        kayttajatarinat[n] = null;
+                    n++;
+                }
+            }
         }
         public class Tiimi
         {
@@ -193,16 +221,53 @@ namespace Scrumhelper
                 else
                     return "Id needs to be a number between 0000 and 9999";
             }
+            public void SetTiimiInfo(string info)
+            {
+                tiimiInfo = info;
+            }
+            public void SetNimi(string name)
+            {
+                name = nimi;
+            }
+            public bool AddKayttaja(Kayttaja user)
+            {
+                int n = 0;
+                while (n < MAX_USER)
+                    n++;
+                if (n < MAX_USER)
+                {
+                    kayttaja[n] = user;
+                    return true;
+                }
+                else
+                    return false;
+            }
+            public void RemoveKayttaja(Kayttaja user)
+            {
+                int n = 0;
+                while (n < MAX_USER)
+                {
+                    if (kayttaja[n] == user)
+                        kayttaja[n] = null;
+                    n++;
+                }
+            }
         }
         public class Kayttaja
         {
             private int kayttajaID;
             private string nimi;
             private string rooli;
-            
+            private Tehtava[] tehtavat;
+            private Tiimi[] tiimi;
+            private int MAX_TASK = 10;
+            private int MAX_TEAM = 100;
+
 
             public Kayttaja()
             {
+                tehtavat = new Tehtava[MAX_TASK];
+                tiimi = new Tiimi[MAX_TEAM];
                 kayttajaID = 0000;
                 nimi = null;
                 rooli = null;
@@ -225,6 +290,52 @@ namespace Scrumhelper
             {
                 rooli = role;
             }
+            public bool AddTehtava(Tehtava task)
+            {
+                int n = 0;
+                while (n < MAX_TASK)
+                    n++;
+                if (n < MAX_TASK)
+                {
+                    tehtavat[n] = task;
+                    return true;
+                }
+                else
+                    return false;
+            }
+            public void RemoveTehtava(Tehtava task)
+            {
+                int n = 0;
+                while (n < MAX_TASK)
+                {
+                    if (tehtavat[n] == task)
+                        tehtavat[n] = null;
+                    n++;
+                }
+            }
+            public bool AddTiimi(Tiimi tm)
+            {
+                int n = 0;
+                while (n < MAX_TEAM)
+                    n++;
+                if (n < MAX_TEAM)
+                {
+                    tiimi[n] = tm;
+                    return true;
+                }
+                else
+                    return false;
+            }
+            public void RemoveTiimi(Tiimi tm)
+            {
+                int n = 0;
+                while (n < MAX_TEAM)
+                {
+                    if (tiimi[n] == tm)
+                        tiimi[n] = null;
+                    n++;
+                }
+            }
         }
         public class Kayttajatarina
         {
@@ -244,6 +355,16 @@ namespace Scrumhelper
                 storyInfo = null;
                 prioriteettiTaso = 0;
                 tila = 0;
+            }
+            public string SetId(int i)
+            {
+                if (i >= 0 && i <= 9999)
+                {
+                    storyID = i;
+                    return "ID added.";
+                }
+                else
+                    return "Id needs to be a number between 0000 and 9999";
             }
             public void SetStoryInfo(string info)
             {
@@ -280,6 +401,15 @@ namespace Scrumhelper
                     if (task != null)
                         sb.AppendLine(task.ToString());
                 return sb.ToString();
+            }
+            public void SetPrioriteetti(int i)
+            {
+                if (prioriteettiTaso >= 0 && prioriteettiTaso <= 5)
+                {
+                    prioriteettiTaso = i;
+                }
+                else
+                    prioriteettiTaso = 0;
             }
             public double CheckTila()
             {
