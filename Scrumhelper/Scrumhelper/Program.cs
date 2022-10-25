@@ -287,7 +287,7 @@ namespace Scrumhelper
                 int j = 0;
                 for (int k = 0; k < MAX_TASK; k++)
                 {
-                    if (tehtavat[k] != null && tehtavat[k].CheckState(true))
+                    if (tehtavat[k] != null && tehtavat[k].CheckState() == true)
                     {
                         i++;
                     }
@@ -392,11 +392,6 @@ namespace Scrumhelper
             public void SetTaskKesto(double time)
             {
                 taskKesto = time;
-            }
-
-            internal bool CheckState(bool v)
-            {
-                throw new NotImplementedException();
             }
         }
         static void Main(string[] args)
