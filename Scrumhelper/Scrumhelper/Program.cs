@@ -16,7 +16,7 @@ namespace Scrumhelper
             private int AdminID;
             private Projekti[] projektit;
             
-            private int MAX_PRJCT = 20;      
+            private int MAX_PRJCT = 10;      //järjestelmään voidaan siis tehdä maksimissaan 10 projektia
 
             public Administration()
             {
@@ -69,8 +69,8 @@ namespace Scrumhelper
                 aloitusPvm = DateTime.Now;
                 lopetusPvm = DateTime.Now;
             }
-            public string SetId(int i)
-            {
+            public string SetId(int i) //vaikka projektit, tiimit, sprintit, käyttäjät, käyttäjätarinat sekä tehtävät saavat automaattisesti
+            {                           //id-numeron kun ne syötetään tietokantaan, voidaan sitä muuttaa SetId-komennolla
                 if (i >= 0 && i <= 9999)
                 {
                     projektiID = i;
@@ -129,14 +129,24 @@ namespace Scrumhelper
             {
                 projektiInfo = info;
             }
-            public string GetProjektiInfo()
+            public string GetProjektiInfo() //kaikissa GetInfo-metodeissa luodaan stringbuilder, joka sisältää Infon lisäksi metodin sisältämän arrayn sisältö
             { 
                 StringBuilder sb = new StringBuilder(projektiInfo + " Projektin tiimit: ");
                 sb.AppendLine();
-                foreach (Tiimi tm in tiimi)
+                foreach (Tiimi tm in tiimi) //Projektin ollessa kyseessä, array on siis tiimi[] (sprinttilistaa varmaan turha printata)
                     if (tm != null)
                         sb.AppendLine(tm.ToString());
                 return sb.ToString(); 
+            }
+            public DateTime AloitusPvm(DateTime startDate)
+            {
+                aloitusPvm = startDate;
+                return aloitusPvm;
+            }
+            public DateTime LopetusPvm(DateTime endDate)
+            {
+                lopetusPvm = endDate;
+                return lopetusPvm;
             }
         }
         public class Sprintti
@@ -168,9 +178,18 @@ namespace Scrumhelper
                 else
                     return "Id needs to be a number between 0000 and 9999";
             }
-            public void SetStoryInfo(string info)
+            public void SetSprinttiInfo(string info)
             {
                 sprinttiInfo = info;
+            }
+            public string GetSprinttiInfo()
+            {
+                StringBuilder sb = new StringBuilder(sprinttiInfo + " Sprintin käyttäjätarinat: ");
+                sb.AppendLine();
+                foreach (Kayttajatarina story in kayttajatarinat)
+                    if (story != null)
+                        sb.AppendLine(story.ToString());
+                return sb.ToString();
             }
             public bool AddKayttajatarina(Kayttajatarina story)
             {
@@ -194,6 +213,16 @@ namespace Scrumhelper
                         kayttajatarinat[n] = null;
                     n++;
                 }
+            }
+            public DateTime AloitusPvm(DateTime startDate)
+            {
+                aloitusPvm = startDate;
+                return startDate;
+            }
+            public DateTime LopetusPvm(int days)
+            {
+                lopetusPvm = aloitusPvm.AddDays(days); //toisin kuin muut deadlinet joille määritetään loppupäivämäärä, sprintin kesto määritetään päivinä
+                return lopetusPvm;
             }
         }
         public class Tiimi
@@ -224,6 +253,15 @@ namespace Scrumhelper
             public void SetTiimiInfo(string info)
             {
                 tiimiInfo = info;
+            }
+            public string GetTiimiInfo()
+            {
+                StringBuilder sb = new StringBuilder(tiimiInfo + " Tiimin jäsenet: ");
+                sb.AppendLine();
+                foreach (Kayttaja user in kayttaja)
+                    if (kayttaja != null)
+                        sb.AppendLine(kayttaja.ToString());
+                return sb.ToString();
             }
             public void SetNimi(string name)
             {
@@ -411,23 +449,23 @@ namespace Scrumhelper
                 else
                     prioriteettiTaso = 0;
             }
-            public double CheckTila()
+            public double CheckTila() //tarkistetaan käyttäjätarinan perustella tehtyjen tehtävien tila, ja palautetaan prosenttilukuna valmiiden tehtävien määrä
             {
                 int i = 0;
                 int j = 0;
-                for (int k = 0; k < MAX_TASK; k++)
+                for (int k = 0; k < MAX_TASK; k++) //1. loopilla kerätään kaikki tehtävät joiden tila on 1, eli valmis (tehtäväluokan CheckState-metodi)
                 {
                     if (tehtavat[k] != null && tehtavat[k].CheckState() == true)
                     {
                         i++;
                     }
                 }
-                for (int l = 0; l < MAX_TASK; l++)
+                for (int l = 0; l < MAX_TASK; l++) //2. lasketaan käyttäjätarinasta tehtyjen tehtävien kokonaismäärä
                 {
                     if (tehtavat[l] != null)
                         j++;
                 }
-                return (i / j) * 100;
+                return (i / j) * 100; //lasketaan valmiiden tehtävien määrä prosentteina ja palautetaan se
             }
         }
         public class Tehtava
@@ -488,10 +526,8 @@ namespace Scrumhelper
                 else
                     tila = 0;
             }
-            public bool CheckState()
+            public bool CheckState() //tällä voidaan tarkistaa tehtävän tila, hyödyllinen esim Kayttajatarina-luokan CheckTila-metodiin
             {
-                if (tila == 0)
-                    return false;
                 if (tila == 1)
                     return true;
                 else
@@ -522,6 +558,16 @@ namespace Scrumhelper
             public void SetTaskKesto(double time)
             {
                 taskKesto = time;
+            }
+            public DateTime AloitusPvm(DateTime startDate)
+            {
+                aloitusPvm = startDate;
+                return aloitusPvm;
+            }
+            public DateTime LopetusPvm(DateTime endDate)
+            {
+                lopetusPvm = endDate;
+                return lopetusPvm;
             }
         }
         static void Main(string[] args)
