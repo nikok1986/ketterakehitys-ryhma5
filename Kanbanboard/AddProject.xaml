@@ -1,0 +1,44 @@
+﻿<Window x:Class="Kanbanboard.AddProject"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Kanbanboard"
+        mc:Ignorable="d"
+        Title="AddProject" Height="450" Width="800">
+    <Grid Margin="50" Background="AliceBlue">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="3*"/>
+        </Grid.RowDefinitions>
+        <Label Grid.Row="1" Content="Projektin nimi:"  FontSize="14"/>
+        <TextBox x:Name="ProjectNameInput" Grid.Row="2" Height="21" Margin="5,1,5,4"/>
+        <Label Grid.Row="3" Content="Projektin info:" FontSize="14"/>
+        <TextBox x:Name="ProjectDescriptionInput" Grid.Row="4" Height="21" Margin="5,2,5,2"/>
+        <Label Grid.Row="5" Content="Aloituspäivämäärä:" FontSize="14"/>
+        <DatePicker x:Name="ProjectStartDate" Grid.Row="6"></DatePicker>
+        <Label Grid.Row="7" Content="Lopetuspäivämäärä:" FontSize="14"/>
+        <DatePicker x:Name="ProjectEndDate" Grid.Row="8"></DatePicker>
+        <Label Grid.Row="9" Content="Valitse projekti:" FontSize="14"/>
+        <WrapPanel Grid.Row="10">
+            <ComboBox x:Name="AddedProjectsList" Width="150" SelectionChanged="AddedProjectsList_SelectionChanged"/>
+            <Button x:Name="AddUser" Content="Muokkaa projektia" Click="EditProject_Click"/>
+            <Button x:Name="ProjectInfoButton" Content="Näytä projekti-info" Click="ShowProjectInfo_Click"/>
+        </WrapPanel>
+        <WrapPanel Grid.Row="11" HorizontalAlignment="Center">
+            <Button x:Name="AddProjectButton" Width="50" Margin="5" Content="OK" IsDefault="True" Click="AddProjectButton_Click"/>
+            <Button x:Name="CancelAddProjectButton" Width="50" Margin="5" Content="Cancel" IsCancel="True" Click="CancelAddProjectButton_Click"/>
+        </WrapPanel>
+    </Grid>
+</Window>
+
