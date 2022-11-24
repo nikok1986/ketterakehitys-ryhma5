@@ -29,13 +29,18 @@ namespace Kanbanboard
             DateTime endDate = input4;
             TitleBox.Text = nimi;
             InfoBox.Text = info;
-            StartDateBox.Text = startDate.ToString();
-            EndDateBox.Text = endDate.ToString();
+            StartDateBox.Text = startDate.ToString("dd-MM-yyyy");
+            EndDateBox.Text = endDate.ToString("dd-MM-yyyy");
         }
 
         private void ExitInfoWindowButton_Click(object sender, RoutedEventArgs e)
         {
             DialogResult = false;
+        }
+
+        private void EditInfoWindowButton_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

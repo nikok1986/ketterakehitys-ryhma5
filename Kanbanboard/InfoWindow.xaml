@@ -8,12 +8,12 @@
         Title="Info" Height="250" Width="400">
     <Grid>
         <TextBlock x:Name="TitleBox" FontSize="20"  HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="380"/>
-        <TextBlock x:Name="InfoBox" FontSize="12" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" Height="123" Width="380" Margin="0,42,0,0"/>
+        <TextBlock x:Name="InfoBox" FontSize="12" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" Height="123" Width="360" Margin="0,42,0,0"/>
         <TextBlock x:Name="StartDateLabel" FontSize="12"  HorizontalAlignment="Left" Margin="10,170,0,0" TextWrapping="Wrap" Text="Aloitettu:" VerticalAlignment="Top" FontWeight="Bold"/>
         <TextBlock x:Name="StartDateBox" FontSize="12"  HorizontalAlignment="Left" Margin="69,170,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top"/>
-        <TextBlock x:Name="EndDateLabel" FontSize="12"  HorizontalAlignment="Left" Margin="10,191,0,0" TextWrapping="Wrap" Text="Valmistunut:" VerticalAlignment="Top" FontWeight="Bold"/>
-        <TextBlock x:Name="EndDateBox" FontSize="12"  HorizontalAlignment="Left" Margin="86,191,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top"/>
-        <Button x:Name="EditInfoWindowButton" FontSize="10" Content="Muokkaa" HorizontalAlignment="Left" Margin="309,212,0,0" VerticalAlignment="Top" Height="17" Width="48"/>
-        <Button x:Name="ExitInfoWindowButton" FontSize="10" Content="Sulje" HorizontalAlignment="Left" Margin="362,212,0,0" VerticalAlignment="Top" Click="ExitInfoWindowButton_Click" Height="17" Width="33"/>
+        <TextBlock x:Name="EndDateLabel" FontSize="12"  HorizontalAlignment="Left" Margin="10,191,0,0" TextWrapping="Wrap" Text="Lopetuspäivä" VerticalAlignment="Top" FontWeight="Bold"/>
+        <TextBlock x:Name="EndDateBox" FontSize="12"  HorizontalAlignment="Left" Margin="88,191,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top"/>
+        <Button x:Name="EditInfoWindowButton" FontSize="10" Content="Muokkaa" HorizontalAlignment="Left" Margin="297,190,0,0" VerticalAlignment="Top" Height="17" Width="48" Click="EditInfoWindowButton_Click"/>
+        <Button x:Name="ExitInfoWindowButton" FontSize="10" Content="Sulje" HorizontalAlignment="Left" Margin="347,190,0,0" VerticalAlignment="Top" Click="ExitInfoWindowButton_Click" Height="17" Width="33"/>
     </Grid>
 </Window>
