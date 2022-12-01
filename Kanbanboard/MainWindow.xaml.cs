@@ -127,7 +127,7 @@ namespace Kanbanboard
                 OleDbCommand cmd;
 
                 // "SELECT sprints.sprint_nimi FROM projects INNER JOIN sprints ON projects.project_id = sprints.project_id WHERE OBJECT_ID('" + ProjectListing.SelectedItem + "');"
-                cmd = new OleDbCommand("SELECT sprints.sprint_nimi FROM projects INNER JOIN sprints ON projects.project_id = sprints.project_id WHERE sprints.project_id='" + ProjectListing.SelectedItem + "';");
+                cmd = new OleDbCommand("SELECT sprints.sprint_nimi FROM projects INNER JOIN sprints ON projects.project_id = sprints.project_id WHERE projects.project_nimi='" + ProjectListing.SelectedItem + "';");
                 cmd.Connection = con;   //Yhteys avataan OleDb-komennolla.
                 string sprintname = String.Empty;    //Kerätään info tähän tyhjään stringiin.
 
