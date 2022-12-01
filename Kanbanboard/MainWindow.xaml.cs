@@ -42,9 +42,10 @@ namespace Kanbanboard
             {                                                           //Using-komennolla yhteys suljetaan automaattisesti suorituksen jälkeen.
                 OleDbCommand cmd;
 
-                cmd = new OleDbCommand("SELECT project_nimi FROM projects WHERE project_nimi='" + ProjectListing.SelectedItem + "';");
+                cmd = new OleDbCommand("SELECT project_nimi, project_id FROM projects WHERE project_nimi='" + ProjectListing.SelectedItem + "';");
                 cmd.Connection = con;   //Yhteys avataan OleDb-komennolla.
                 string projectname = String.Empty;    //Kerätään info tähän tyhjään stringiin.
+               
 
                 OleDbDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
@@ -119,6 +120,70 @@ namespace Kanbanboard
                 return enddate;
             }
         }
+        public String DBSprintNameReader()
+        {
+            using (OleDbConnection con = DataServices.DBConnection())   //Käytetään DataServices.cs tiedostoon luotua tietokantayhteyttä.
+            {                                                           //Using-komennolla yhteys suljetaan automaattisesti suorituksen jälkeen.
+                OleDbCommand cmd;
+
+                // "SELECT sprints.sprint_nimi FROM projects INNER JOIN sprints ON projects.project_id = sprints.project_id WHERE OBJECT_ID('" + ProjectListing.SelectedItem + "');"
+                cmd = new OleDbCommand("SELECT sprints.sprint_nimi FROM projects INNER JOIN sprints ON projects.project_id = sprints.project_id WHERE sprints.project_id='" + ProjectListing.SelectedItem + "';");
+                cmd.Connection = con;   //Yhteys avataan OleDb-komennolla.
+                string sprintname = String.Empty;    //Kerätään info tähän tyhjään stringiin.
+
+                OleDbDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    sprintname = reader.GetString(0);
+                }
+                reader.Close();
+                cmd.ExecuteNonQuery();
+
+                return sprintname;
+            }
+        }
+        public String DBSprintInfoReader()
+        {
+            using (OleDbConnection con = DataServices.DBConnection())   //Käytetään DataServices.cs tiedostoon luotua tietokantayhteyttä.
+            {                                                           //Using-komennolla yhteys suljetaan automaattisesti suorituksen jälkeen.
+                OleDbCommand cmd;
+
+                cmd = new OleDbCommand("SELECT sprint_info FROM sprints WHERE sprint_nimi='" + SprintListing.SelectedItem + "';");
+                cmd.Connection = con;   //Yhteys avataan OleDb-komennolla.
+                string sprintinfo = String.Empty;    //Kerätään info tähän tyhjään stringiin.
+
+                OleDbDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    sprintinfo = reader.GetString(0);
+                }
+                reader.Close();
+                cmd.ExecuteNonQuery();
+
+                return sprintinfo;
+            }
+        }
+        public DateTime DBSprintStartDate()
+        {
+            using (OleDbConnection con = DataServices.DBConnection())   //Käytetään DataServices.cs tiedostoon luotua tietokantayhteyttä.
+            {                                                           //Using-komennolla yhteys suljetaan automaattisesti suorituksen jälkeen.
+                OleDbCommand cmd;
+                cmd = new OleDbCommand("SELECT sprint_aloitus_pvm FROM sprints WHERE sprint_nimi='" + SprintListing.SelectedItem + "';");
+                cmd.Connection = con;   //Yhteys avataan OleDb-komennolla.
+                DateTime startdate = DateTime.Now;
+
+                OleDbDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    startdate = reader.GetDateTime(0);
+                }
+                reader.Close();
+                cmd.ExecuteNonQuery();
+
+                return startdate;
+            }
+        }
+
 
         private void AddProjectButton_Click(object sender, RoutedEventArgs e)
         {
@@ -176,14 +241,52 @@ namespace Kanbanboard
 
         private void ProjectListing_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            string name = DBProjectNameReader();
-            string info = DBProjectInfoReader();
-            DateTime date1 = DBStartDate();
-            DateTime date2 = DBEndDate();
-            //string outputString;
-            InfoWindow infowindow = new InfoWindow(name, info, date1, date2);
-            infowindow.Title = "Tietoa projektista";
-            infowindow.ShowDialog();
+            /**
+                string name = DBProjectNameReader();
+                string info = DBProjectInfoReader();
+                DateTime date1 = DBStartDate();
+                DateTime date2 = DBEndDate();
+                //string outputString;
+                InfoWindow infowindow = new InfoWindow(name, info, date1, date2);
+                infowindow.Title = "Tietoa projektista";
+                infowindow.ShowDialog();
+            **/
+
+            TitleBox.Text = DBProjectNameReader();
+            InfoBox.Text = DBProjectInfoReader();
+            StartDateBox.Text = DBStartDate().ToString("dd-MM-yyyy");
+            EndDateBox.Text = DBEndDate().ToString("dd-MM-yyyy");
+
+            SprintListing.Items.Clear();
+            string[] sprints = DBSprintNameReader().Split();
+            foreach (string s in sprints)
+            SprintListing.Items.Add(s);
+
+
+
+        }
+
+        private void SprintListing_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void EditInfoWindowButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+
+        private void AddTask(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void AddTaskButton_Click(object sender, RoutedEventArgs e)
+        {
+            AddTask addTask = new AddTask();
+            addTask.AddTaskButton.Click += new RoutedEventHandler(AddTask);
+            addTask.ShowDialog();
         }
     }
     public class Projekti

@@ -117,5 +117,10 @@ namespace Kanbanboard
                 return users;   //Palautetaan nimet sisältävä string
             }
         }
+
+        internal object DBSprintNameReader()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

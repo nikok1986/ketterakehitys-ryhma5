@@ -23,17 +23,77 @@
             <Button x:Name="AddSprintButton" Grid.Row="0" Grid.RowSpan="2" Content="Lisää sprintti+" Click="AddSprintButton_Click" Margin="0,0,0,26"/>
             <Button x:Name="ShowProjectButton" Content="Päivitä projektilista" Height="25" Click="ShowProjectButton_Click" Margin="0,25,0,2" Grid.RowSpan="2"/>
             <ListView x:Name="ProjectListing" Grid.Row="2" Margin="0,0,0,21" Grid.RowSpan="4" MouseDoubleClick="ProjectListing_MouseDoubleClick"/>
+            <ListView x:Name="SprintListing" Margin="881,12,-873,253" Grid.RowSpan="3" Grid.Row="1" MouseDoubleClick="SprintListing_MouseDoubleClick"/>
             <Button x:Name="AddUserButton" Content="Lisää käyttäjä" Grid.Row="4" Click="AddUserButton_Click" Margin="79,1,-1,20" Grid.RowSpan="2"/>
             <Button x:Name="AddProjectButton" Content="Lisää projekti" Grid.Row="4" Click="AddProjectButton_Click" Margin="0,1,78,20" Grid.RowSpan="2"/>
             <Button x:Name="AddUserStoryButton" Content="Uusi käyttäjätarina" Grid.Row="4" Click="AddUserStoryButton_Click" Margin="0,26,0,0" Grid.RowSpan="2"/>
         </Grid>
-        <TabControl x:Name="SprinttiLaatikko" Margin="5,0,10,21" Grid.Column="1">
+
+    <Grid Grid.Column="1" Margin="684,286,-221,-33">
+        <TextBlock x:Name="SprintInfoBox" Margin="10,10,62,219" Text=""/>
+        <TextBlock x:Name="SprintStartDateBox" Margin="11,118,100,164"/>
+        <TextBlock x:Name="SprintEndDateBox" Margin="11,159,102,123"/>
+        </Grid>
+
+    <TabControl x:Name="SprinttiLaatikko" Margin="5,0,10,21" Grid.Column="1">
             <TabItem Header="Info">
+                <Grid>
+                    <TextBlock x:Name="TitleBox" FontSize="20"  HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="380" Grid.ColumnSpan="2"/>
+                    <TextBlock x:Name="InfoBox" FontSize="12" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Height="123" Width="360" Margin="119,42,0,0" Grid.Column="1"/>
+                    <TextBlock x:Name="StartDateLabel" FontSize="12"  HorizontalAlignment="Left" Margin="10,170,0,0" TextWrapping="Wrap" Text="Aloitettu:" VerticalAlignment="Top" FontWeight="Bold" Grid.ColumnSpan="2"/>
+                    <TextBlock x:Name="StartDateBox" FontSize="12"  HorizontalAlignment="Left" Margin="46,170,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Grid.Column="1"/>
+                    <TextBlock x:Name="EndDateLabel" FontSize="12"  HorizontalAlignment="Left" Margin="10,191,0,0" TextWrapping="Wrap" Text="Lopetuspäivä" VerticalAlignment="Top" FontWeight="Bold" Grid.ColumnSpan="2"/>
+                    <TextBlock x:Name="EndDateBox" FontSize="12"  HorizontalAlignment="Left" Margin="65,191,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Grid.Column="1"/>
+                    <Button x:Name="EditInfoWindowButton" FontSize="10" Content="Muokkaa" HorizontalAlignment="Left" Margin="274,190,0,0" VerticalAlignment="Top" Height="17" Width="48" Click="EditInfoWindowButton_Click" Grid.Column="1"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Sprint">
+                <Grid Background="LightBlue">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="2*"/>
+                            <RowDefinition Height="19*"/>
+                        </Grid.RowDefinitions>
+                        <Label HorizontalAlignment="Center">Käyttäjätarinat</Label>
+                    </Grid>
+                    <Grid Background="LightCoral" Grid.Column="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="2*"/>
+                            <RowDefinition Height="19*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Label HorizontalAlignment="Center" Grid.ColumnSpan="2">Aloittamatta</Label>
+                        <Button x:Name="AddTaskButton" Content="+" Grid.Column="1" Width="40" HorizontalAlignment="Right" Click="AddTaskButton_Click"/>
+                    </Grid>
+                    <Grid Background="LightYellow" Grid.Column="2">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="2*"/>
+                            <RowDefinition Height="19*"/>
+                        </Grid.RowDefinitions>
+                        <Label HorizontalAlignment="Center">Työn alla</Label>
+                    </Grid>
+                    <Grid Background="lightgreen" Grid.Column="3">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="2*"/>
+                            <RowDefinition Height="19*"/>
+                        </Grid.RowDefinitions>
+                        <Label HorizontalAlignment="Center">Valmis</Label>
+                    </Grid>
+                </Grid>
 
             </TabItem>
 
-
         </TabControl>
+
 
 
 
