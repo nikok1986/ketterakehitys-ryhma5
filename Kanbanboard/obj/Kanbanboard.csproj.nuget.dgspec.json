@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\atteb\\OneDrive\\Tiedostot\\GitHub\\ketterakehitys-ryhma5\\Kanbanboard\\Kanbanboard.csproj": {}
+    "C:\\Users\\storm\\OneDrive\\Documents\\koulu\\2022 syksy\\Ketterä ohjelmistoprojekti\\ketterakehitys-ryhma5\\Kanbanboard\\Kanbanboard.csproj": {}
   },
   "projects": {
-    "C:\\Users\\atteb\\OneDrive\\Tiedostot\\GitHub\\ketterakehitys-ryhma5\\Kanbanboard\\Kanbanboard.csproj": {
+    "C:\\Users\\storm\\OneDrive\\Documents\\koulu\\2022 syksy\\Ketterä ohjelmistoprojekti\\ketterakehitys-ryhma5\\Kanbanboard\\Kanbanboard.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\atteb\\OneDrive\\Tiedostot\\GitHub\\ketterakehitys-ryhma5\\Kanbanboard\\Kanbanboard.csproj",
+        "projectUniqueName": "C:\\Users\\storm\\OneDrive\\Documents\\koulu\\2022 syksy\\Ketterä ohjelmistoprojekti\\ketterakehitys-ryhma5\\Kanbanboard\\Kanbanboard.csproj",
         "projectName": "Kanbanboard",
-        "projectPath": "C:\\Users\\atteb\\OneDrive\\Tiedostot\\GitHub\\ketterakehitys-ryhma5\\Kanbanboard\\Kanbanboard.csproj",
-        "packagesPath": "C:\\Users\\atteb\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\atteb\\OneDrive\\Tiedostot\\GitHub\\ketterakehitys-ryhma5\\Kanbanboard\\obj\\",
+        "projectPath": "C:\\Users\\storm\\OneDrive\\Documents\\koulu\\2022 syksy\\Ketterä ohjelmistoprojekti\\ketterakehitys-ryhma5\\Kanbanboard\\Kanbanboard.csproj",
+        "packagesPath": "C:\\Users\\storm\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\storm\\OneDrive\\Documents\\koulu\\2022 syksy\\Ketterä ohjelmistoprojekti\\ketterakehitys-ryhma5\\Kanbanboard\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\atteb\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\storm\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -26,7 +22,6 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
