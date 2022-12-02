@@ -30,9 +30,12 @@
         </Grid>
 
         <Grid Grid.Column="1" Margin="684,286,-221,-33">
-            <TextBlock x:Name="SprintInfoBox" Margin="10,10,62,219" Text=""/>
-            <TextBlock x:Name="SprintStartDateBox" Margin="11,118,100,164"/>
-            <TextBlock x:Name="SprintEndDateBox" Margin="11,159,102,123"/>
+            <TextBlock x:Name="SprintInfoBox" FontSize="12"  HorizontalAlignment="Left" Margin="10,170,0,0" TextWrapping="Wrap" Text="Sprintin Info:" FontWeight="Bold"/>
+            <TextBlock x:Name="SeeSprintInfo" FontSize="12"  HorizontalAlignment="Left" Margin="100,170,0,0" TextWrapping="Wrap" Text=""/>
+            <TextBlock x:Name="SprintStartDateBox" FontSize="12"  HorizontalAlignment="Left" Margin="10,240,0,0" TextWrapping="Wrap" Text="Aloitettu:" FontWeight="Bold"/>
+            <TextBlock x:Name="SeeSprintStartDate" FontSize="12"  HorizontalAlignment="Left" Margin="100,240,0,0" TextWrapping="Wrap" Text=""/>
+            <TextBlock x:Name="SprintEndDateBox" FontSize="12"  HorizontalAlignment="Left" Margin="10,270,0,0" TextWrapping="Wrap" Text="Lopetuspäivä:" FontWeight="Bold"/>
+            <TextBlock x:Name="SeeSprintEndDate" FontSize="12"  HorizontalAlignment="Left" Margin="100,270,0,0" TextWrapping="Wrap" Text=""/>
         </Grid>
 
         <TabControl x:Name="SprinttiLaatikko" Margin="5,0,10,21" Grid.Column="1">

@@ -182,6 +182,26 @@ namespace Kanbanboard
                 return startdate;
             }
         }
+        public DateTime DBSprintEndDate()
+        {
+            using (OleDbConnection con = DataServices.DBConnection())   //Käytetään DataServices.cs tiedostoon luotua tietokantayhteyttä.
+            {                                                           //Using-komennolla yhteys suljetaan automaattisesti suorituksen jälkeen.
+                OleDbCommand cmd;
+                cmd = new OleDbCommand("SELECT sprint_lopetus_pvm FROM sprints WHERE sprint_nimi='" + SprintListing.SelectedItem + "';");
+                cmd.Connection = con;   //Yhteys avataan OleDb-komennolla.
+                DateTime enddate = DateTime.Now;
+
+                OleDbDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    enddate = reader.GetDateTime(0);
+                }
+                reader.Close();
+                cmd.ExecuteNonQuery();
+
+                return enddate;
+            }
+        }
         public String DBUserStoryReader()
         {
             using (OleDbConnection con = DataServices.DBConnection())   //Käytetään DataServices.cs tiedostoon luotua tietokantayhteyttä.
@@ -273,8 +293,8 @@ namespace Kanbanboard
 
             TitleBox.Text = DBProjectNameReader();
             InfoBox.Text = DBProjectInfoReader();
-            StartDateBox.Text = DBStartDate().ToString("dd-MM-yyyy");
-            EndDateBox.Text = DBEndDate().ToString("dd-MM-yyyy");
+            StartDateBox.Text = DBSprintStartDate().ToString("dd-MM-yyyy");
+            EndDateBox.Text = DBSprintEndDate().ToString("dd-MM-yyyy");
 
             SprintListing.Items.Clear();
             string[] sprints = DBSprintNameReader().Split();
@@ -287,6 +307,11 @@ namespace Kanbanboard
 
         private void SprintListing_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
+            //SprintTitleBox.Text = DBSprintNameReader();
+            SeeSprintInfo.Text = DBSprintInfoReader();
+            SeeSprintStartDate.Text = DBSprintStartDate().ToString("dd-MM-yyyy");
+            SeeSprintEndDate.Text = DBSprintEndDate().ToString("dd-MM-yyyy");
+
             UserStoryGridList.Items.Clear();
             string[] userstoryList = DBUserStoryReader().Split();
             foreach (string s in userstoryList)
