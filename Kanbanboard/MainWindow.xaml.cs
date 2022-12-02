@@ -253,7 +253,7 @@ namespace Kanbanboard
         {
             ProjectListing.Items.Clear();
             Reader reader= new Reader();
-            string[] projects = reader.DBProjectNameReader().Split();
+            string[] projects = reader.DBProjectNameReader().Split('\n');
             foreach (string s in projects)
                 ProjectListing.Items.Add(s);
         }
@@ -277,20 +277,20 @@ namespace Kanbanboard
             EndDateBox.Text = DBEndDate().ToString("dd-MM-yyyy");
 
             SprintListing.Items.Clear();
-            string[] sprints = DBSprintNameReader().Split();
+            string[] sprints = DBSprintNameReader().Split('\n');
             foreach (string s in sprints)
             SprintListing.Items.Add(s);
 
-
+            UserStoryGridList.Items.Clear();
+            string[] userstoryList = DBUserStoryReader().Split('\n');
+            foreach (string s in userstoryList)
+                UserStoryGridList.Items.Add(s);
 
         }
 
         private void SprintListing_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            UserStoryGridList.Items.Clear();
-            string[] userstoryList = DBUserStoryReader().Split();
-            foreach (string s in userstoryList)
-                UserStoryGridList.Items.Add(s);
+
         }
 
         private void EditInfoWindowButton_Click(object sender, RoutedEventArgs e)
