@@ -33,7 +33,7 @@ namespace Kanbanboard
         public MainWindow()
         {
             InitializeComponent();
-            Loaded += ShowProjectButton_Click;
+            Loaded += UpdateProjectListButton_Click;
         }
 
         public String DBProjectNameReader()
@@ -125,8 +125,7 @@ namespace Kanbanboard
             using (OleDbConnection con = DataServices.DBConnection())   //Käytetään DataServices.cs tiedostoon luotua tietokantayhteyttä.
             {                                                           //Using-komennolla yhteys suljetaan automaattisesti suorituksen jälkeen.
                 OleDbCommand cmd;
-
-                // "SELECT sprints.sprint_nimi FROM projects INNER JOIN sprints ON projects.project_id = sprints.project_id WHERE OBJECT_ID('" + ProjectListing.SelectedItem + "');"
+                
                 cmd = new OleDbCommand("SELECT sprints.sprint_nimi FROM projects INNER JOIN sprints ON projects.project_id = sprints.project_id WHERE projects.project_nimi='" + ProjectListing.SelectedItem + "';");
                 cmd.Connection = con;   //Yhteys avataan OleDb-komennolla.
                 string sprintname = String.Empty;    //Kerätään info tähän tyhjään stringiin.
@@ -183,7 +182,27 @@ namespace Kanbanboard
                 return startdate;
             }
         }
+        public String DBUserStoryReader()
+        {
+            using (OleDbConnection con = DataServices.DBConnection())   //Käytetään DataServices.cs tiedostoon luotua tietokantayhteyttä.
+            {                                                           //Using-komennolla yhteys suljetaan automaattisesti suorituksen jälkeen.
+                OleDbCommand cmd;
 
+                cmd = new OleDbCommand("SELECT user_stories.user_story_nimi FROM projects INNER JOIN user_stories ON projects.project_id = user_stories.project_id WHERE projects.project_nimi='" + ProjectListing.SelectedItem + "';");
+                cmd.Connection = con;   //Yhteys avataan OleDb-komennolla.
+                string userstories = String.Empty;    //Kerätään info tähän tyhjään stringiin.
+
+                OleDbDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    userstories = reader.GetString(0);
+                }
+                reader.Close();
+                cmd.ExecuteNonQuery();
+
+                return userstories;
+            }
+        }
 
         private void AddProjectButton_Click(object sender, RoutedEventArgs e)
         {
@@ -230,7 +249,7 @@ namespace Kanbanboard
 
         }
 
-        private void ShowProjectButton_Click(object sender, RoutedEventArgs e)
+        private void UpdateProjectListButton_Click(object sender, RoutedEventArgs e)
         {
             ProjectListing.Items.Clear();
             Reader reader= new Reader();
@@ -268,7 +287,10 @@ namespace Kanbanboard
 
         private void SprintListing_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-
+            UserStoryGridList.Items.Clear();
+            string[] userstoryList = DBUserStoryReader().Split();
+            foreach (string s in userstoryList)
+                UserStoryGridList.Items.Add(s);
         }
 
         private void EditInfoWindowButton_Click(object sender, RoutedEventArgs e)
