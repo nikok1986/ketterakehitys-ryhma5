@@ -293,8 +293,8 @@ namespace Kanbanboard
 
             TitleBox.Text = DBProjectNameReader();
             InfoBox.Text = DBProjectInfoReader();
-            StartDateBox.Text = DBSprintStartDate().ToString("dd-MM-yyyy");
-            EndDateBox.Text = DBSprintEndDate().ToString("dd-MM-yyyy");
+            StartDateBox.Text = DBStartDate().ToString("dd-MM-yyyy");
+            EndDateBox.Text = DBEndDate().ToString("dd-MM-yyyy");
 
             SprintListing.Items.Clear();
             string[] sprints = DBSprintNameReader().Split();
