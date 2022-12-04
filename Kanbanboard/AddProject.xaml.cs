@@ -25,9 +25,9 @@ namespace Kanbanboard
         public AddProject()
         {
             InitializeComponent();
-            Loaded += AddedProjectsList_populate;
+            //Loaded += AddedProjectsList_populate;
         }
-        public String DBProjectInfoReader()
+        /*public String DBProjectInfoReader()
         {
             using (OleDbConnection con = DataServices.DBConnection())   //Käytetään DataServices.cs tiedostoon luotua tietokantayhteyttä.
             {                                                           //Using-komennolla yhteys suljetaan automaattisesti suorituksen jälkeen.
@@ -47,7 +47,7 @@ namespace Kanbanboard
                 
                 return projectinfo;
             }
-        }
+        }*/
 
         private void CancelAddProjectButton_Click(object sender, RoutedEventArgs e)
         {
@@ -89,7 +89,7 @@ namespace Kanbanboard
             }
         }
 
-        private void EditProject_Click(object sender, RoutedEventArgs e)
+        /*private void EditProject_Click(object sender, RoutedEventArgs e)
         {
             using (OleDbConnection con = DataServices.DBConnection())   //Käytetään DataServices.cs tiedostoon luotua tietokantayhteyttä.
             {
@@ -109,8 +109,8 @@ namespace Kanbanboard
                     MessageBox.Show("Valitse tietue muokattavaksi listalta ja aseta uusi nimi nimilaatikkoon!");  //Jos nimeä ei ole valittuna, tulee siitä ilmoitus.
                 }
             }
-        }
-        private void AddedProjectsList_populate(object sender, EventArgs e) 
+        }*/
+        /*private void AddedProjectsList_populate(object sender, EventArgs e) 
         {
             AddedProjectsList.Items.Clear();
             Reader reader = new Reader();
@@ -121,7 +121,7 @@ namespace Kanbanboard
             { 
                 AddedProjectsList.SelectedIndex= 0;
             }
-        }
+        }*/
         private void AddedProjectsList_SelectionChanged(object sender, SelectionChangedEventArgs e) 
         { 
 
@@ -129,7 +129,7 @@ namespace Kanbanboard
         private void ShowProjectInfo_Click(object sender, RoutedEventArgs e)
         {
         //    string info = DBProjectInfoReader();
-            //string outputString;
+        //    string outputString;
         //    InfoWindow infowindow = new InfoWindow(info);
         //    infowindow.Title = "Tietoa projektista";
         //    infowindow.ShowDialog();

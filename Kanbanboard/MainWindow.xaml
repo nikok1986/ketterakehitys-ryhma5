@@ -22,7 +22,13 @@
             </Grid.RowDefinitions>
             <Button x:Name="AddSprintButton" Grid.Row="0" Grid.RowSpan="2" Content="Lisää sprintti+" Click="AddSprintButton_Click" Margin="0,0,0,26"/>
             <Button x:Name="UpdateProjectListButton" Content="Päivitä projektilista" Height="25" Click="UpdateProjectListButton_Click" Margin="0,25,0,2" Grid.RowSpan="2"/>
-            <ListView x:Name="ProjectListing" Grid.Row="2" Margin="0,0,0,21" Grid.RowSpan="4" MouseDoubleClick="ProjectListing_MouseDoubleClick"/>
+            <ListView x:Name="ProjectListing" Grid.Row="2" Margin="0,0,0,21" Grid.RowSpan="4" MouseDoubleClick="ProjectListing_MouseDoubleClick">
+                <ListView.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem x:Name="RightClickEdit" Header="Muokkaa" Click="RightClickEdit_Click"/>
+                    </ContextMenu>
+                </ListView.ContextMenu>
+            </ListView>
             <ListView x:Name="SprintListing" Margin="881,12,-873,253" Grid.RowSpan="3" Grid.Row="1" MouseDoubleClick="SprintListing_MouseDoubleClick"/>
             <Button x:Name="AddUserButton" Content="Lisää käyttäjä" Grid.Row="4" Click="AddUserButton_Click" Margin="79,1,-1,20" Grid.RowSpan="2"/>
             <Button x:Name="AddProjectButton" Content="Lisää projekti" Grid.Row="4" Click="AddProjectButton_Click" Margin="0,1,78,20" Grid.RowSpan="2"/>

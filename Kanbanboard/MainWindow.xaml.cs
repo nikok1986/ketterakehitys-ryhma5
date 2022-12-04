@@ -251,10 +251,13 @@ namespace Kanbanboard
        
         private void AddSprintButton_Click(object sender, RoutedEventArgs e)
         {
-            TabItem tabItem = new TabItem();
-            tabItem.Header = "Sprintti";
-            tabItem.Content = new TabitemMalli();
-            SprinttiLaatikko.Items.Insert(SprinttiLaatikko.Items.Count, tabItem);
+            //TabItem tabItem = new TabItem();
+            //tabItem.Header = "Sprintti";
+            //tabItem.Content = new TabitemMalli();
+            //SprinttiLaatikko.Items.Insert(SprinttiLaatikko.Items.Count, tabItem);
+            AddSprintWindow sprintWindow = new AddSprintWindow();
+            sprintWindow.Title = "Lisää sprintti";
+            sprintWindow.ShowDialog();
         }
 
         private void AddUserButton_Click(object sender, RoutedEventArgs e)
@@ -318,7 +321,10 @@ namespace Kanbanboard
 
         private void EditInfoWindowButton_Click(object sender, RoutedEventArgs e)
         {
-
+            string pjName = ProjectListing.SelectedItem.ToString();
+            EditProjectWindow epw = new EditProjectWindow(pjName);
+            epw.Title = "Muokkaa projektia " + pjName;
+            epw.ShowDialog();
         }
 
 
@@ -332,6 +338,13 @@ namespace Kanbanboard
             AddTask addTask = new AddTask();
             addTask.AddTaskButton.Click += new RoutedEventHandler(AddTask);
             addTask.ShowDialog();
+        }
+        private void RightClickEdit_Click(object sender, RoutedEventArgs e) 
+        { 
+            string pjName = ProjectListing.SelectedItem.ToString();
+            EditProjectWindow epw = new EditProjectWindow(pjName);
+            epw.Title = "Muokkaa projektia " + pjName;
+            epw.ShowDialog();
         }
     }
     public class Projekti

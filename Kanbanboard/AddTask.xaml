@@ -23,6 +23,7 @@
             <RowDefinition Height="2*"/>
             <RowDefinition Height="3*"/>
         </Grid.RowDefinitions>
+        <Label Grid.Row="0" Content="Lisää tehtävä" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,-1,0,0"/>
         <Label Content="Tehtävän nimi:" Padding="0" Margin="0,1,0,21" Grid.RowSpan="2" Grid.Row="1"/>
         <TextBox x:Name="TaskNameInput" Grid.Row="2" Margin="5,2,5,3" Height="17"/>
         <Label Grid.Row="3" Content="Tehtävän info:" Padding="0" Margin="0,1,0,21" Grid.RowSpan="2"/>

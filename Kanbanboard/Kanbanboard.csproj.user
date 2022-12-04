@@ -10,6 +10,9 @@
     <Compile Update="AddProject.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="AddSprintWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="AddTask.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -19,7 +22,7 @@
     <Compile Update="AddUserStory.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="InfoWindow.xaml.cs">
+    <Compile Update="EditProjectWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="TabitemMalli.xaml.cs">
@@ -28,6 +31,9 @@
   </ItemGroup>
   <ItemGroup>
     <Page Update="AddProject.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="AddSprintWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="AddTask.xaml">
@@ -39,7 +45,7 @@
     <Page Update="AddUserStory.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="InfoWindow.xaml">
+    <Page Update="EditProjectWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="MainWindow.xaml">
