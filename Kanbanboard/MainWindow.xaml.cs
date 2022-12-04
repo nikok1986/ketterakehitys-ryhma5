@@ -50,7 +50,7 @@ namespace Kanbanboard
                 OleDbDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
-                    projectname = reader.GetString(0);
+                    projectname += reader.GetString(0) + "\n";
                 }
                 reader.Close();
                 cmd.ExecuteNonQuery();
@@ -215,7 +215,7 @@ namespace Kanbanboard
                 OleDbDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
-                    userstories = reader.GetString(0);
+                    userstories += reader.GetString(0) + "\n";
                 }
                 reader.Close();
                 cmd.ExecuteNonQuery();
@@ -321,10 +321,17 @@ namespace Kanbanboard
 
         private void EditInfoWindowButton_Click(object sender, RoutedEventArgs e)
         {
-            string pjName = ProjectListing.SelectedItem.ToString();
-            EditProjectWindow epw = new EditProjectWindow(pjName);
-            epw.Title = "Muokkaa projektia " + pjName;
-            epw.ShowDialog();
+            if (ProjectListing.SelectedItem != null)
+            {
+                string pjName = ProjectListing.SelectedItem.ToString();
+                EditProjectWindow epw = new EditProjectWindow(pjName);
+                epw.Title = "Muokkaa projektia " + pjName;
+                epw.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Valitse tietue muokattavaksi.");
+            }
         }
 
 
@@ -356,7 +363,8 @@ namespace Kanbanboard
 
         private void RightClickReport_Click(object sender, RoutedEventArgs e)
         {
-
+            ProjectReport pr = new ProjectReport(ProjectListing.SelectedItem.ToString());
+            pr.ShowDialog();
         }
     }
     public class Projekti
