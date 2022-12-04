@@ -340,11 +340,18 @@ namespace Kanbanboard
             addTask.ShowDialog();
         }
         private void RightClickEdit_Click(object sender, RoutedEventArgs e) 
-        { 
-            string pjName = ProjectListing.SelectedItem.ToString();
-            EditProjectWindow epw = new EditProjectWindow(pjName);
-            epw.Title = "Muokkaa projektia " + pjName;
-            epw.ShowDialog();
+        {
+            if (ProjectListing.SelectedItem != null)
+            {
+                string pjName = ProjectListing.SelectedItem.ToString();
+                EditProjectWindow epw = new EditProjectWindow(pjName);
+                epw.Title = "Muokkaa projektia " + pjName;
+                epw.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Valitse tietue muokattavaksi.");
+            }
         }
     }
     public class Projekti
