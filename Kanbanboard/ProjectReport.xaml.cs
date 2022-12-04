@@ -101,7 +101,7 @@ namespace Kanbanboard
                     i++;
             }
             decimal percent = i / storyCount * 100;
-            CompletionState.Text ="Projekti on " + Math.Round(percent, 2).ToString() + " % valmis.";
+            CompletionState.Text = "Projekti \"" + pjName + "\" on " + Math.Round(percent, 2).ToString() + " % valmis.";
         }
         private void UpdateLists(object sender, EventArgs e)
         {
