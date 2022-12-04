@@ -245,7 +245,6 @@ C:\Users\atteb\OneDrive\Tiedostot\GitHub\ketterakehitys-ryhma5\Kanbanboard\obj\D
 C:\Users\atteb\OneDrive\Tiedostot\GitHub\ketterakehitys-ryhma5\Kanbanboard\obj\Debug\net6.0-windows\AddTask.g.cs
 C:\Users\atteb\OneDrive\Tiedostot\GitHub\ketterakehitys-ryhma5\Kanbanboard\obj\Debug\net6.0-windows\AddUser.g.cs
 C:\Users\atteb\OneDrive\Tiedostot\GitHub\ketterakehitys-ryhma5\Kanbanboard\obj\Debug\net6.0-windows\AddUserStory.g.cs
-C:\Users\atteb\OneDrive\Tiedostot\GitHub\ketterakehitys-ryhma5\Kanbanboard\obj\Debug\net6.0-windows\InfoWindow.g.cs
 C:\Users\atteb\OneDrive\Tiedostot\GitHub\ketterakehitys-ryhma5\Kanbanboard\obj\Debug\net6.0-windows\MainWindow.g.cs
 C:\Users\atteb\OneDrive\Tiedostot\GitHub\ketterakehitys-ryhma5\Kanbanboard\obj\Debug\net6.0-windows\TabitemMalli.g.cs
 C:\Users\atteb\OneDrive\Tiedostot\GitHub\ketterakehitys-ryhma5\Kanbanboard\obj\Debug\net6.0-windows\App.g.cs
@@ -256,7 +255,6 @@ C:\Users\atteb\OneDrive\Tiedostot\GitHub\ketterakehitys-ryhma5\Kanbanboard\obj\D
 C:\Users\atteb\OneDrive\Tiedostot\GitHub\ketterakehitys-ryhma5\Kanbanboard\obj\Debug\net6.0-windows\AddTask.baml
 C:\Users\atteb\OneDrive\Tiedostot\GitHub\ketterakehitys-ryhma5\Kanbanboard\obj\Debug\net6.0-windows\AddUser.baml
 C:\Users\atteb\OneDrive\Tiedostot\GitHub\ketterakehitys-ryhma5\Kanbanboard\obj\Debug\net6.0-windows\AddUserStory.baml
-C:\Users\atteb\OneDrive\Tiedostot\GitHub\ketterakehitys-ryhma5\Kanbanboard\obj\Debug\net6.0-windows\InfoWindow.baml
 C:\Users\atteb\OneDrive\Tiedostot\GitHub\ketterakehitys-ryhma5\Kanbanboard\obj\Debug\net6.0-windows\MainWindow.baml
 C:\Users\atteb\OneDrive\Tiedostot\GitHub\ketterakehitys-ryhma5\Kanbanboard\obj\Debug\net6.0-windows\TabitemMalli.baml
 C:\Users\atteb\OneDrive\Tiedostot\GitHub\ketterakehitys-ryhma5\Kanbanboard\obj\Debug\net6.0-windows\Kanbanboard.g.resources
@@ -274,3 +272,7 @@ C:\Users\storm\OneDrive\Documents\koulu\2022 syksy\Ketterä ohjelmistoprojekti\k
 C:\Users\storm\OneDrive\Documents\koulu\2022 syksy\Ketterä ohjelmistoprojekti\ketterakehitys-ryhma5\Kanbanboard\obj\Debug\net6.0-windows\EditProjectWindow.baml
 C:\Users\storm\OneDrive\Documents\koulu\2022 syksy\Ketterä ohjelmistoprojekti\ketterakehitys-ryhma5\Kanbanboard\obj\Debug\net6.0-windows\AddSprintWindow.g.cs
 C:\Users\storm\OneDrive\Documents\koulu\2022 syksy\Ketterä ohjelmistoprojekti\ketterakehitys-ryhma5\Kanbanboard\obj\Debug\net6.0-windows\AddSprintWindow.baml
+C:\Users\atteb\OneDrive\Tiedostot\GitHub\ketterakehitys-ryhma5\Kanbanboard\obj\Debug\net6.0-windows\AddSprintWindow.g.cs
+C:\Users\atteb\OneDrive\Tiedostot\GitHub\ketterakehitys-ryhma5\Kanbanboard\obj\Debug\net6.0-windows\EditProjectWindow.g.cs
+C:\Users\atteb\OneDrive\Tiedostot\GitHub\ketterakehitys-ryhma5\Kanbanboard\obj\Debug\net6.0-windows\AddSprintWindow.baml
+C:\Users\atteb\OneDrive\Tiedostot\GitHub\ketterakehitys-ryhma5\Kanbanboard\obj\Debug\net6.0-windows\EditProjectWindow.baml

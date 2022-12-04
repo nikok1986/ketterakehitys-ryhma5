@@ -353,6 +353,11 @@ namespace Kanbanboard
                 MessageBox.Show("Valitse tietue muokattavaksi.");
             }
         }
+
+        private void RightClickReport_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
     public class Projekti
     {

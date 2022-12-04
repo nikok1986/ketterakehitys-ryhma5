@@ -26,6 +26,7 @@
                 <ListView.ContextMenu>
                     <ContextMenu>
                         <MenuItem x:Name="RightClickEdit" Header="Muokkaa" Click="RightClickEdit_Click"/>
+                        <MenuItem x:Name="RightClickReport" Header="Näytä raportti" Click="RightClickReport_Click"/>
                     </ContextMenu>
                 </ListView.ContextMenu>
             </ListView>
