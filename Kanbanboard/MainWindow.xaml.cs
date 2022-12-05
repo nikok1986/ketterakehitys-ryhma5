@@ -133,7 +133,7 @@ namespace Kanbanboard
                 OleDbDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
-                    sprintname = reader.GetString(0);
+                    sprintname += reader.GetString(0) + "\n";
                 }
                 reader.Close();
                 cmd.ExecuteNonQuery();
@@ -221,6 +221,69 @@ namespace Kanbanboard
                 cmd.ExecuteNonQuery();
 
                 return userstories;
+            }
+        }
+        public String DBBackLogReader()
+        {
+            using (OleDbConnection con = DataServices.DBConnection())   //Käytetään DataServices.cs tiedostoon luotua tietokantayhteyttä.
+            {                                                           //Using-komennolla yhteys suljetaan automaattisesti suorituksen jälkeen.
+                OleDbCommand cmd;
+
+                cmd = new OleDbCommand("SELECT tasks.task_nimi FROM (tasks INNER JOIN sprints ON sprints.sprint_id = tasks.sprint_id) INNER JOIN projects ON projects.project_id = sprints.project_id WHERE tasks.task_tila=0 AND sprints.sprint_nimi='" + SprintListing.SelectedItem + "';");
+                cmd.Connection = con;   //Yhteys avataan OleDb-komennolla.
+                string taskname = String.Empty;    //Kerätään info tähän tyhjään stringiin.
+
+                OleDbDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    taskname += reader.GetString(0) + "\n";
+                }
+                reader.Close();
+                cmd.ExecuteNonQuery();
+
+                return taskname;
+            }
+        }
+        public String DBTaskInProgressReader()
+        {
+            using (OleDbConnection con = DataServices.DBConnection())   //Käytetään DataServices.cs tiedostoon luotua tietokantayhteyttä.
+            {                                                           //Using-komennolla yhteys suljetaan automaattisesti suorituksen jälkeen.
+                OleDbCommand cmd;
+
+                cmd = new OleDbCommand("SELECT tasks.task_nimi FROM (tasks INNER JOIN sprints ON sprints.sprint_id = tasks.sprint_id) INNER JOIN projects ON projects.project_id = sprints.project_id WHERE tasks.task_tila=1 AND sprints.sprint_nimi='" + SprintListing.SelectedItem + "';");
+                cmd.Connection = con;   //Yhteys avataan OleDb-komennolla.
+                string taskname = String.Empty;    //Kerätään info tähän tyhjään stringiin.
+
+                OleDbDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    taskname += reader.GetString(0) + "\n";
+                }
+                reader.Close();
+                cmd.ExecuteNonQuery();
+
+                return taskname;
+            }
+        }
+        public String DBCompleteTaskReader()
+        {
+            using (OleDbConnection con = DataServices.DBConnection())   //Käytetään DataServices.cs tiedostoon luotua tietokantayhteyttä.
+            {                                                           //Using-komennolla yhteys suljetaan automaattisesti suorituksen jälkeen.
+                OleDbCommand cmd;
+
+                cmd = new OleDbCommand("SELECT tasks.task_nimi FROM (tasks INNER JOIN sprints ON sprints.sprint_id = tasks.sprint_id) INNER JOIN projects ON projects.project_id = sprints.project_id WHERE tasks.task_tila=2 AND sprints.sprint_nimi='" + SprintListing.SelectedItem + "';");
+                cmd.Connection = con;   //Yhteys avataan OleDb-komennolla.
+                string taskname = String.Empty;    //Kerätään info tähän tyhjään stringiin.
+
+                OleDbDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    taskname += reader.GetString(0) + "\n";
+                }
+                reader.Close();
+                cmd.ExecuteNonQuery();
+
+                return taskname;
             }
         }
 
@@ -317,6 +380,21 @@ namespace Kanbanboard
             SeeSprintInfo.Text = DBSprintInfoReader();
             SeeSprintStartDate.Text = DBSprintStartDate().ToString("dd-MM-yyyy");
             SeeSprintEndDate.Text = DBSprintEndDate().ToString("dd-MM-yyyy");
+
+            ToDoListBox.Items.Clear();
+            string[] taskList = DBBackLogReader().Split('\n');
+            foreach (string s in taskList)
+                ToDoListBox.Items.Add(s);
+
+            TaskInProgressListBox.Items.Clear();
+            string[] progressList = DBTaskInProgressReader().Split('\n');
+            foreach (string s in progressList)
+                TaskInProgressListBox.Items.Add(s);
+
+            TaskDoneListBox.Items.Clear();
+            string[] completeList = DBTaskInProgressReader().Split('\n');
+            foreach (string s in completeList)
+                TaskDoneListBox.Items.Add(s);
         }
 
         private void EditInfoWindowButton_Click(object sender, RoutedEventArgs e)
@@ -391,6 +469,7 @@ namespace Kanbanboard
             ProjectReport pr = new ProjectReport(ProjectListing.SelectedItem.ToString());
             pr.ShowDialog();
         }
+
     }
     public class Projekti
     {

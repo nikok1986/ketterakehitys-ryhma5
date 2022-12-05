@@ -46,16 +46,20 @@
             <TextBlock x:Name="SeeSprintEndDate" FontSize="12"  HorizontalAlignment="Left" Margin="100,270,0,0" TextWrapping="Wrap" Text=""/>
         </Grid>
 
-        <TabControl x:Name="SprinttiLaatikko" Margin="5,0,10,21" Grid.Column="1">
+        <TabControl x:Name="SprinttiLaatikko" Margin="5,16,10,5" Grid.Column="1">
             <TabItem Header="Info">
                 <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="59*"/>
+                        <ColumnDefinition Width="586*"/>
+                    </Grid.ColumnDefinitions>
                     <TextBlock x:Name="TitleBox" FontSize="20"  HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="380" Grid.ColumnSpan="2"/>
-                    <TextBlock x:Name="InfoBox" FontSize="12" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Height="123" Width="360" Margin="119,42,0,0" Grid.Column="1"/>
+                    <TextBlock x:Name="InfoBox" FontSize="12" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Height="123" Width="360" Margin="60,42,0,0" Grid.Column="1"/>
                     <TextBlock x:Name="StartDateLabel" FontSize="12"  HorizontalAlignment="Left" Margin="10,170,0,0" TextWrapping="Wrap" Text="Aloitettu:" VerticalAlignment="Top" FontWeight="Bold" Grid.ColumnSpan="2"/>
-                    <TextBlock x:Name="StartDateBox" FontSize="12"  HorizontalAlignment="Left" Margin="46,170,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Grid.Column="1"/>
+                    <TextBlock x:Name="StartDateBox" FontSize="12"  HorizontalAlignment="Left" Margin="38,171,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="150" Grid.Column="1"/>
                     <TextBlock x:Name="EndDateLabel" FontSize="12"  HorizontalAlignment="Left" Margin="10,191,0,0" TextWrapping="Wrap" Text="Lopetuspäivä" VerticalAlignment="Top" FontWeight="Bold" Grid.ColumnSpan="2"/>
-                    <TextBlock x:Name="EndDateBox" FontSize="12"  HorizontalAlignment="Left" Margin="65,191,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Grid.Column="1"/>
-                    <Button x:Name="EditInfoWindowButton" FontSize="10" Content="Muokkaa" HorizontalAlignment="Left" Margin="274,190,0,0" VerticalAlignment="Top" Height="17" Width="48" Click="EditInfoWindowButton_Click" Grid.Column="1"/>
+                    <TextBlock x:Name="EndDateBox" FontSize="12"  HorizontalAlignment="Left" Margin="38,191,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Grid.Column="1" Width="150"/>
+                    <Button x:Name="EditInfoWindowButton" FontSize="10" Content="Muokkaa" HorizontalAlignment="Left" Margin="215,190,0,0" VerticalAlignment="Top" Height="17" Width="48" Click="EditInfoWindowButton_Click" Grid.Column="1"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Kanban" Height="20" VerticalAlignment="Top">
@@ -75,7 +79,7 @@
                             <RowDefinition Height="2*"/>
                             <RowDefinition Height="19*"/>
                         </Grid.RowDefinitions>
-                        <ListView x:Name="UserStoryGridList" Background="Transparent" FontSize="18" HorizontalAlignment="Left" Margin="0,25,0,0" Grid.RowSpan="2" Width="161" Grid.ColumnSpan="2"/>
+                        <ListView x:Name="UserStoryGridList" Background="Transparent" FontSize="18" HorizontalAlignment="Left" Width="161" BorderThickness="0" Grid.ColumnSpan="2" Grid.Row="1" Margin="4,5,6,5"/>
                         <Label HorizontalAlignment="Left" Grid.Column="1" Margin="28,0,0,472" Grid.RowSpan="2">Käyttäjätarinat</Label>
                     </Grid>
                     <Grid x:Name="TaskBacklogGrid" Background="LightCoral" Grid.Column="1">
@@ -88,7 +92,9 @@
                             <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
                         <Label HorizontalAlignment="Center" Grid.ColumnSpan="2">Aloittamatta</Label>
-                        <Button x:Name="AddTaskButton" Content="+" Grid.Column="1" Width="40" HorizontalAlignment="Right" Click="AddTaskButton_Click"/>
+                        <Button x:Name="AddTaskButton" FontSize="32" FontWeight="Bold" Content="+" Height="50" Grid.Column="1" Width="30" HorizontalAlignment="Left" Click="AddTaskButton_Click" Margin="50,0,0,472" Grid.RowSpan="2"/>
+                        <ListBox x:Name="ToDoListBox" FontSize="18"  BorderThickness="0" Grid.Row="1" Grid.ColumnSpan="2" Background="LightCoral" Margin="4,5,6,5"/>
+
                     </Grid>
                     <Grid x:Name="TaskInProgressGrid" Background="LightYellow" Grid.Column="2">
                         <Grid.RowDefinitions>
@@ -96,6 +102,7 @@
                             <RowDefinition Height="19*"/>
                         </Grid.RowDefinitions>
                         <Label HorizontalAlignment="Center">Työn alla</Label>
+                        <ListBox x:Name="TaskInProgressListBox" FontSize="18"  BorderThickness="0" Grid.Row="1" Background="LightYellow" Margin="8,6,5,4"/>
                     </Grid>
                     <Grid x:Name="TaskDoneGrid" Background="lightgreen" Grid.Column="3">
                         <Grid.RowDefinitions>
@@ -103,6 +110,7 @@
                             <RowDefinition Height="19*"/>
                         </Grid.RowDefinitions>
                         <Label HorizontalAlignment="Center">Valmis</Label>
+                        <ListBox x:Name="TaskDoneListBox" FontSize="18" BorderThickness="0" Grid.Row="1" Background="lightgreen" Margin="5,6,5,0"/>
                     </Grid>
                 </Grid>
 
