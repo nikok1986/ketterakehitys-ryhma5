@@ -77,7 +77,7 @@ namespace Kanbanboard
                         cmd.ExecuteNonQuery();
                         MessageBox.Show("Tietue tallennettu!");
                     }
-                    if (ProjectNameInput.Text == test)    //Helppo testi NimiBoxin sisällölle
+                    if (ProjectNameInput.Text == test)    //testi NimiBoxin sisällölle
                     {
                         MessageBox.Show("Nimilaatikko on tyhjä!");
                     }

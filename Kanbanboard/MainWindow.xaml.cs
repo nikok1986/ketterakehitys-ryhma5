@@ -360,7 +360,32 @@ namespace Kanbanboard
                 MessageBox.Show("Valitse tietue muokattavaksi.");
             }
         }
-
+        private void RightClickDelete_Click(object sender, RoutedEventArgs e)
+        {
+            using (OleDbConnection con = DataServices.DBConnection())   //Käytetään DataServices.cs tiedostoon luotua tietokantayhteyttä.
+            {                                                           //Using-komennolla yhteys suljetaan automaattisesti suorituksen jälkeen.
+                OleDbCommand cmd;
+                MessageBoxResult result = MessageBox.Show("Haluatko varmasti poistaa projektin " + ProjectListing.SelectedItem + "?", "Vahvistus", MessageBoxButton.YesNo);
+                if (result == MessageBoxResult.Yes)
+                {
+                    if (ProjectListing.SelectedItem != null)
+                    {
+                        cmd = new OleDbCommand("DELETE FROM projects WHERE project_nimi='" + ProjectListing.SelectedItem + "';");
+                        cmd.Connection = con;   //Yhteys avataan OleDb-komennolla.
+                        cmd.ExecuteNonQuery();
+                        MessageBox.Show("Projekti " + ProjectListing.SelectedItem + " poistettu.");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Valitse poistettava projekti");
+                    }
+                }
+                if (result == MessageBoxResult.No)
+                {
+                    MessageBox.Show("Toiminto peruutettu.");
+                }
+            }
+        }
         private void RightClickReport_Click(object sender, RoutedEventArgs e)
         {
             ProjectReport pr = new ProjectReport(ProjectListing.SelectedItem.ToString());
