@@ -5,3 +5,6 @@
 /.vs
 *.v2
 *.v2
+/Kanbanboard/.vs
+/Kanbanboard/obj
+/Kanbanboard/bin
