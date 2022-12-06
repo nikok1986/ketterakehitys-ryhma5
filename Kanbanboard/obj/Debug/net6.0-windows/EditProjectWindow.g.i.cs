@@ -101,7 +101,7 @@ namespace Kanbanboard {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/Kanbanboard;component/editprojectwindow.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/Kanbanboard;V1.0.0.0;component/editprojectwindow.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\EditProjectWindow.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

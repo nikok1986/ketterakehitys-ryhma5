@@ -10,11 +10,11 @@ none
 false
 TRACE;RELEASE;NET;NET6_0;NETCOREAPP
 C:\Users\Juuso\Source\Repos\GitHub\nikok1986\ketterakehitys-ryhma5\Kanbanboard\App.xaml
-7-1527302681
+9-1359466834
 
-11137466655
+131510982702
 194-2004305220
-AddProject.xaml;AddTask.xaml;AddUser.xaml;AddUserStory.xaml;InfoWindow.xaml;MainWindow.xaml;TabitemMalli.xaml;
+AddProject.xaml;AddSprintWindow.xaml;AddTask.xaml;AddUser.xaml;AddUserStory.xaml;EditProjectWindow.xaml;MainWindow.xaml;ProjectReport.xaml;TabitemMalli.xaml;
 
 True
 
