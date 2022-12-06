@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "H2C6+Qt0t0H2C9ljz06EWNTBhro/Kzrjo7ub05rfspn2LdUHq+jun7lnWShJ4pF3wKXMI7TkMpTzMhUVoxmqKg==",
+  "dgSpecHash": "lSkzEa0j4LlVnyCMfLZz+LgaZohpXMygfJdcC2v6vGs0vTQPKgUIJvd/FOaNu0lTZVkskgGNjJGU9aAyzn8UrA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Juuso\\Source\\Repos\\GitHub\\nikok1986\\ketterakehitys-ryhma5\\Kanbanboard\\Kanbanboard.csproj",
+  "projectFilePath": "C:\\Users\\Juuso\\source\\repos\\GitHub\\nikok1986\\ketterakehitys-ryhma5\\Kanbanboard\\Kanbanboard.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Juuso\\.nuget\\packages\\microsoft.win32.systemevents\\7.0.0\\microsoft.win32.systemevents.7.0.0.nupkg.sha512",
     "C:\\Users\\Juuso\\.nuget\\packages\\system.configuration.configurationmanager\\7.0.0\\system.configuration.configurationmanager.7.0.0.nupkg.sha512",
