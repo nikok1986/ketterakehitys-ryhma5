@@ -25,6 +25,9 @@
     <Compile Update="EditProjectWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="EditUserWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="TabitemMalli.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -46,6 +49,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="EditProjectWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="EditUserWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="MainWindow.xaml">

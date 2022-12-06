@@ -59,7 +59,15 @@
                     <TextBlock x:Name="TeamLabel" FontSize="12"  HorizontalAlignment="Left" Margin="10,212,0,0" TextWrapping="Wrap" Text="Tiimit:" VerticalAlignment="Top" FontWeight="Bold"/>
                     <ListBox x:Name="TeamBox" Margin="10,233,502,107"/>
                     <TextBlock x:Name="UsersLabel" FontSize="12"  HorizontalAlignment="Left" Margin="148,212,0,0" TextWrapping="Wrap" Text="Jäsenet:" VerticalAlignment="Top" FontWeight="Bold"/>
-                    <ListBox x:Name="UsersBox" Margin="148,233,365,107"/>
+                    <ListBox x:Name="UsersBox" Margin="148,233,365,107">
+                        <ListBox.ContextMenu>
+                            <ContextMenu>
+                                <MenuItem x:Name="RightClicUserEdit" Header="Muokkaa" Click="RightClickUserEdit_Click"/>
+                                <MenuItem x:Name="RightClickUserReport" Header="Näytä raportti" Click="RightClickUserReport_Click"/>
+                                <MenuItem x:Name="RightClickUserDelete" Header="Poista projekti" Click="RightClickUserDelete_Click"/>
+                            </ContextMenu>
+                        </ListBox.ContextMenu>
+                    </ListBox>
 
                 </Grid>
             </TabItem>

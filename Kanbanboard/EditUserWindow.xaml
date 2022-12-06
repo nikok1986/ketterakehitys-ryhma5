@@ -1,0 +1,29 @@
+﻿<Window x:Class="Kanbanboard.EditUserWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Kanbanboard"
+        mc:Ignorable="d"
+        Title="EditUserWindow" Height="450" Width="800">
+    <Grid Margin="50" Background="AliceBlue">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="3*"/>
+        </Grid.RowDefinitions>
+        <Label Grid.Row="0" Content="Muokkaa käyttäjää" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <Label Grid.Row="1" Content="Käyttäjän nimi:" FontSize="20"/>
+        <TextBox x:Name="UserNameInput" Grid.Row="2" Margin="5"/>
+        <Label Grid.Row="2" Content="Käyttäjän rooli:" Margin="0,48,0,47" Grid.RowSpan="3" FontSize="20"/>
+        <TextBox x:Name="UserRoleInput" Grid.Row="4" Margin="5"/>
+        <WrapPanel Grid.Row="10"/>
+        <WrapPanel Grid.Row="11" HorizontalAlignment="Center">
+            <Button x:Name="AddNewUserButton" Width="50" Margin="5" Content="OK" IsDefault="True" Click="AddUserButton_Click"/>
+            <Button x:Name="CancelAddNewUserButton" Width="50" Margin="5" Content="Cancel" IsCancel="True" Click="CancelAddProjectButton_Click"/>
+        </WrapPanel>
+    </Grid>
+</Window>

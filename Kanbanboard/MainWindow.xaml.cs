@@ -19,6 +19,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Xml.Linq;
 
 namespace Kanbanboard
 {
@@ -27,307 +28,13 @@ namespace Kanbanboard
     /// </summary>
     public partial class MainWindow : Window
     {
-        public static ObservableCollection<Projekti> ProjectList = new ObservableCollection<Projekti>();
         
-
         public MainWindow()
         {
             InitializeComponent();
             Loaded += UpdateProjectListButton_Click;
         }
 
-        public String DBProjectNameReader()
-        {
-            using (OleDbConnection con = DataServices.DBConnection())   //Käytetään DataServices.cs tiedostoon luotua tietokantayhteyttä.
-            {                                                           //Using-komennolla yhteys suljetaan automaattisesti suorituksen jälkeen.
-                OleDbCommand cmd;
-
-                cmd = new OleDbCommand("SELECT project_nimi, project_id FROM projects WHERE project_nimi='" + ProjectListing.SelectedItem + "';");
-                cmd.Connection = con;   //Yhteys avataan OleDb-komennolla.
-                string projectname = String.Empty;    //Kerätään info tähän tyhjään stringiin.
-               
-
-                OleDbDataReader reader = cmd.ExecuteReader();
-                while (reader.Read())
-                {
-                    projectname += reader.GetString(0) + "\n";
-                }
-                reader.Close();
-                cmd.ExecuteNonQuery();
-
-                return projectname;
-            }
-        }
-        public String DBProjectInfoReader()
-        {
-            using (OleDbConnection con = DataServices.DBConnection())   //Käytetään DataServices.cs tiedostoon luotua tietokantayhteyttä.
-            {                                                           //Using-komennolla yhteys suljetaan automaattisesti suorituksen jälkeen.
-                OleDbCommand cmd;
-
-                cmd = new OleDbCommand("SELECT project_info FROM projects WHERE project_nimi='" + ProjectListing.SelectedItem + "';");
-                cmd.Connection = con;   //Yhteys avataan OleDb-komennolla.
-                string projectinfo = String.Empty;    //Kerätään info tähän tyhjään stringiin.
-
-                OleDbDataReader reader = cmd.ExecuteReader();
-                while (reader.Read())
-                {
-                    projectinfo = reader.GetString(0);
-                }
-                reader.Close();
-                cmd.ExecuteNonQuery();
-
-                return projectinfo;
-            }
-        }
-        public DateTime DBStartDate()
-        {
-            using (OleDbConnection con = DataServices.DBConnection())   //Käytetään DataServices.cs tiedostoon luotua tietokantayhteyttä.
-            {                                                           //Using-komennolla yhteys suljetaan automaattisesti suorituksen jälkeen.
-                OleDbCommand cmd;
-                cmd = new OleDbCommand("SELECT project_aloitus_pvm FROM projects WHERE project_nimi='" + ProjectListing.SelectedItem + "';");
-                cmd.Connection = con;   //Yhteys avataan OleDb-komennolla.
-                DateTime startdate = DateTime.Now;
-
-                OleDbDataReader reader = cmd.ExecuteReader();
-                while (reader.Read())
-                {
-                    startdate = reader.GetDateTime(0);
-                }
-                reader.Close();
-                cmd.ExecuteNonQuery();
-
-                return startdate;
-            }
-        }
-        public DateTime DBEndDate()
-        {
-            using (OleDbConnection con = DataServices.DBConnection())   //Käytetään DataServices.cs tiedostoon luotua tietokantayhteyttä.
-            {                                                           //Using-komennolla yhteys suljetaan automaattisesti suorituksen jälkeen.
-                OleDbCommand cmd;
-                cmd = new OleDbCommand("SELECT project_lopetus_pvm FROM projects WHERE project_nimi='" + ProjectListing.SelectedItem + "';");
-                cmd.Connection = con;   //Yhteys avataan OleDb-komennolla.
-                DateTime enddate = DateTime.Now;
-
-                OleDbDataReader reader = cmd.ExecuteReader();
-
-                while (reader.Read())
-                {
-                    enddate = reader.GetDateTime(0);
-                }
-                reader.Close();
-                cmd.ExecuteNonQuery();
-
-                return enddate;
-            }
-        }
-        public String DBSprintNameReader()
-        {
-            using (OleDbConnection con = DataServices.DBConnection())   //Käytetään DataServices.cs tiedostoon luotua tietokantayhteyttä.
-            {                                                           //Using-komennolla yhteys suljetaan automaattisesti suorituksen jälkeen.
-                OleDbCommand cmd;
-                
-                cmd = new OleDbCommand("SELECT sprints.sprint_nimi FROM projects INNER JOIN sprints ON projects.project_id = sprints.project_id WHERE projects.project_nimi='" + ProjectListing.SelectedItem + "';");
-                cmd.Connection = con;   //Yhteys avataan OleDb-komennolla.
-                string sprintname = String.Empty;    //Kerätään info tähän tyhjään stringiin.
-
-                OleDbDataReader reader = cmd.ExecuteReader();
-                while (reader.Read())
-                {
-                    sprintname += reader.GetString(0) + "\n";
-                }
-                reader.Close();
-                cmd.ExecuteNonQuery();
-
-                return sprintname;
-            }
-        }
-        public String DBSprintInfoReader()
-        {
-            using (OleDbConnection con = DataServices.DBConnection())   //Käytetään DataServices.cs tiedostoon luotua tietokantayhteyttä.
-            {                                                           //Using-komennolla yhteys suljetaan automaattisesti suorituksen jälkeen.
-                OleDbCommand cmd;
-
-                cmd = new OleDbCommand("SELECT sprint_info FROM sprints WHERE sprint_nimi='" + SprintListing.SelectedItem + "';");
-                cmd.Connection = con;   //Yhteys avataan OleDb-komennolla.
-                string sprintinfo = String.Empty;    //Kerätään info tähän tyhjään stringiin.
-
-                OleDbDataReader reader = cmd.ExecuteReader();
-                while (reader.Read())
-                {
-                    sprintinfo = reader.GetString(0);
-                }
-                reader.Close();
-                cmd.ExecuteNonQuery();
-
-                return sprintinfo;
-            }
-        }
-        public DateTime DBSprintStartDate()
-        {
-            using (OleDbConnection con = DataServices.DBConnection())   //Käytetään DataServices.cs tiedostoon luotua tietokantayhteyttä.
-            {                                                           //Using-komennolla yhteys suljetaan automaattisesti suorituksen jälkeen.
-                OleDbCommand cmd;
-                cmd = new OleDbCommand("SELECT sprint_aloitus_pvm FROM sprints WHERE sprint_nimi='" + SprintListing.SelectedItem + "';");
-                cmd.Connection = con;   //Yhteys avataan OleDb-komennolla.
-                DateTime startdate = DateTime.Now;
-
-                OleDbDataReader reader = cmd.ExecuteReader();
-                while (reader.Read())
-                {
-                    startdate = reader.GetDateTime(0);
-                }
-                reader.Close();
-                cmd.ExecuteNonQuery();
-
-                return startdate;
-            }
-        }
-        public DateTime DBSprintEndDate()
-        {
-            using (OleDbConnection con = DataServices.DBConnection())   //Käytetään DataServices.cs tiedostoon luotua tietokantayhteyttä.
-            {                                                           //Using-komennolla yhteys suljetaan automaattisesti suorituksen jälkeen.
-                OleDbCommand cmd;
-                cmd = new OleDbCommand("SELECT sprint_lopetus_pvm FROM sprints WHERE sprint_nimi='" + SprintListing.SelectedItem + "';");
-                cmd.Connection = con;   //Yhteys avataan OleDb-komennolla.
-                DateTime enddate = DateTime.Now;
-
-                OleDbDataReader reader = cmd.ExecuteReader();
-                while (reader.Read())
-                {
-                    enddate = reader.GetDateTime(0);
-                }
-                reader.Close();
-                cmd.ExecuteNonQuery();
-
-                return enddate;
-            }
-        }
-        public String DBTeamNameReader()
-        {
-            using (OleDbConnection con = DataServices.DBConnection())   //Käytetään DataServices.cs tiedostoon luotua tietokantayhteyttä.
-            {                                                           //Using-komennolla yhteys suljetaan automaattisesti suorituksen jälkeen.
-                OleDbCommand cmd;
-
-                cmd = new OleDbCommand("SELECT team_nimi FROM projects INNER JOIN teams ON projects.project_id = teams.project_id WHERE projects.project_nimi='" + ProjectListing.SelectedItem + "';");
-                cmd.Connection = con;   //Yhteys avataan OleDb-komennolla.
-                string teams = String.Empty;    //Kerätään info tähän tyhjään stringiin.
-
-                OleDbDataReader reader = cmd.ExecuteReader();
-                while (reader.Read())
-                {
-                    teams += reader.GetString(0) + "\n";
-                }
-                reader.Close();
-                cmd.ExecuteNonQuery();
-
-                return teams;
-            }
-        }
-        public String DBUserNameReader()
-        {
-            using (OleDbConnection con = DataServices.DBConnection())   //Käytetään DataServices.cs tiedostoon luotua tietokantayhteyttä.
-            {                                                           //Using-komennolla yhteys suljetaan automaattisesti suorituksen jälkeen.
-                OleDbCommand cmd;
-
-                cmd = new OleDbCommand("SELECT users.user_nimi FROM projects INNER JOIN (users INNER JOIN (teams INNER JOIN users_teams_link ON teams.team_id = users_teams_link.team_id) ON users.user_id = users_teams_link.user_id) ON projects.project_id = teams.project_id WHERE projects.project_nimi='" + ProjectListing.SelectedItem + "';");
-                cmd.Connection = con;   //Yhteys avataan OleDb-komennolla.
-                string users = String.Empty;    //Kerätään info tähän tyhjään stringiin.
-
-                OleDbDataReader reader = cmd.ExecuteReader();
-                while (reader.Read())
-                {
-                    users += reader.GetString(0) + "\n";
-                }
-                reader.Close();
-                cmd.ExecuteNonQuery();
-
-                return users;
-            }
-        }
-        public String DBUserStoryReader()
-        {
-            using (OleDbConnection con = DataServices.DBConnection())   //Käytetään DataServices.cs tiedostoon luotua tietokantayhteyttä.
-            {                                                           //Using-komennolla yhteys suljetaan automaattisesti suorituksen jälkeen.
-                OleDbCommand cmd;
-
-                cmd = new OleDbCommand("SELECT user_stories.user_story_nimi FROM projects INNER JOIN user_stories ON projects.project_id = user_stories.project_id WHERE projects.project_nimi='" + ProjectListing.SelectedItem + "';");
-                cmd.Connection = con;   //Yhteys avataan OleDb-komennolla.
-                string userstories = String.Empty;    //Kerätään info tähän tyhjään stringiin.
-
-                OleDbDataReader reader = cmd.ExecuteReader();
-                while (reader.Read())
-                {
-                    userstories += reader.GetString(0) + "\n";
-                }
-                reader.Close();
-                cmd.ExecuteNonQuery();
-
-                return userstories;
-            }
-        }
-        public String DBBackLogReader()
-        {
-            using (OleDbConnection con = DataServices.DBConnection())   //Käytetään DataServices.cs tiedostoon luotua tietokantayhteyttä.
-            {                                                           //Using-komennolla yhteys suljetaan automaattisesti suorituksen jälkeen.
-                OleDbCommand cmd;
-                // SELECT tasks.task_nimi FROM sprints INNER JOIN tasks ON sprints.sprint_id = tasks.sprint_id;
-                cmd = new OleDbCommand("SELECT tasks.task_nimi FROM sprints INNER JOIN tasks ON sprints.sprint_id = tasks.sprint_id WHERE tasks.task_tila=0 AND sprints.sprint_nimi='" + SprintListing.SelectedItem + "';");
-                cmd.Connection = con;   //Yhteys avataan OleDb-komennolla.
-                string taskname = String.Empty;    //Kerätään info tähän tyhjään stringiin.
-
-                OleDbDataReader reader = cmd.ExecuteReader();
-                while (reader.Read())
-                {
-                    taskname += reader.GetString(0) + "\n";
-                }
-                reader.Close();
-                cmd.ExecuteNonQuery();
-
-                return taskname;
-            }
-        }
-        public String DBTaskInProgressReader()
-        {
-            using (OleDbConnection con = DataServices.DBConnection())   //Käytetään DataServices.cs tiedostoon luotua tietokantayhteyttä.
-            {                                                           //Using-komennolla yhteys suljetaan automaattisesti suorituksen jälkeen.
-                OleDbCommand cmd;
-
-                cmd = new OleDbCommand("SELECT tasks.task_nimi FROM sprints INNER JOIN tasks ON sprints.sprint_id = tasks.sprint_id WHERE tasks.task_tila=1 AND sprints.sprint_nimi='" + SprintListing.SelectedItem + "';");
-                cmd.Connection = con;   //Yhteys avataan OleDb-komennolla.
-                string taskname = String.Empty;    //Kerätään info tähän tyhjään stringiin.
-
-                OleDbDataReader reader = cmd.ExecuteReader();
-                while (reader.Read())
-                {
-                    taskname += reader.GetString(0) + "\n";
-                }
-                reader.Close();
-                cmd.ExecuteNonQuery();
-
-                return taskname;
-            }
-        }
-        public String DBCompleteTaskReader()
-        {
-            using (OleDbConnection con = DataServices.DBConnection())   //Käytetään DataServices.cs tiedostoon luotua tietokantayhteyttä.
-            {                                                           //Using-komennolla yhteys suljetaan automaattisesti suorituksen jälkeen.
-                OleDbCommand cmd;
-
-                cmd = new OleDbCommand("SELECT tasks.task_nimi FROM sprints INNER JOIN tasks ON sprints.sprint_id = tasks.sprint_id WHERE tasks.task_tila=2 AND sprints.sprint_nimi='" + SprintListing.SelectedItem + "';");
-                cmd.Connection = con;   //Yhteys avataan OleDb-komennolla.
-                string taskname = String.Empty;    //Kerätään info tähän tyhjään stringiin.
-
-                OleDbDataReader reader = cmd.ExecuteReader();
-                while (reader.Read())
-                {
-                    taskname += reader.GetString(0) + "\n";
-                }
-                reader.Close();
-                cmd.ExecuteNonQuery();
-
-                return taskname;
-            }
-        }
         private void AddProjectButton_Click(object sender, RoutedEventArgs e)
         {
             AddProject addProject = new AddProject();
@@ -336,23 +43,13 @@ namespace Kanbanboard
             addProject.ShowDialog();
         }
 
-        private void AddProject(object sender, RoutedEventArgs e)
-        {
-
-        }
-
         private void AddUserStoryButton_Click(object sender, RoutedEventArgs e)
         {
             AddUserStory addUserStory = new AddUserStory();
             addUserStory.AddUserStoryButton.Click += new RoutedEventHandler(AddUserStory);
             addUserStory.ShowDialog();
         }
-        private void AddUserStory(object sender, RoutedEventArgs e)
-        {
 
-        }
-
-       
         private void AddSprintButton_Click(object sender, RoutedEventArgs e)
         {
             //TabItem tabItem = new TabItem();
@@ -371,33 +68,31 @@ namespace Kanbanboard
             newUser.Title = "Lisää käyttäjä";
             newUser.ShowDialog();
         }
-        private void AddUser(object sender, RoutedEventArgs e)
-        {
-
-        }
 
         private void UpdateProjectListButton_Click(object sender, RoutedEventArgs e)
         {
             ProjectListing.Items.Clear();
             Reader reader= new Reader();
-            string[] projects = reader.DBProjectNameReader().Split('\n');
+            string[] projects = reader.DBEveryProjectNameReader().Split('\n');
             foreach (string s in projects)
                 ProjectListing.Items.Add(s);
         }
         private void TaskLists_populate()
         {
+            string name = SprintListing.SelectedItem.ToString();
+            Reader reader = new Reader(name);
             ToDoListBox.Items.Clear();
-            string[] taskList = DBBackLogReader().Split('\n');
+            string[] taskList = reader.DBBackLogReader().Split('\n');
             foreach (string s in taskList)
                 ToDoListBox.Items.Add(s);
 
             TaskInProgressListBox.Items.Clear();
-            string[] progressList = DBTaskInProgressReader().Split('\n');
+            string[] progressList = reader.DBTaskInProgressReader().Split('\n');
             foreach (string s in progressList)
                 TaskInProgressListBox.Items.Add(s);
 
             TaskDoneListBox.Items.Clear();
-            string[] completeList = DBCompleteTaskReader().Split('\n');
+            string[] completeList = reader.DBCompleteTaskReader().Split('\n');
             foreach (string s in completeList)
                 TaskDoneListBox.Items.Add(s);
         }
@@ -414,38 +109,42 @@ namespace Kanbanboard
                 infowindow.ShowDialog();
             **/
 
-            TitleBox.Text = DBProjectNameReader();
-            InfoBox.Text = DBProjectInfoReader();
-            StartDateBox.Text = DBStartDate().ToString("dd-MM-yyyy");
-            EndDateBox.Text = DBEndDate().ToString("dd-MM-yyyy");
+            string name = ProjectListing.SelectedItem.ToString();
+            Reader reader = new Reader(name);
+            TitleBox.Text = reader.DBProjectNameReader();
+            InfoBox.Text = reader.DBProjectInfoReader();
+            StartDateBox.Text = reader.DBProjectStartDate().ToString("dd-MM-yyyy");
+            EndDateBox.Text = reader.DBProjectEndDate().ToString("dd-MM-yyyy");
 
             SprintListing.Items.Clear();
-            string[] sprints = DBSprintNameReader().Split('\n');
+            string[] sprints = reader.DBSprintNameReader().Split('\n');
             foreach (string s in sprints)
                 SprintListing.Items.Add(s);
 
             UserStoryGridList.Items.Clear();
-            string[] userstoryList = DBUserStoryReader().Split('\n');
+            string[] userstoryList = reader.DBUserStoryReader().Split('\n');
             foreach (string s in userstoryList)
                 UserStoryGridList.Items.Add(s);
 
             TeamBox.Items.Clear();
-            string[] teamList = DBTeamNameReader().Split('\n');
+            string[] teamList = reader.DBTeamNameReader().Split('\n');
             foreach (string s in teamList)
                 TeamBox.Items.Add(s);
 
             UsersBox.Items.Clear();
-            string[] userList = DBUserNameReader().Split('\n');
+            string[] userList = reader.DBUserNameReader().Split('\n');
             foreach (string s in userList)
                 UsersBox.Items.Add(s);
         }
 
         private void SprintListing_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
+            string name = SprintListing.SelectedItem.ToString();
+            Reader reader = new Reader(name);
             //SprintTitleBox.Text = DBSprintNameReader();
-            SeeSprintInfo.Text = DBSprintInfoReader();
-            SeeSprintStartDate.Text = DBSprintStartDate().ToString("dd-MM-yyyy");
-            SeeSprintEndDate.Text = DBSprintEndDate().ToString("dd-MM-yyyy");
+            SeeSprintInfo.Text = reader.DBSprintInfoReader();
+            SeeSprintStartDate.Text = reader.DBSprintStartDate().ToString("dd-MM-yyyy");
+            SeeSprintEndDate.Text = reader.DBSprintEndDate().ToString("dd-MM-yyyy");
 
             TaskLists_populate();
         }
@@ -465,11 +164,6 @@ namespace Kanbanboard
             }
         }*/
 
-
-        private void AddTask(object sender, RoutedEventArgs e)
-        {
-
-        }
 
         private void AddTaskButton_Click(object sender, RoutedEventArgs e)
         {
@@ -599,6 +293,42 @@ namespace Kanbanboard
                 }
             }
             TaskLists_populate();
+        }
+        private void RightClickUserEdit_Click(object sender, RoutedEventArgs e)
+        {
+            string name = UsersBox.SelectedItem.ToString();
+            EditUserWindow euw = new EditUserWindow(name);
+            euw.Title = "Muokkaa käyttäjää " + name;
+            euw.ShowDialog();
+        }
+        private void RightClickUserReport_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+        private void RightClickUserDelete_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+
+
+
+
+        private void AddUserStory(object sender, RoutedEventArgs e)
+        {
+
+        }
+        private void AddTask(object sender, RoutedEventArgs e)
+        {
+
+        }
+        private void AddProject(object sender, RoutedEventArgs e)
+        {
+
+        }
+        private void AddUser(object sender, RoutedEventArgs e)
+        {
+
         }
     }
     public class Projekti

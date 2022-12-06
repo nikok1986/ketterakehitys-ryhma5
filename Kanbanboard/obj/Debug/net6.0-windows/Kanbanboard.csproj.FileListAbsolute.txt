@@ -282,3 +282,5 @@ C:\Users\Juuso\Source\Repos\GitHub\nikok1986\ketterakehitys-ryhma5\Kanbanboard\o
 C:\Users\Juuso\Source\Repos\GitHub\nikok1986\ketterakehitys-ryhma5\Kanbanboard\obj\Debug\net6.0-windows\AddSprintWindow.baml
 C:\Users\Juuso\Source\Repos\GitHub\nikok1986\ketterakehitys-ryhma5\Kanbanboard\obj\Debug\net6.0-windows\EditProjectWindow.baml
 C:\Users\Juuso\Source\Repos\GitHub\nikok1986\ketterakehitys-ryhma5\Kanbanboard\obj\Debug\net6.0-windows\ProjectReport.baml
+C:\Users\storm\OneDrive\Documents\koulu\2022 syksy\Ketterä ohjelmistoprojekti\ketterakehitys-ryhma5\Kanbanboard\obj\Debug\net6.0-windows\EditUserWindow.g.cs
+C:\Users\storm\OneDrive\Documents\koulu\2022 syksy\Ketterä ohjelmistoprojekti\ketterakehitys-ryhma5\Kanbanboard\obj\Debug\net6.0-windows\EditUserWindow.baml
