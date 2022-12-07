@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.VisualBasic;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -74,6 +75,7 @@ namespace Kanbanboard
             ProjectListing.Items.Clear();
             Reader reader= new Reader();
             string[] projects = reader.DBEveryProjectNameReader().Split('\n');
+            projects = projects.SkipLast(1).ToArray();
             foreach (string s in projects)
                 ProjectListing.Items.Add(s);
         }
@@ -83,16 +85,19 @@ namespace Kanbanboard
             Reader reader = new Reader(name);
             ToDoListBox.Items.Clear();
             string[] taskList = reader.DBBackLogReader().Split('\n');
+            taskList = taskList.SkipLast(1).ToArray();
             foreach (string s in taskList)
                 ToDoListBox.Items.Add(s);
 
             TaskInProgressListBox.Items.Clear();
             string[] progressList = reader.DBTaskInProgressReader().Split('\n');
+            progressList = progressList.SkipLast(1).ToArray();
             foreach (string s in progressList)
                 TaskInProgressListBox.Items.Add(s);
 
             TaskDoneListBox.Items.Clear();
             string[] completeList = reader.DBCompleteTaskReader().Split('\n');
+            completeList = completeList.SkipLast(1).ToArray();
             foreach (string s in completeList)
                 TaskDoneListBox.Items.Add(s);
         }
@@ -108,33 +113,47 @@ namespace Kanbanboard
                 infowindow.Title = "Tietoa projektista";
                 infowindow.ShowDialog();
             **/
+            ToDoListBox.Items.Clear();
+            TaskInProgressListBox.Items.Clear();
+            TaskDoneListBox.Items.Clear();
 
-            string name = ProjectListing.SelectedItem.ToString();
-            Reader reader = new Reader(name);
-            TitleBox.Text = reader.DBProjectNameReader();
-            InfoBox.Text = reader.DBProjectInfoReader();
-            StartDateBox.Text = reader.DBProjectStartDate().ToString("dd-MM-yyyy");
-            EndDateBox.Text = reader.DBProjectEndDate().ToString("dd-MM-yyyy");
+            if (ProjectListing.SelectedItem != null)
+            {
+                string name = ProjectListing.SelectedItem.ToString();
+                Reader reader = new Reader(name);
+                TitleBox.Text = reader.DBProjectNameReader();
+                InfoBox.Text = reader.DBProjectInfoReader();
+                StartDateBox.Text = reader.DBProjectStartDate().ToString("dd-MM-yyyy");
+                EndDateBox.Text = reader.DBProjectEndDate().ToString("dd-MM-yyyy");
 
-            SprintListing.Items.Clear();
-            string[] sprints = reader.DBSprintNameReader().Split('\n');
-            foreach (string s in sprints)
-                SprintListing.Items.Add(s);
+                SprintListing.Items.Clear();
+                string[] sprints = reader.DBSprintNameReader().Split('\n');
+                sprints = sprints.SkipLast(1).ToArray();
+                foreach (string s in sprints)
+                    SprintListing.Items.Add(s);
 
-            UserStoryGridList.Items.Clear();
-            string[] userstoryList = reader.DBUserStoryReader().Split('\n');
-            foreach (string s in userstoryList)
-                UserStoryGridList.Items.Add(s);
+                UserStoryGridList.Items.Clear();
+                string[] userstoryList = reader.DBUserStoryReader().Split('\n');
+                userstoryList = userstoryList.SkipLast(1).ToArray();
+                foreach (string s in userstoryList)
+                    UserStoryGridList.Items.Add(s);
 
-            TeamBox.Items.Clear();
-            string[] teamList = reader.DBTeamNameReader().Split('\n');
-            foreach (string s in teamList)
-                TeamBox.Items.Add(s);
+                TeamBox.Items.Clear();
+                string[] teamList = reader.DBTeamNameReader().Split('\n');
+                teamList = teamList.SkipLast(1).ToArray();
+                foreach (string s in teamList)
+                    TeamBox.Items.Add(s);
 
-            UsersBox.Items.Clear();
-            string[] userList = reader.DBUserNameReader().Split('\n');
-            foreach (string s in userList)
-                UsersBox.Items.Add(s);
+                UsersBox.Items.Clear();
+                string[] userList = reader.DBUserNameReader().Split('\n');
+                userList = userList.SkipLast(1).ToArray();
+                foreach (string s in userList)
+                    UsersBox.Items.Add(s);
+            }
+            else
+            {
+                MessageBox.Show("Tuplaklikkaa projektia listalta");
+            }
         }
 
         private void SprintListing_MouseDoubleClick(object sender, MouseButtonEventArgs e)
@@ -148,22 +167,6 @@ namespace Kanbanboard
 
             TaskLists_populate();
         }
-
-        /*private void EditInfoWindowButton_Click(object sender, RoutedEventArgs e)
-        {
-            if (ProjectListing.SelectedItem != null)
-            {
-                string pjName = ProjectListing.SelectedItem.ToString();
-                EditProjectWindow epw = new EditProjectWindow(pjName);
-                epw.Title = "Muokkaa projektia " + pjName;
-                epw.ShowDialog();
-            }
-            else
-            {
-                MessageBox.Show("Valitse tietue muokattavaksi.");
-            }
-        }*/
-
 
         private void AddTaskButton_Click(object sender, RoutedEventArgs e)
         {
@@ -296,10 +299,17 @@ namespace Kanbanboard
         }
         private void RightClickUserEdit_Click(object sender, RoutedEventArgs e)
         {
-            string name = UsersBox.SelectedItem.ToString();
-            EditUserWindow euw = new EditUserWindow(name);
-            euw.Title = "Muokkaa käyttäjää " + name;
-            euw.ShowDialog();
+            if (UsersBox.SelectedItem != null)
+            {
+                string name = UsersBox.SelectedItem.ToString();
+                EditUserWindow euw = new EditUserWindow(name);
+                euw.Title = "Muokkaa käyttäjää " + name;
+                euw.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Valitse nimi muokattavaksi.");
+            }
         }
         private void RightClickUserReport_Click(object sender, RoutedEventArgs e)
         {
@@ -309,8 +319,10 @@ namespace Kanbanboard
         {
 
         }
+        private void RightClickUserProjects_Click(object sender, RoutedEventArgs e)
+        {
 
-
+        }
 
 
 

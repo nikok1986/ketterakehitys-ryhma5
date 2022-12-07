@@ -64,7 +64,8 @@
                             <ContextMenu>
                                 <MenuItem x:Name="RightClicUserEdit" Header="Muokkaa" Click="RightClickUserEdit_Click"/>
                                 <MenuItem x:Name="RightClickUserReport" Header="Näytä raportti" Click="RightClickUserReport_Click"/>
-                                <MenuItem x:Name="RightClickUserDelete" Header="Poista projekti" Click="RightClickUserDelete_Click"/>
+                                <MenuItem x:Name="RightClickUserDelete" Header="Poista käyttäjä" Click="RightClickUserDelete_Click"/>
+                                <MenuItem x:Name="RightClickShowProjects" Header="Käyttäjän projektit" Click="RightClickUserProjects_Click"/>
                             </ContextMenu>
                         </ListBox.ContextMenu>
                     </ListBox>

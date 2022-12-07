@@ -356,5 +356,26 @@ namespace Kanbanboard
                 return taskname;
             }
         }
+        public String DBUserStoryTaskStateReader()
+        {
+            using (OleDbConnection con = DataServices.DBConnection())   //Käytetään DataServices.cs tiedostoon luotua tietokantayhteyttä.
+            {                                                           //Using-komennolla yhteys suljetaan automaattisesti suorituksen jälkeen.
+                OleDbCommand cmd;
+                cmd = new OleDbCommand("SELECT tasks.task_tila from user_stories INNER JOIN tasks ON tasks.user_story_id = user_stories.user_story_id WHERE user_stories.user_story_nimi='" + name + "';");
+                cmd.Connection = con;
+                string userStoryTasks = String.Empty;
+
+                OleDbDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    userStoryTasks += reader.GetInt32(0);
+                }
+                reader.Close();
+                cmd.ExecuteNonQuery();
+
+                return userStoryTasks;
+            }
+                    
+        }
     }
 }

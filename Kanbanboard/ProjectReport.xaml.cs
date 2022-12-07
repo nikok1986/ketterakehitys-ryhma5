@@ -25,6 +25,7 @@ namespace Kanbanboard
         {
             InitializeComponent();
             pjName = projectName;
+            Loaded += UserStoryTilaSetter;
             Loaded += UpdateLists;
             Loaded += ProjectState;
         }
@@ -100,8 +101,15 @@ namespace Kanbanboard
                 if (allStories[j] == "valmis")
                     i++;
             }
-            decimal percent = i / storyCount * 100;
-            CompletionState.Text = "Projekti \"" + pjName + "\" on " + Math.Round(percent, 2).ToString() + " % valmis.";
+            if (storyCount > 0)
+            {
+                decimal percent = i / storyCount * 100;
+                CompletionState.Text = "Projekti \"" + pjName + "\" on " + Math.Round(percent, 1).ToString() + " % valmis.";
+            }
+            else
+            {
+                CompletionState.Text = "Projektia ei ole aloitettu.";
+            }
         }
         private void UpdateLists(object sender, EventArgs e)
         {
@@ -114,6 +122,40 @@ namespace Kanbanboard
             string[] storyID = StoryState().Split('\n');
             foreach (string s in storyID)
                 UserStoryPhase.Items.Add(s);
+        }
+        public void UserStoryTilaSetter(object sender, EventArgs e)
+        {
+            using (OleDbConnection con = DataServices.DBConnection())
+            {
+                OleDbCommand cmd;
+                Reader reader = new Reader(pjName);
+                string[] userstoryNames = reader.DBUserStoryReader().Split('\n');
+                int aloittamatta = 0;
+                int tyonAlla = 1;
+                int valmis = 2;
+                string result = string.Empty;
+
+                for (int i = 0; i < userstoryNames.Length; i++)
+                {
+                    reader = new Reader(userstoryNames[i]);
+                    result = reader.DBUserStoryTaskStateReader();
+
+                    if (!result.Contains(tyonAlla.ToString()) && !result.Contains(valmis.ToString()))
+                    {
+                        cmd = new OleDbCommand("UPDATE user_stories SET user_story_tila = 0 WHERE user_story_nimi='" + userstoryNames[i] + "';");
+                    }
+                    if (!result.Contains(aloittamatta.ToString()) && !result.Contains(tyonAlla.ToString()))
+                    {
+                        cmd = new OleDbCommand("UPDATE user_stories SET user_story_tila = 2 WHERE user_story_nimi='" + userstoryNames[i] + "';");
+                    }
+                    else
+                    {
+                        cmd = new OleDbCommand("UPDATE user_stories SET user_story_tila = 1 WHERE user_story_nimi='" + userstoryNames[i] + "';");
+                    }
+                    cmd.Connection = con;
+                    cmd.ExecuteNonQuery();
+                }
+            }
         }
         private void UserStoryList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
