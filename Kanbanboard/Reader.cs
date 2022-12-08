@@ -377,5 +377,25 @@ namespace Kanbanboard
             }
                     
         }
+        public Int32 ProjectIdReader()
+        {
+            using (OleDbConnection con = DataServices.DBConnection())   //Käytetään DataServices.cs tiedostoon luotua tietokantayhteyttä.
+            {                                                           //Using-komennolla yhteys suljetaan automaattisesti suorituksen jälkeen.
+                OleDbCommand cmd;
+                cmd = new OleDbCommand("SELECT project_id FROM projects WHERE project_nimi='" + name + "';");
+                cmd.Connection = con;   //Yhteys avataan OleDb-komennolla.
+                int i = 0;
+
+                OleDbDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    i += reader.GetInt32(0);
+                }
+                reader.Close();
+                cmd.ExecuteNonQuery();
+
+                return i; 
+            }
+        }
     }
 }

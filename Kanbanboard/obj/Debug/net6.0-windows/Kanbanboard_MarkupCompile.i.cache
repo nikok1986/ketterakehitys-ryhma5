@@ -4,16 +4,16 @@
 winexe
 C#
 .cs
-C:\Users\storm\OneDrive\Documents\koulu\2022 syksy\Ketterä ohjelmistoprojekti\ketterakehitys-ryhma5\Kanbanboard\obj\Debug\net6.0-windows\
+C:\Users\Juuso\Source\Repos\GitHub\nikok1986\ketterakehitys-ryhma5\Kanbanboard\obj\Debug\net6.0-windows\
 Kanbanboard
 none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
-C:\Users\storm\OneDrive\Documents\koulu\2022 syksy\Ketterä ohjelmistoprojekti\ketterakehitys-ryhma5\Kanbanboard\App.xaml
+C:\Users\Juuso\Source\Repos\GitHub\nikok1986\ketterakehitys-ryhma5\Kanbanboard\App.xaml
 10-1213482260
 
 162021679869
-196-1894834142
+1961769793496
 AddProject.xaml;AddSprintWindow.xaml;AddTask.xaml;AddUser.xaml;AddUserStory.xaml;EditProjectWindow.xaml;EditUserWindow.xaml;MainWindow.xaml;ProjectReport.xaml;TabitemMalli.xaml;
 
 False

@@ -23,10 +23,19 @@ namespace Kanbanboard
         public AddUserStory()
         {
             InitializeComponent();
+            Loaded += AddUserStoryProjectSelect_populate;
         }
         private void CancelUserStoryButton_Click(object sender, RoutedEventArgs e)
         {
             DialogResult = false;
+        }
+        private void AddUserStoryProjectSelect_populate(object sender, RoutedEventArgs e)
+        {
+            Reader reader = new Reader();
+            string[] projectList = reader.DBEveryProjectNameReader().Split('\n');
+            projectList = projectList.SkipLast(1).ToArray();
+            foreach (string s in projectList)
+            AddUserStoryProjectSelect.Items.Add(s);
         }
 
         private void AddUserStoryButton_Click(object sender, RoutedEventArgs e)
@@ -35,17 +44,20 @@ namespace Kanbanboard
             {
                 OleDbCommand cmd;
                 cmd = new OleDbCommand();
+                string pjName = AddUserStoryProjectSelect.Text.ToString();
                 string test = string.Empty;
+                Reader reader = new Reader(pjName);
+                int i = reader.ProjectIdReader();
 
                 cmd.Connection = con;
-                try
-                {
+                //try
+                //{
                     if (UserStoryNameInput.Text != test)
                     {
-                        cmd.CommandText = "INSERT INTO user_stories (user_story_nimi, user_story_info, user_story_prioriteetti)values(@ktnimi, @ktinfo, @ktprio)";
+                        cmd.CommandText = "INSERT INTO user_stories (user_story_nimi, user_story_info, user_story_tila, project_id)values(@ktnimi, @ktinfo, 0, @pjid)";
                         cmd.Parameters.AddWithValue("@ktimi", UserStoryNameInput.Text);
                         cmd.Parameters.AddWithValue("@ktinfo", UserStoryDescriptionInput.Text);
-                        cmd.Parameters.AddWithValue("@ktprio", PrioritySelector.Text);
+                        cmd.Parameters.AddWithValue("@pjid", i);
 
 
                         cmd.ExecuteNonQuery();
@@ -55,11 +67,11 @@ namespace Kanbanboard
                     {
                         MessageBox.Show("Tietoja puuttuu!");
                     }
-                }
-                catch
-                {
-                    MessageBox.Show("Lisää arvo jokaiseen tietueeseen tai paina Cancel poistuaksesi ikkunasta");
-                }
+                //}
+                //catch
+                //{
+                 //   MessageBox.Show("Lisää arvo jokaiseen tietueeseen tai paina Cancel poistuaksesi ikkunasta");
+                //}
             }
         }
     }
