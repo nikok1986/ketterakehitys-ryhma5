@@ -50,8 +50,8 @@ namespace Kanbanboard
                 int i = reader.ProjectIdReader();
 
                 cmd.Connection = con;
-                //try
-                //{
+                try
+                {
                     if (UserStoryNameInput.Text != test)
                     {
                         cmd.CommandText = "INSERT INTO user_stories (user_story_nimi, user_story_info, user_story_tila, project_id)values(@ktnimi, @ktinfo, 0, @pjid)";
@@ -63,15 +63,15 @@ namespace Kanbanboard
                         cmd.ExecuteNonQuery();
                         MessageBox.Show("Tietue tallennettu!");
                     }
-                    if (UserStoryNameInput.Text == test || UserStoryDescriptionInput.Text == test)    //Helppo testi NameBoxin sisällölle
+                    if (UserStoryNameInput.Text == test || UserStoryDescriptionInput.Text == test)  
                     {
                         MessageBox.Show("Tietoja puuttuu!");
                     }
-                //}
-                //catch
-                //{
-                 //   MessageBox.Show("Lisää arvo jokaiseen tietueeseen tai paina Cancel poistuaksesi ikkunasta");
-                //}
+                }
+                catch
+                {
+                    MessageBox.Show("Lisää arvo jokaiseen tietueeseen tai paina Cancel poistuaksesi ikkunasta");
+                }
             }
         }
     }

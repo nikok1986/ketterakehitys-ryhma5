@@ -73,7 +73,7 @@ namespace Kanbanboard
         }
         private String StoryState()
         {
-            string phaseList = DBUserStoryPhaseReader();
+            string phaseList = DBUserStoryPhaseReader();    //tämä metodi vaihtaa tilaa kuvaavia numeroita täynnä olevan stringin stringiksi, jossa numerot on esitetty sanoina
             string[] stateList = phaseList.Split('\n');
             string finalList = String.Empty;
 
@@ -90,9 +90,9 @@ namespace Kanbanboard
             }
             return finalList;
         }
-        private void ProjectState(object sender, EventArgs e)
+        private void ProjectState(object sender, EventArgs e)   //lasketaan valmiiden tehtävien määrä ja jaetaan se tehtävien kokonaismäärällä,saadaan projektin valmiusaste
         {
-            string[] allStories = StoryState().Split("\n");
+            string[] allStories = StoryState().Split("\n"); 
             decimal storyCount = allStories.Count() - 1;
             decimal i = 0;
             
@@ -127,33 +127,33 @@ namespace Kanbanboard
         {
             using (OleDbConnection con = DataServices.DBConnection())
             {
-                OleDbCommand cmd;
-                Reader reader = new Reader(pjName);
-                string[] userstoryNames = reader.DBUserStoryReader().Split('\n');
-                int aloittamatta = 0;
+                OleDbCommand cmd; //ideana on asettaa user storyn tila tietokannassa 0, 1 tai 2 sen perusteella missä tilassa siihen liitetyt tehtävät ovat
+                Reader reader = new Reader(pjName); //tehdään reader-sivu ja syötetään sille tälle sivulle syötetty projewktin nimi
+                string[] userstoryNames = reader.DBUserStoryReader().Split('\n');   //käytetään readeriin kirjoitettua metodia, joka lukee kaikki käyttäjätarinat, splitataan rivinvaihdosta
+                int aloittamatta = 0;   //kolme tilaa, jotka taskeilla voi olla
                 int tyonAlla = 1;
                 int valmis = 2;
-                string result = string.Empty;
+                string result = string.Empty; //kerätään tieto taas kerran tyhjään stringiin
 
-                for (int i = 0; i < userstoryNames.Length; i++)
+                for (int i = 0; i < userstoryNames.Length; i++) //loopataan läpi koko äsken tehty userstoryNames-array
                 {
-                    reader = new Reader(userstoryNames[i]);
-                    result = reader.DBUserStoryTaskStateReader();
+                    reader = new Reader(userstoryNames[i]); //muutetaan readerin syötettä, annetaan loopissa sillä hetkellä olevan käyttäjätarinan nimi
+                    result = reader.DBUserStoryTaskStateReader(); //DBUserStoryTaskReader käyttää syötteenä annettua käyttäjätarinan nimeä hakemaan siihen liittyvien taskien tilat
 
-                    if (!result.Contains(tyonAlla.ToString()) && !result.Contains(valmis.ToString()))
+                    if (!result.Contains(tyonAlla.ToString()) && !result.Contains(valmis.ToString())) //eli jos string EI sisällä 1 tai 2, se sisältää pelkkiä nollia = user storyn tila on siis myös 0 eli aloittamatta tai aivan alussa
                     {
                         cmd = new OleDbCommand("UPDATE user_stories SET user_story_tila = 0 WHERE user_story_nimi='" + userstoryNames[i] + "';");
                     }
-                    if (!result.Contains(aloittamatta.ToString()) && !result.Contains(tyonAlla.ToString()))
+                    if (!result.Contains(aloittamatta.ToString()) && !result.Contains(tyonAlla.ToString())) //jos EI sisällä 0 tai 1, kaikkien tehtävien on siis pakko olla 2, eli user storyn tila = 2
                     {
                         cmd = new OleDbCommand("UPDATE user_stories SET user_story_tila = 2 WHERE user_story_nimi='" + userstoryNames[i] + "';");
                     }
-                    else
+                    else    //kaikissa muissa tapauksissa, eli niissä, jossa string sisältää kaiken tyyppisiä lukuja, asetataan user storyn tilaksi 1 eli työn alla
                     {
                         cmd = new OleDbCommand("UPDATE user_stories SET user_story_tila = 1 WHERE user_story_nimi='" + userstoryNames[i] + "';");
                     }
                     cmd.Connection = con;
-                    cmd.ExecuteNonQuery();
+                    cmd.ExecuteNonQuery();  //suorituksen jälkeen loopataan seuraavan user storyn taskit samalla tavalla
                 }
             }
         }
