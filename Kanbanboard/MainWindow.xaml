@@ -53,7 +53,8 @@
                 <Grid Background="#cec1da">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="16*"/>
-                        <ColumnDefinition Width="147*"/>
+                        <ColumnDefinition Width="46*"/>
+                        <ColumnDefinition Width="101*"/>
                         <ColumnDefinition Width="162*" />
                         <ColumnDefinition Width="162*" />
                         <ColumnDefinition Width="162*" />
@@ -66,18 +67,18 @@
                         <RowDefinition/>
                         <RowDefinition/>
                     </Grid.RowDefinitions>
-                    <TextBlock x:Name="TitleBox" FontSize="20"  HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="380" Grid.Column="0" Grid.ColumnSpan="4" Grid.Row="0"/>
+                    <TextBlock x:Name="TitleBox" FontSize="20"  HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="380" Grid.Column="0" Grid.ColumnSpan="5" Grid.Row="0"/>
                     <TextBlock x:Name="InfoBox" FontSize="12" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top"  Grid.Column="0" Grid.Row="1"/>
-                    <StackPanel Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,0,0,92" Grid.RowSpan="2">
+                    <StackPanel Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" Margin="0,0,0,92" Grid.RowSpan="2">
                         <!--pistää StackPanelin sisällä olevat elementit automaattisesti allekkain ilman välejä-->
                         <TextBlock x:Name= "StartDateLabel" FontSize="12"  HorizontalAlignment="Left"  TextWrapping="Wrap" Text="Aloitettu:" VerticalAlignment="Top" FontWeight="Bold" Grid.Column="0" Grid.Row="3"/>
                         <TextBlock x:Name="EndDateLabel" FontSize="12"  HorizontalAlignment="Left" TextWrapping="Wrap" Text="Lopetuspäivä:" VerticalAlignment="Top" FontWeight="Bold" Grid.Column="0" Grid.Row="4"/>
                     </StackPanel>
-                    <StackPanel Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="3" Margin="146,0,162,92" Grid.RowSpan="2">
+                    <StackPanel Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="2" Margin="100,0,0,92" Grid.RowSpan="2">
                         <TextBlock x:Name="StartDateBox" FontSize="12"  HorizontalAlignment="Left"  TextWrapping="Wrap" Text="" VerticalAlignment="Top" Grid.Column="1" Grid.Row="3"/>
                         <TextBlock x:Name="EndDateBox" FontSize="12"  HorizontalAlignment="Left"  TextWrapping="Wrap" Text="" VerticalAlignment="Top" Grid.Column="1" Grid.Row="4"/>
                     </StackPanel>
-                    <Button x:Name="EditInfoWindowButton"  Background="#62c9cb" FontSize="10" Content="Muokkaa" HorizontalAlignment="Center" VerticalAlignment="Top" Height="17" Width="58" Click="EditInfoWindowButton_Click" Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="4" />
+                    <Button x:Name="EditInfoWindowButton"  Background="#62c9cb" FontSize="10" Content="Muokkaa" HorizontalAlignment="Left" VerticalAlignment="Top" Height="17" Width="58" Click="EditInfoWindowButton_Click" Grid.Column="3" Grid.ColumnSpan="2" Grid.Row="4" Margin="133,0,0,0" />
                 </Grid>
             </TabItem>
             <TabItem Header="Kanban"  Background="#cec1da" FontFamily="Cooper" Height="20" VerticalAlignment="Top">
@@ -91,14 +92,14 @@
                     <Grid x:Name="UserStoryGrid" Background="LightBlue">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition/>
-                            <ColumnDefinition Width="17*"/>
+                            <ColumnDefinition Width="14*" />
                         </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="2*"/>
                             <RowDefinition Height="19*"/>
                         </Grid.RowDefinitions>
                         <ListView x:Name="UserStoryGridList" Background="Transparent" FontSize="18" HorizontalAlignment="Left" Width="161" BorderThickness="0" Grid.ColumnSpan="2" Grid.Row="1" Margin="4,5,6,5"/>
-                        <Label HorizontalAlignment="Left" Grid.Column="1" Grid.RowSpan="2">Käyttäjätarinat</Label>
+                        <Label HorizontalAlignment="Center" Grid.Column="1" Grid.RowSpan="2">Käyttäjätarinat</Label>
                     </Grid>
                     <Grid x:Name="TaskBacklogGrid" Background="LightCoral" Grid.Column="1">
                         <Grid.RowDefinitions>
