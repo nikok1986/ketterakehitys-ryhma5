@@ -10,9 +10,9 @@
     <Window.Background>
         <ImageBrush ImageSource="/kuva.jpg"/>
     </Window.Background>
-    <Grid Margin="10,10,0,7" Background="AliceBlue">
+    <Grid Margin="50" Background="AliceBlue">
         <Grid.RowDefinitions>
-            <RowDefinition Height="4*"/>
+            <RowDefinition Height="3*"/>
             <RowDefinition Height="2*"/>
             <RowDefinition Height="2*"/>
             <RowDefinition Height="2*"/>
@@ -23,7 +23,7 @@
             <RowDefinition Height="2*"/>
             <RowDefinition Height="2*"/>
         </Grid.RowDefinitions>
-        <Label Content="Lisää käyttäjätarina" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,10,0,0"/>
+        <Label Content="Lisää käyttäjätarina" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center"  Margin="0,10,0,0"/>
         <Label Grid.Row="1" Content="Käyttäjätarinan nimi:"/>
         <TextBox x:Name="UserStoryNameInput" Grid.Row="2" Margin="5"/>
         <Label Grid.Row="3" Content="Kuvaus:"/>

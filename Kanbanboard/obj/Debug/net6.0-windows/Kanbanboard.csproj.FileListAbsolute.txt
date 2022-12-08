@@ -286,3 +286,20 @@ C:\Users\storm\OneDrive\Documents\koulu\2022 syksy\Ketterä ohjelmistoprojekti\k
 C:\Users\storm\OneDrive\Documents\koulu\2022 syksy\Ketterä ohjelmistoprojekti\ketterakehitys-ryhma5\Kanbanboard\obj\Debug\net6.0-windows\EditUserWindow.baml
 C:\Users\Juuso\Source\Repos\GitHub\nikok1986\ketterakehitys-ryhma5\Kanbanboard\obj\Debug\net6.0-windows\EditUserWindow.g.cs
 C:\Users\Juuso\Source\Repos\GitHub\nikok1986\ketterakehitys-ryhma5\Kanbanboard\obj\Debug\net6.0-windows\EditUserWindow.baml
+C:\Users\Henrika\Documents\GitHub\ketterakehitys-ryhma5\Kanbanboard\obj\Debug\net6.0-windows\Kanbanboard.csproj.AssemblyReference.cache
+C:\Users\Henrika\Documents\GitHub\ketterakehitys-ryhma5\Kanbanboard\obj\Debug\net6.0-windows\AddProject.g.cs
+C:\Users\Henrika\Documents\GitHub\ketterakehitys-ryhma5\Kanbanboard\obj\Debug\net6.0-windows\AddSprintWindow.g.cs
+C:\Users\Henrika\Documents\GitHub\ketterakehitys-ryhma5\Kanbanboard\obj\Debug\net6.0-windows\AddTask.g.cs
+C:\Users\Henrika\Documents\GitHub\ketterakehitys-ryhma5\Kanbanboard\obj\Debug\net6.0-windows\AddUser.g.cs
+C:\Users\Henrika\Documents\GitHub\ketterakehitys-ryhma5\Kanbanboard\obj\Debug\net6.0-windows\AddUserStory.g.cs
+C:\Users\Henrika\Documents\GitHub\ketterakehitys-ryhma5\Kanbanboard\obj\Debug\net6.0-windows\EditProjectWindow.g.cs
+C:\Users\Henrika\Documents\GitHub\ketterakehitys-ryhma5\Kanbanboard\obj\Debug\net6.0-windows\EditUserWindow.g.cs
+C:\Users\Henrika\Documents\GitHub\ketterakehitys-ryhma5\Kanbanboard\obj\Debug\net6.0-windows\MainWindow.g.cs
+C:\Users\Henrika\Documents\GitHub\ketterakehitys-ryhma5\Kanbanboard\obj\Debug\net6.0-windows\ProjectReport.g.cs
+C:\Users\Henrika\Documents\GitHub\ketterakehitys-ryhma5\Kanbanboard\obj\Debug\net6.0-windows\TabitemMalli.g.cs
+C:\Users\Henrika\Documents\GitHub\ketterakehitys-ryhma5\Kanbanboard\obj\Debug\net6.0-windows\App.g.cs
+C:\Users\Henrika\Documents\GitHub\ketterakehitys-ryhma5\Kanbanboard\obj\Debug\net6.0-windows\Kanbanboard_MarkupCompile.cache
+C:\Users\Henrika\Documents\GitHub\ketterakehitys-ryhma5\Kanbanboard\obj\Debug\net6.0-windows\Kanbanboard_MarkupCompile.lref
+C:\Users\Henrika\Documents\GitHub\ketterakehitys-ryhma5\Kanbanboard\obj\Debug\net6.0-windows\Kanbanboard.dll
+C:\Users\Henrika\Documents\GitHub\ketterakehitys-ryhma5\Kanbanboard\obj\Debug\net6.0-windows\refint\Kanbanboard.dll
+C:\Users\Henrika\Documents\GitHub\ketterakehitys-ryhma5\Kanbanboard\obj\Debug\net6.0-windows\Kanbanboard.pdb

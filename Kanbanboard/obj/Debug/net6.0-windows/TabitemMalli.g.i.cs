@@ -61,7 +61,7 @@ namespace Kanbanboard {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/Kanbanboard;V1.0.0.0;component/tabitemmalli.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/Kanbanboard;component/tabitemmalli.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\TabitemMalli.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);
