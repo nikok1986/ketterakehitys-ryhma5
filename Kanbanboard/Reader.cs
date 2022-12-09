@@ -64,6 +64,99 @@ namespace Kanbanboard
                 return projects;   //Palautetaan nimet sisältävä string
             }
         }
+        public String DBEveryUserNameReader()
+        {
+            using (OleDbConnection con = DataServices.DBConnection())   //Käytetään DataServices.cs tiedostoon luotua tietokantayhteyttä.
+            {                                                           //Using-komennolla yhteys suljetaan automaattisesti suorituksen jälkeen.
+                OleDbCommand cmd;
+                cmd = new OleDbCommand("SELECT user_nimi FROM users;");
+                cmd.Connection = con;   //Yhteys avataan OleDb-komennolla.
+                string users = String.Empty;    //Kerätään nimet tähän tyhjään stringiin.
+
+                string[] userlist = new string[20];     //20 on ihan satunnainen numero, lopullinen numero on varmasti toinen.
+                bool read;
+
+                OleDbDataReader reader = cmd.ExecuteReader();
+                if (reader.Read() == true)
+                {
+                    do
+                    {
+                        int NumberOfRows = reader.GetValues(userlist);
+                        for (int i = 0; i < NumberOfRows; i++)
+                        {
+                            users += userlist[i].ToString() + "\n"; //Nimet kerätään projectlist-taulukkoon josta ne siirretään users-stringiin omille riveilleen.
+                        }
+                        read = reader.Read();
+                    }
+                    while (read == true);
+                }
+                reader.Close();
+                cmd.ExecuteNonQuery();
+                return users;   //Palautetaan nimet sisältävä string
+            }
+        }
+        public String DBEverySprintNameReader()
+        {
+            using (OleDbConnection con = DataServices.DBConnection())   //Käytetään DataServices.cs tiedostoon luotua tietokantayhteyttä.
+            {                                                           //Using-komennolla yhteys suljetaan automaattisesti suorituksen jälkeen.
+                OleDbCommand cmd;
+                cmd = new OleDbCommand("SELECT sprint_nimi FROM sprints;");
+                cmd.Connection = con;   //Yhteys avataan OleDb-komennolla.
+                string sprints = String.Empty;    //Kerätään nimet tähän tyhjään stringiin.
+
+                string[] sprintlist = new string[20];     //20 on ihan satunnainen numero, lopullinen numero on varmasti toinen.
+                bool read;
+
+                OleDbDataReader reader = cmd.ExecuteReader();
+                if (reader.Read() == true)
+                {
+                    do
+                    {
+                        int NumberOfRows = reader.GetValues(sprintlist);
+                        for (int i = 0; i < NumberOfRows; i++)
+                        {
+                            sprints += sprintlist[i].ToString() + "\n"; //Nimet kerätään projectlist-taulukkoon josta ne siirretään users-stringiin omille riveilleen.
+                        }
+                        read = reader.Read();
+                    }
+                    while (read == true);
+                }
+                reader.Close();
+                cmd.ExecuteNonQuery();
+                return sprints;   //Palautetaan nimet sisältävä string
+            }
+        }
+        public String DBEveryUserStoryNameReader()
+        {
+            using (OleDbConnection con = DataServices.DBConnection())   //Käytetään DataServices.cs tiedostoon luotua tietokantayhteyttä.
+            {                                                           //Using-komennolla yhteys suljetaan automaattisesti suorituksen jälkeen.
+                OleDbCommand cmd;
+                cmd = new OleDbCommand("SELECT user_story_nimi FROM user_stories;");
+                cmd.Connection = con;   //Yhteys avataan OleDb-komennolla.
+                string userstories = String.Empty;    //Kerätään nimet tähän tyhjään stringiin.
+
+                string[] userstorylist = new string[20];     //20 on ihan satunnainen numero, lopullinen numero on varmasti toinen.
+                bool read;
+
+                OleDbDataReader reader = cmd.ExecuteReader();
+                if (reader.Read() == true)
+                {
+                    do
+                    {
+                        int NumberOfRows = reader.GetValues(userstorylist);
+                        for (int i = 0; i < NumberOfRows; i++)
+                        {
+                            userstories += userstorylist[i].ToString() + "\n"; //Nimet kerätään projectlist-taulukkoon josta ne siirretään users-stringiin omille riveilleen.
+                        }
+                        read = reader.Read();
+                    }
+                    while (read == true);
+                }
+                reader.Close();
+                cmd.ExecuteNonQuery();
+                return userstories;   //Palautetaan nimet sisältävä string
+            }
+        }
         public String DBProjectNameReader()
         {
             using (OleDbConnection con = DataServices.DBConnection())   //Käytetään DataServices.cs tiedostoon luotua tietokantayhteyttä.
@@ -395,6 +488,69 @@ namespace Kanbanboard
                 cmd.ExecuteNonQuery();
 
                 return i; 
+            }
+        }
+
+        public Int32 SprintIdReader()
+        {
+            using (OleDbConnection con = DataServices.DBConnection())   //Käytetään DataServices.cs tiedostoon luotua tietokantayhteyttä.
+            {                                                           //Using-komennolla yhteys suljetaan automaattisesti suorituksen jälkeen.
+                OleDbCommand cmd;
+                cmd = new OleDbCommand("SELECT sprint_id FROM sprints WHERE sprint_nimi='" + name + "';");
+                cmd.Connection = con;   //Yhteys avataan OleDb-komennolla.
+                int i = 0;
+
+                OleDbDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    i += reader.GetInt32(0);
+                }
+                reader.Close();
+                cmd.ExecuteNonQuery();
+
+                return i;
+            }
+        }
+
+        public Int32 UserStoryIdReader()
+        {
+            using (OleDbConnection con = DataServices.DBConnection())   //Käytetään DataServices.cs tiedostoon luotua tietokantayhteyttä.
+            {                                                           //Using-komennolla yhteys suljetaan automaattisesti suorituksen jälkeen.
+                OleDbCommand cmd;
+                cmd = new OleDbCommand("SELECT user_story_id FROM user_stories WHERE user_story_nimi='" + name + "';");
+                cmd.Connection = con;   //Yhteys avataan OleDb-komennolla.
+                int i = 0;
+
+                OleDbDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    i += reader.GetInt32(0);
+                }
+                reader.Close();
+                cmd.ExecuteNonQuery();
+
+                return i;
+            }
+        }
+
+        public Int32 UserIdReader()
+        {
+            using (OleDbConnection con = DataServices.DBConnection())   //Käytetään DataServices.cs tiedostoon luotua tietokantayhteyttä.
+            {                                                           //Using-komennolla yhteys suljetaan automaattisesti suorituksen jälkeen.
+                OleDbCommand cmd;
+                cmd = new OleDbCommand("SELECT user_id FROM users WHERE user_nimi='" + name + "';");
+                cmd.Connection = con;   //Yhteys avataan OleDb-komennolla.
+                int i = 0;
+
+                OleDbDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    i += reader.GetInt32(0);
+                }
+                reader.Close();
+                cmd.ExecuteNonQuery();
+
+                return i;
             }
         }
     }

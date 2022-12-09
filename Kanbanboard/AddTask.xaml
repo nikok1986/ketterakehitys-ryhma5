@@ -33,18 +33,39 @@
         <Label Grid.Row="3" Content="Tehtävän info:" Padding="0" Margin="0,1,0,21" Grid.RowSpan="2"/>
         <TextBox x:Name="TaskDescriptionInput" Grid.Row="4" Margin="5,3,5,2" Height="17"/>
         <Label Grid.Row="5" Content="Aloituspäivämäärä:" Padding="0" Margin="0,1,0,21" Grid.RowSpan="2"/>
-        <DatePicker x:Name="ProjectStartDate" Padding="0" Grid.Row="6" Height="17"></DatePicker>
+        <DatePicker x:Name="TaskStartDate" Padding="0" Grid.Row="6" Height="17"></DatePicker>
         <Label Grid.Row="7" Content="Lopetuspäivämäärä:" Padding="0" Margin="0,2,0,21" Grid.RowSpan="2"/>
-        <DatePicker x:Name="ProjectEndDate" Padding="0" Grid.Row="8" Height="17" Margin="0,2,0,4"></DatePicker>
+        <DatePicker x:Name="TaskEndDate" Padding="0" Grid.Row="8" Height="17" Margin="0,2,0,4"></DatePicker>
         <Label Grid.Row="9" Content="Valitse käyttäjätarina:" Padding="0" Margin="0,2,0,20" Grid.RowSpan="2"/>
-        <Label Grid.Row="9" Content="Valitse tiimin jäsen" Padding="0" Margin ="400,2,0,20" Grid.RowSpan="2"/>
+        <Label Grid.Row="9" Content="Valitse tekijä" Padding="0" Margin ="500,2,0,20" Grid.RowSpan="2"/>
+        <Label Grid.Row="9" Content="Valitse sprintti" Padding="0" Margin ="120,2,0,20" Grid.RowSpan="2"/>
+        <Label Grid.Row="9" Content="Valitse vaikeustaso" Padding="0" Margin ="240,2,0,20" Grid.RowSpan="2"/>
         <WrapPanel Grid.Row="10">
-            <ComboBox x:Name="AddedUserStorysList" Width="150"/>
-            <Button x:Name="AddUserStoryToTask" Content="Valitse käyttäjätarina"/>
+            <ComboBox x:Name="AddedUserStoryList" Width="120" Margin="0,0,0,0"/>
         </WrapPanel>
         <WrapPanel Grid.Row="10">
-            <ComboBox x:Name="AddedUsersList" Width="150" Margin="400,0,0,0"/>
-            <Button x:Name="AddUserToTask" Content="Valitse tekijä"/>
+            <ComboBox x:Name="AddedUserList" Width="120" Margin="550,0,0,0"/>
+        </WrapPanel>
+        <WrapPanel Grid.Row="10">
+            <ComboBox x:Name="AddedSprintList" Width="120" Margin="120,0,0,0"/>
+        </WrapPanel>
+        <WrapPanel Grid.Row="10">
+            <ComboBox x:Name="TaskDifficulty" Width="120" Margin="240,0,0,0">
+               <ComboBoxItem Content="1" IsSelected="True"/>
+               <ComboBoxItem Content="2"/>
+               <ComboBoxItem Content="3"/>
+               <ComboBoxItem Content="4"/>
+               <ComboBoxItem Content="5"/>
+            </ComboBox>
+ 
+        </WrapPanel>
+        <WrapPanel Grid.Row="10">
+            <ComboBox x:Name="TaskCategory" Width="120" Margin="360,0,0,0">
+                <ComboBoxItem Content="ohjelmointi" IsSelected="True"/>
+                <ComboBoxItem Content="suunnittelu"/>
+                <ComboBoxItem Content="testaus"/>
+                <ComboBoxItem Content="bugfixing"/>
+            </ComboBox>
         </WrapPanel>
         <Label Grid.Row="11" Content="Tehtävän prioriteetti:" Padding="0" Margin="0,2,0,21" Grid.RowSpan="2"/>
         <ComboBox x:Name="TaskPrioritySelector" Grid.Row="12" FontSize="14" >
@@ -53,8 +74,8 @@
             <ComboBoxItem Content="2" Background="Red"/>
         </ComboBox>
         <WrapPanel Grid.Row="13" HorizontalAlignment="Center" Margin="0,8,0,-8">
-            <Button x:Name="AddTaskButton" Width="50" Margin="5" Content="OK" IsDefault="True"/>
-            <Button x:Name="CancelAddTaskButton" Width="50" Margin="5" Content="Cancel" IsCancel="True" />
+            <Button x:Name="AddTaskButton" Width="50" Margin="5" Content="OK" IsDefault="True" Click="AddTaskButton_Click"/>
+            <Button x:Name="CancelAddTaskButton" Width="50" Margin="5" Content="Cancel" IsCancel="True" Click="CancelAddTaskButton_Click" />
         </WrapPanel>
     </Grid>
 </Window>
