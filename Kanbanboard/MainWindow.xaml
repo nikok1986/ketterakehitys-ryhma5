@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Kanbanboard"
         mc:Ignorable="d"
         ResizeMode="NoResize"
-        Title="MainWindow" Height="673" Width="1065" Background="#cec1da">
+        Title="MainWindow" Height="673" Width="1065" Background="#555555">
     <Grid Margin="0,0,233,86">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="2*"/>
@@ -22,9 +22,22 @@
                 <RowDefinition Height="1*"/>
                 <RowDefinition Height="1*"/>
             </Grid.RowDefinitions>
-            <Button x:Name="AddSprintButton" Background="#62c9cb" FontFamily="Cooper" Grid.Row="6" Grid.RowSpan="1" Content="Lisää sprintti+" Click="AddSprintButton_Click"/>
-            <Button x:Name="UpdateProjectListButton" Background="#62c9cb" FontFamily="Cooper" Content="Päivitä projektilista" VerticalAlignment="Bottom" Height="25" Click="UpdateProjectListButton_Click" Grid.Row="4" Grid.RowSpan="1"/>
-            <ListView x:Name="ProjectListing" Background="#cec1da" Grid.Row="2" Grid.RowSpan="2" MouseDoubleClick="ProjectListing_MouseDoubleClick">
+            <Button x:Name="AddSprintButton" BorderThickness="3" FontWeight="Bold"  Background="#BFBFBF" FontFamily="GG Sans" Grid.Row="6" Grid.RowSpan="1" Content="Lisää sprintti+" Click="AddSprintButton_Click">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="5"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+            <Button x:Name="UpdateProjectListButton" FontWeight="Bold"  BorderThickness="3" Background="#BFBFBF" FontFamily="GG Sans" Content="Päivitä projektilista" VerticalAlignment="Center" Height="41" Click="UpdateProjectListButton_Click" Grid.Row="4">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="5"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+            <ListView x:Name="ProjectListing" FontSize="14" BorderThickness="3" Background="#616161" Grid.Row="2" Grid.RowSpan="2" MouseDoubleClick="ProjectListing_MouseDoubleClick" BorderBrush="#FF383838" Foreground="White">
+
                 <ListView.ContextMenu >
                     <ContextMenu >
                         <MenuItem x:Name="RightClickEdit"  Header="Muokkaa" Click="RightClickEdit_Click"/>
@@ -33,31 +46,56 @@
                     </ContextMenu>
                 </ListView.ContextMenu>
             </ListView>
-            <ListView x:Name="SprintListing" Margin="882,12,-873,253" Grid.RowSpan="3" Grid.Row="1" MouseDoubleClick="SprintListing_MouseDoubleClick"/>
-            <Button x:Name="AddUserButton" Background="#62c9cb" FontFamily="Cooper" Content="Lisää käyttäjä" Grid.Row="0" Click="AddUserButton_Click" Grid.RowSpan="1"/>
-            <Button x:Name="AddProjectButton" Background="#62c9cb" FontFamily="Cooper" Content="Lisää projekti" Grid.Row="1" Click="AddProjectButton_Click"  Grid.RowSpan="1"/>
-            <Button x:Name="AddUserStoryButton" Background="#62c9cb" FontFamily="Cooper" Content="Uusi käyttäjätarina" Grid.Row="5" Click="AddUserStoryButton_Click"  Grid.RowSpan="1"/>
+            <TextBlock Grid.Column="1" TextAlignment="Center" Margin="890,10,0,529" FontFamily="GG sans" FontSize="20" Text="Sprintit" Height="28" Width="115" Foreground="White"/>
+            <ListView x:Name="SprintListing" FontSize="14" Margin="859,0,-870,111" Grid.RowSpan="3" Grid.Row="1" BorderThickness="2" Background="#616161" MouseDoubleClick="SprintListing_MouseDoubleClick" BorderBrush="#FF383838" Foreground="White">
+                <ListView.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="5"/>
+                    </Style>
+                </ListView.Resources>
+            </ListView>
+            <Button x:Name="AddUserButton" FontWeight="Bold" Background="#BFBFBF" BorderThickness="3" FontFamily="GG Sans" Content="Lisää käyttäjä" Grid.Row="0" Click="AddUserButton_Click" Grid.RowSpan="1">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="5"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+            <Button x:Name="AddProjectButton" FontWeight="Bold" Background="#BFBFBF" BorderThickness="3" FontFamily="GG Sans" Content="Lisää projekti" Grid.Row="1" Click="AddProjectButton_Click"  Grid.RowSpan="1">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="5"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+            <Button x:Name="AddUserStoryButton" FontWeight="Bold" Background="#BFBFBF" BorderThickness="3" FontFamily="GG Sans" Content="Uusi käyttäjätarina" Grid.Row="5" Click="AddUserStoryButton_Click"  Grid.RowSpan="1">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="5"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
         </Grid>
 
-        <Grid Grid.Column="1" Margin="680,250,-221,0" >
-            <TextBlock x:Name="SprintInfoBox" FontSize="12"  HorizontalAlignment="Left" Margin="10,170,0,0" TextWrapping="Wrap" Text="Sprintin Info:" FontFamily="Cooper" FontWeight="Bold"/>
-            <TextBlock x:Name="SeeSprintInfo" FontSize="12"  HorizontalAlignment="Left" Margin="100,170,0,0" TextWrapping="Wrap" Text=""/>
-            <TextBlock x:Name="SprintStartDateBox" FontSize="12"  HorizontalAlignment="Left" Margin="10,240,0,0" TextWrapping="Wrap" Text="Aloitettu:" FontFamily="Cooper" FontWeight="Bold"/>
-            <TextBlock x:Name="SeeSprintStartDate" FontSize="12"  HorizontalAlignment="Left" Margin="100,240,0,0" TextWrapping="Wrap" Text=""/>
-            <TextBlock x:Name="SprintEndDateBox" FontSize="12"  HorizontalAlignment="Left" Margin="10,270,0,0" TextWrapping="Wrap" Text="Lopetuspäivä:" FontFamily="Cooper" FontWeight="Bold"/>
-            <TextBlock x:Name="SeeSprintEndDate" FontSize="12"  HorizontalAlignment="Left" Margin="100,270,0,0" TextWrapping="Wrap" Text=""/>
+        <Grid Grid.Column="1" Margin="680,205,-221,58" >
+            <TextBlock x:Name="SprintInfoBox" FontSize="12"  HorizontalAlignment="Left" Margin="10,171,0,-1" TextWrapping="Wrap" Text="Sprintin Info:" FontFamily="GG Sans" FontWeight="Bold" Foreground="White"/>
+            <TextBlock x:Name="SeeSprintInfo" FontSize="12"  HorizontalAlignment="Left" Margin="100,172,0,-2" TextWrapping="Wrap" FontFamily="GG Sans" Foreground="White"/>
+            <TextBlock x:Name="SprintStartDateBox" FontSize="12"  HorizontalAlignment="Left" Margin="10,240,0,0" TextWrapping="Wrap" Text="Aloitettu:" FontFamily="GG Sans" FontWeight="Bold" Foreground="White"/>
+            <TextBlock x:Name="SeeSprintStartDate" FontSize="12"  HorizontalAlignment="Left" Margin="100,240,0,0" TextWrapping="Wrap" FontFamily="GG Sans" Foreground="White"/>
+            <TextBlock x:Name="SprintEndDateBox" FontSize="12"  HorizontalAlignment="Left" Margin="10,270,0,0" TextWrapping="Wrap" Text="Lopetuspäivä:" FontFamily="GG Sans" FontWeight="Bold" Foreground="White"/>
+            <TextBlock x:Name="SeeSprintEndDate" FontSize="12"  HorizontalAlignment="Left" Margin="100,270,0,0" TextWrapping="Wrap" FontFamily="GG Sans" Foreground="White"/>
         </Grid>
 
-        <TabControl x:Name="SprinttiLaatikko" Margin="5,0,5,0" Grid.Column="1">
-            <TabItem Header="Info" FontFamily="Cooper" Background="#cec1da" >
-                <Grid Background="#cec1da">
+        <TabControl x:Name="SprinttiLaatikko" Margin="5,0,5,0" Grid.Column="1" Background="#555555">
+            <TabItem Header="Info" FontFamily="GG Sans" Background="#A6A6A6" BorderThickness="2" BorderBrush="#FF525252" Height="22" Margin="-2,-2,-2,0" VerticalAlignment="Top">
+                <Grid Background="#A6A6A6">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="16*"/>
-                        <ColumnDefinition Width="46*"/>
-                        <ColumnDefinition Width="101*"/>
-                        <ColumnDefinition Width="162*" />
-                        <ColumnDefinition Width="162*" />
-                        <ColumnDefinition Width="162*" />
+                        <ColumnDefinition Width="8*"/>
+                        <ColumnDefinition Width="25*"/>
+                        <ColumnDefinition Width="49*"/>
+                        <ColumnDefinition Width="81*" />
+                        <ColumnDefinition Width="81*" />
+                        <ColumnDefinition Width="81*" />
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
                         <RowDefinition/>
@@ -67,21 +105,34 @@
                         <RowDefinition/>
                         <RowDefinition/>
                     </Grid.RowDefinitions>
-                    <TextBlock x:Name="TitleBox" FontSize="20"  HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="380" Grid.Column="0" Grid.ColumnSpan="5" Grid.Row="0"/>
-                    <TextBlock x:Name="InfoBox" FontSize="12" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top"  Grid.Column="0" Grid.Row="1"/>
+                    <TextBlock x:Name="TitleBox" FontSize="20" FontFamily="GG sans" FontWeight="Bold" HorizontalAlignment="Left" Margin="58,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="380" Grid.Column="2" Grid.ColumnSpan="4" Grid.Row="0" Height="31"/>
+                    <TextBlock x:Name="InfoBox" Width="377" FontSize="14" FontFamily="GG sans" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top"  Grid.Column="2" Grid.ColumnSpan="4" Height="215" Grid.RowSpan="3" Margin="58,46,0,0"/>
                     <StackPanel Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" Margin="0,0,0,92" Grid.RowSpan="2">
                         <!--pistää StackPanelin sisällä olevat elementit automaattisesti allekkain ilman välejä-->
-                        <TextBlock x:Name= "StartDateLabel" FontSize="12"  HorizontalAlignment="Left"  TextWrapping="Wrap" Text="Aloitettu:" VerticalAlignment="Top" FontWeight="Bold" Grid.Column="0" Grid.Row="3"/>
-                        <TextBlock x:Name="EndDateLabel" FontSize="12"  HorizontalAlignment="Left" TextWrapping="Wrap" Text="Lopetuspäivä:" VerticalAlignment="Top" FontWeight="Bold" Grid.Column="0" Grid.Row="4"/>
+                        <TextBlock x:Name= "StartDateLabel" FontSize="12"  HorizontalAlignment="Left"  TextWrapping="Wrap" Text="Aloitettu:" FontWeight="Bold" Grid.Column="0" Grid.Row="3" Margin="90,0,0,0" Width="56"/>
+                        <TextBlock x:Name="EndDateLabel" FontSize="12"  HorizontalAlignment="Left" TextWrapping="Wrap" Text="Deadline:" FontWeight="Bold" Grid.Column="0" Grid.Row="4" Margin="90,0,0,0" Width="79"/>
                     </StackPanel>
-                    <StackPanel Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="2" Margin="100,0,0,92" Grid.RowSpan="2">
-                        <TextBlock x:Name="StartDateBox" FontSize="12"  HorizontalAlignment="Left"  TextWrapping="Wrap" Text="" VerticalAlignment="Top" Grid.Column="1" Grid.Row="3"/>
-                        <TextBlock x:Name="EndDateBox" FontSize="12"  HorizontalAlignment="Left"  TextWrapping="Wrap" Text="" VerticalAlignment="Top" Grid.Column="1" Grid.Row="4"/>
+                    <StackPanel Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="2" Margin="96,0,0,92" Grid.RowSpan="2">
+                        <TextBlock x:Name="StartDateBox" FontSize="12" FontFamily="GG sans"  HorizontalAlignment="Left"  TextWrapping="Wrap" Grid.Column="1" Grid.Row="3" Margin="30,0,0,0"/>
+                        <TextBlock x:Name="EndDateBox" FontSize="12" FontFamily="GG sans"  HorizontalAlignment="Left"  TextWrapping="Wrap" VerticalAlignment="Top" Grid.Column="1" Grid.Row="4" Margin="30,0,0,0"/>
                     </StackPanel>
-                    <Button x:Name="EditInfoWindowButton"  Background="#62c9cb" FontSize="10" Content="Muokkaa" HorizontalAlignment="Left" VerticalAlignment="Top" Height="17" Width="58" Click="EditInfoWindowButton_Click" Grid.Column="3" Grid.ColumnSpan="2" Grid.Row="4" Margin="133,0,0,0" />
+                    <ListBox x:Name="TeamBox" BorderThickness="1" FontWeight="Bold" Background="#A8A8A8" Grid.Row="4" d:ItemsSource="{d:SampleData ItemCount=5}" Grid.ColumnSpan="2" Margin="92,0,20,20" Grid.RowSpan="2" Grid.Column="2" BorderBrush="#FFE0E0E0">
+                        <ListBox.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="5"/>
+                            </Style>
+                        </ListBox.Resources>
+                    </ListBox>
+                    <ListBox x:Name="UsersBox" BorderThickness="1" FontWeight="Bold" Background="#A8A8A8"  Grid.Column="4" Grid.Row="4" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="0,0,14,20" Grid.RowSpan="2" BorderBrush="#FFE0E0E0">
+                        <ListBox.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="5"/>
+                            </Style>
+                        </ListBox.Resources>
+                    </ListBox>
                 </Grid>
             </TabItem>
-            <TabItem Header="Kanban"  Background="#cec1da" FontFamily="Cooper" Height="20" VerticalAlignment="Top">
+            <TabItem Header="Kanban"  Background="#B3B1B1" FontFamily="GG Sans" Height="20" VerticalAlignment="Top" BorderBrush="#FFFBFBFB">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="1*"/>
@@ -89,17 +140,20 @@
                         <ColumnDefinition Width="1*"/>
                         <ColumnDefinition Width="1*"/>
                     </Grid.ColumnDefinitions>
-                    <Grid x:Name="UserStoryGrid" Background="LightBlue">
+                    <Grid x:Name="UserStoryGrid" Background="#A6A6A6">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition/>
-                            <ColumnDefinition Width="14*" />
+                            <ColumnDefinition Width="3*"/>
+                            <ColumnDefinition Width="12.03"/>
+                            <ColumnDefinition Width="47*"/>
                         </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="2*"/>
-                            <RowDefinition Height="19*"/>
+                            <RowDefinition Height="26*"/>
+                            <RowDefinition Height="71*"/>
+                            <RowDefinition Height="174*"/>
                         </Grid.RowDefinitions>
-                        <ListView x:Name="UserStoryGridList" Background="Transparent" FontSize="18" HorizontalAlignment="Left" Width="161" BorderThickness="0" Grid.ColumnSpan="2" Grid.Row="1" Margin="4,5,6,5"/>
-                        <Label HorizontalAlignment="Center" Grid.Column="1" Grid.RowSpan="2">Käyttäjätarinat</Label>
+                        <ListView x:Name="UserStoryGridList" Background="#A6A6A6" FontSize="18" HorizontalAlignment="Left" Width="140" BorderThickness="0" Grid.Row="1" Margin="8,2,0,8" Grid.RowSpan="2" Grid.ColumnSpan="3"/>
+                        <Label FontWeight="Bold" FontSize="15" HorizontalAlignment="Left" Grid.RowSpan="2" Margin="9,0,0,142" Grid.Column="1" Grid.ColumnSpan="2" Width="124">Käyttäjätarinat</Label>
+                        <Button x:Name="AddTaskButton" FontSize="32" FontWeight="Bold" Content="+" Width="25"  HorizontalAlignment="Right"  Click="AddTaskButton_Click" Margin="5,0,0,142" Grid.RowSpan="2" Grid.ColumnSpan="3" />
                     </Grid>
                     <Grid x:Name="TaskBacklogGrid" Background="LightCoral" Grid.Column="1">
                         <Grid.RowDefinitions>
@@ -111,11 +165,17 @@
                             <ColumnDefinition/>
                             <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
-                        <Label HorizontalAlignment="Center" Grid.ColumnSpan="2">Aloittamatta</Label>
-                        <Button x:Name="BacklogMoveTaskRightButton" FontSize="20" Content="→" Click="BacklogMoveTaskRightButton_Click" Height="40" Width="163" VerticalAlignment="Bottom" Grid.Row="2" Grid.ColumnSpan="2"/>
+                        <Label FontWeight="Bold" FontSize="15" HorizontalAlignment="Center" Grid.ColumnSpan="2">Aloittamatta</Label>
+                        <Button x:Name="BacklogMoveTaskRightButton" FontSize="30" Content="→" Click="BacklogMoveTaskRightButton_Click" Height="40" Width="163" VerticalAlignment="Bottom" Grid.Row="2" Grid.ColumnSpan="2">
+                            <Button.Resources>
+                                <Style TargetType="Border">
+                                    <Setter Property="CornerRadius" Value="5"/>
+                                </Style>
+                            </Button.Resources>
+                        </Button>
 
-                        <Button x:Name="AddTaskButton" FontSize="32" FontWeight="Bold" Content="+" Grid.Column="1" Width="25"  HorizontalAlignment="Right"  Click="AddTaskButton_Click" />
-                        <ListBox x:Name="ToDoListBox" FontSize="18"  BorderThickness="1" Grid.Row="1" Grid.ColumnSpan="2" Background="LightCoral" Margin="4,5,6,35"/>
+
+                        <ListBox x:Name="ToDoListBox" FontSize="18"  BorderThickness="0" Grid.Row="1" Grid.ColumnSpan="2" Background="LightCoral" Margin="4,5,6,49" Grid.RowSpan="2"/>
 
                     </Grid>
                     <Grid x:Name="TaskInProgressGrid" Background="LightYellow" Grid.Column="2">
@@ -125,10 +185,22 @@
                             <RowDefinition Height="110*"/>
                             <RowDefinition Height="13*"/>
                         </Grid.RowDefinitions>
-                        <Label HorizontalAlignment="Center" Margin="0,0,0,439" Grid.RowSpan="3">Työn alla</Label>
-                        <WrapPanel Grid.Row="3" VerticalAlignment="Bottom" Margin="0,0,0,0">
-                            <Button x:Name="TaskInProgressMoveTaskLeftButton" FontSize="20"  Content="←" Grid.Row="1" Click="TaskInProgressMoveTaskLeftButton_Click" Width="81" Height="40" Grid.RowSpan="2"/>
-                            <Button x:Name="TaskInProgressMoveTaskRightButton" FontSize="20" Content="→" Grid.Row="1" Click="TaskInProgressMoveTaskRightButton_Click" Width="81" Height="40" Grid.RowSpan="2"/>
+                        <Label FontWeight="Bold" FontSize="15" HorizontalAlignment="Center" Margin="0,0,0,439" Grid.RowSpan="3">Työn alla</Label>
+                        <WrapPanel Grid.Row="3" VerticalAlignment="Bottom" Margin="0,0,0,0" Grid.Column="2" HorizontalAlignment="Center">
+                            <Button x:Name="TaskInProgressMoveTaskLeftButton" FontSize="30"  Content="←" Grid.Row="1" HorizontalAlignment="Left" Click="TaskInProgressMoveTaskLeftButton_Click" Width="79" Height="40" Grid.RowSpan="2">
+                                <Button.Resources>
+                                    <Style TargetType="Border">
+                                        <Setter Property="CornerRadius" Value="5"/>
+                                    </Style>
+                                </Button.Resources>
+                            </Button>
+                            <Button x:Name="TaskInProgressMoveTaskRightButton" FontSize="30" Content="→" Grid.Row="1" HorizontalAlignment="Right" Click="TaskInProgressMoveTaskRightButton_Click" Width="79" Height="40" Grid.RowSpan="2">
+                                <Button.Resources>
+                                    <Style TargetType="Border">
+                                        <Setter Property="CornerRadius" Value="5"/>
+                                    </Style>
+                                </Button.Resources>
+                            </Button>
                         </WrapPanel>
                         <ListBox x:Name="TaskInProgressListBox" FontSize="18"  BorderThickness="0" Grid.Row="2" Background="LightYellow" />
                     </Grid>
@@ -138,13 +210,20 @@
                             <RowDefinition Height="17*"/>
                             <RowDefinition Height="2*"/>
                         </Grid.RowDefinitions>
-                        <Label HorizontalAlignment="Center">Valmis</Label>
-                        <Button x:Name="TaskDoneMoveTaskLeftButton" FontSize="20" Content="←" Grid.Row="3" Height="40" VerticalAlignment="Bottom" Click="TaskDoneMoveTaskLeftButton_Click"/>
+                        <Label FontWeight="Bold" FontSize="15" HorizontalAlignment="Center">Valmis</Label>
+                        <Button x:Name="TaskDoneMoveTaskLeftButton" FontSize="30" Content="←" Grid.Row="3" Height="40" VerticalAlignment="Bottom" Click="TaskDoneMoveTaskLeftButton_Click">
+                            <Button.Resources>
+                                <Style TargetType="Border">
+                                    <Setter Property="CornerRadius" Value="5"/>
+                                </Style>
+                            </Button.Resources>
+                        </Button>
                         <ListBox x:Name="TaskDoneListBox" FontSize="18" BorderThickness="0" Grid.Row="1" Background="lightgreen"/>
                     </Grid>
                 </Grid>
             </TabItem>
         </TabControl>
+
 
 
 
