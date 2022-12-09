@@ -7,6 +7,9 @@
         mc:Ignorable="d"
         Title="AddTask" Height="450" Width="800"
            WindowStartupLocation="CenterOwner" >
+    <Window.Background>
+        <ImageBrush ImageSource="/kuva.jpg"/>
+    </Window.Background>
     
     <Grid Margin="50" Background="#cec1da" Opacity="0.9">
         <Grid.RowDefinitions>
