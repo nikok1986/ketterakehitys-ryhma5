@@ -31,6 +31,9 @@
     <Compile Update="TabitemMalli.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="AddTeam.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Page Update="AddProject.xaml">
@@ -58,6 +61,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="TabitemMalli.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="AddTeam.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

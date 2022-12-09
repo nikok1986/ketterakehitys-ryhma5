@@ -29,7 +29,7 @@
                     </Style>
                 </Button.Resources>
             </Button>
-            <Button x:Name="UpdateProjectListButton" FontWeight="Bold"  BorderThickness="3" Background="#BFBFBF" FontFamily="GG Sans" Content="Päivitä projektilista" VerticalAlignment="Center" Height="41" Click="UpdateProjectListButton_Click" Grid.Row="4">
+            <Button x:Name="AddTeamButton" FontWeight="Bold"  BorderThickness="3" Background="#BFBFBF" FontFamily="GG Sans" Content="Lisää tiimi" VerticalAlignment="Center" Height="41" Click="UpdateProjectListButton_Click" Grid.Row="4">
                 <Button.Resources>
                     <Style TargetType="Border">
                         <Setter Property="CornerRadius" Value="5"/>
