@@ -84,19 +84,19 @@ namespace Kanbanboard
             string name = SprintListing.SelectedItem.ToString();
             Reader reader = new Reader(name);
             ToDoListBox.Items.Clear();
-            string[] taskList = reader.DBBackLogReader().Split('\n');
+            string[] taskList = reader.DBSprintBackLogReader().Split('\n');
             taskList = taskList.SkipLast(1).ToArray();
             foreach (string s in taskList)
                 ToDoListBox.Items.Add(s);
 
             TaskInProgressListBox.Items.Clear();
-            string[] progressList = reader.DBTaskInProgressReader().Split('\n');
+            string[] progressList = reader.DBSprintTaskInProgressReader().Split('\n');
             progressList = progressList.SkipLast(1).ToArray();
             foreach (string s in progressList)
                 TaskInProgressListBox.Items.Add(s);
 
             TaskDoneListBox.Items.Clear();
-            string[] completeList = reader.DBCompleteTaskReader().Split('\n');
+            string[] completeList = reader.DBSprintCompleteTaskReader().Split('\n');
             completeList = completeList.SkipLast(1).ToArray();
             foreach (string s in completeList)
                 TaskDoneListBox.Items.Add(s);
@@ -127,25 +127,25 @@ namespace Kanbanboard
                 EndDateBox.Text = reader.DBProjectEndDate().ToString("dd-MM-yyyy");
 
                 SprintListing.Items.Clear();
-                string[] sprints = reader.DBSprintNameReader().Split('\n');
+                string[] sprints = reader.DBProjectSprintNameReader().Split('\n');
                 sprints = sprints.SkipLast(1).ToArray();
                 foreach (string s in sprints)
                     SprintListing.Items.Add(s);
 
                 UserStoryGridList.Items.Clear();
-                string[] userstoryList = reader.DBUserStoryReader().Split('\n');
+                string[] userstoryList = reader.DBProjectUserStoryReader().Split('\n');
                 userstoryList = userstoryList.SkipLast(1).ToArray();
                 foreach (string s in userstoryList)
                     UserStoryGridList.Items.Add(s);
 
                 TeamBox.Items.Clear();
-                string[] teamList = reader.DBTeamNameReader().Split('\n');
+                string[] teamList = reader.DBProjectTeamNameReader().Split('\n');
                 teamList = teamList.SkipLast(1).ToArray();
                 foreach (string s in teamList)
                     TeamBox.Items.Add(s);
 
                 UsersBox.Items.Clear();
-                string[] userList = reader.DBUserNameReader().Split('\n');
+                string[] userList = reader.DBProjectUserNameReader().Split('\n');
                 userList = userList.SkipLast(1).ToArray();
                 foreach (string s in userList)
                     UsersBox.Items.Add(s);

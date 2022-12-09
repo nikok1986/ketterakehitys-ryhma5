@@ -157,6 +157,37 @@ namespace Kanbanboard
                 return userstories;   //Palautetaan nimet sisältävä string
             }
         }
+        public String DBEveryTeamNameReader()
+        {
+            using (OleDbConnection con = DataServices.DBConnection())   //Käytetään DataServices.cs tiedostoon luotua tietokantayhteyttä.
+            {                                                           //Using-komennolla yhteys suljetaan automaattisesti suorituksen jälkeen.
+                OleDbCommand cmd;
+                cmd = new OleDbCommand("SELECT team_nimi FROM teams;");
+                cmd.Connection = con;   //Yhteys avataan OleDb-komennolla.
+                string teams = String.Empty;    //Kerätään nimet tähän tyhjään stringiin.
+
+                string[] teamList = new string[20];     //20 on ihan satunnainen numero, lopullinen numero on varmasti toinen.
+                bool read;
+
+                OleDbDataReader reader = cmd.ExecuteReader();
+                if (reader.Read() == true)
+                {
+                    do
+                    {
+                        int NumberOfRows = reader.GetValues(teamList);
+                        for (int i = 0; i < NumberOfRows; i++)
+                        {
+                            teams += teamList[i].ToString() + "\n"; //Nimet kerätään projectlist-taulukkoon josta ne siirretään users-stringiin omille riveilleen.
+                        }
+                        read = reader.Read();
+                    }
+                    while (read == true);
+                }
+                reader.Close();
+                cmd.ExecuteNonQuery();
+                return teams;   //Palautetaan nimet sisältävä string
+            }
+        }
         public String DBProjectNameReader()
         {
             using (OleDbConnection con = DataServices.DBConnection())   //Käytetään DataServices.cs tiedostoon luotua tietokantayhteyttä.
@@ -241,7 +272,7 @@ namespace Kanbanboard
                 return enddate;
             }
         }
-        public String DBSprintNameReader()
+        public String DBProjectSprintNameReader()
         {
             using (OleDbConnection con = DataServices.DBConnection())   //Käytetään DataServices.cs tiedostoon luotua tietokantayhteyttä.
             {                                                           //Using-komennolla yhteys suljetaan automaattisesti suorituksen jälkeen.
@@ -323,7 +354,7 @@ namespace Kanbanboard
                 return enddate;
             }
         }
-        public String DBTeamNameReader()
+        public String DBProjectTeamNameReader()
         {
             using (OleDbConnection con = DataServices.DBConnection())   //Käytetään DataServices.cs tiedostoon luotua tietokantayhteyttä.
             {                                                           //Using-komennolla yhteys suljetaan automaattisesti suorituksen jälkeen.
@@ -344,7 +375,7 @@ namespace Kanbanboard
                 return teams;
             }
         }
-        public String DBUserNameReader()
+        public String DBProjectUserNameReader()
         {
             using (OleDbConnection con = DataServices.DBConnection())   //Käytetään DataServices.cs tiedostoon luotua tietokantayhteyttä.
             {                                                           //Using-komennolla yhteys suljetaan automaattisesti suorituksen jälkeen.
@@ -365,7 +396,7 @@ namespace Kanbanboard
                 return users;
             }
         }
-        public String DBUserStoryReader()
+        public String DBProjectUserStoryReader()
         {
             using (OleDbConnection con = DataServices.DBConnection())   //Käytetään DataServices.cs tiedostoon luotua tietokantayhteyttä.
             {                                                           //Using-komennolla yhteys suljetaan automaattisesti suorituksen jälkeen.
@@ -386,7 +417,7 @@ namespace Kanbanboard
                 return userstories;
             }
         }
-        public String DBBackLogReader()
+        public String DBSprintBackLogReader()
         {
             using (OleDbConnection con = DataServices.DBConnection())   //Käytetään DataServices.cs tiedostoon luotua tietokantayhteyttä.
             {                                                           //Using-komennolla yhteys suljetaan automaattisesti suorituksen jälkeen.
@@ -407,7 +438,7 @@ namespace Kanbanboard
                 return taskname;
             }
         }
-        public String DBTaskInProgressReader()
+        public String DBSprintTaskInProgressReader()
         {
             using (OleDbConnection con = DataServices.DBConnection())   //Käytetään DataServices.cs tiedostoon luotua tietokantayhteyttä.
             {                                                           //Using-komennolla yhteys suljetaan automaattisesti suorituksen jälkeen.
@@ -428,7 +459,7 @@ namespace Kanbanboard
                 return taskname;
             }
         }
-        public String DBCompleteTaskReader()
+        public String DBSprintCompleteTaskReader()
         {
             using (OleDbConnection con = DataServices.DBConnection())   //Käytetään DataServices.cs tiedostoon luotua tietokantayhteyttä.
             {                                                           //Using-komennolla yhteys suljetaan automaattisesti suorituksen jälkeen.

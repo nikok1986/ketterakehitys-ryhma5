@@ -79,7 +79,11 @@ namespace Kanbanboard
 
             for (int i = 0; i < stateList.Length; i++) 
             {
-                if (stateList[i] == "0" || stateList[i] == "1")
+                if(stateList[i] == "0")
+                {
+                    finalList += "backlogissa" + "\n";
+                }
+                if (stateList[i] == "1")
                 {
                     finalList += "kesken" + "\n";
                 }
@@ -129,7 +133,7 @@ namespace Kanbanboard
             {
                 OleDbCommand cmd; //ideana on asettaa user storyn tila tietokannassa 0, 1 tai 2 sen perusteella missä tilassa siihen liitetyt tehtävät ovat
                 Reader reader = new Reader(pjName); //tehdään reader-sivu ja syötetään sille tälle sivulle syötetty projewktin nimi
-                string[] userstoryNames = reader.DBUserStoryReader().Split('\n');   //käytetään readeriin kirjoitettua metodia, joka lukee kaikki käyttäjätarinat, splitataan rivinvaihdosta
+                string[] userstoryNames = reader.DBProjectUserStoryReader().Split('\n');   //käytetään readeriin kirjoitettua metodia, joka lukee kaikki käyttäjätarinat, splitataan rivinvaihdosta
                 int aloittamatta = 0;   //kolme tilaa, jotka taskeilla voi olla
                 int tyonAlla = 1;
                 int valmis = 2;

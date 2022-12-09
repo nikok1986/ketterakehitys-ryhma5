@@ -49,17 +49,17 @@ namespace Kanbanboard
                 int userId = reader.UserIdReader();
 
                 cmd.Connection = con;
-                //try
-                //{
+                try
+                {
                     if (TaskNameInput.Text != test)
                     {
                         cmd.CommandText = "INSERT INTO tasks (task_nimi, task_info, task_tila, task_prioriteetti, task_kategoria, task_vaikeustaso, task_aloitus_pvm, task_lopetus_pvm, sprint_id, user_story_id, user_id)values(@tnimi, @tinfo, @ttila, @tprio, @tkat, @tvaik, @tapvm, @tlpvm, @tspri, @tust, @tuser)";
                         cmd.Parameters.AddWithValue("@tnimi", TaskNameInput.Text);  //(@tnimi, @tinfo, @ttila, @tprio, @tkat, @tvaik, @tapvm, @tlpvm, @tspri, @tust)"
                         cmd.Parameters.AddWithValue("@tinfo", TaskDescriptionInput.Text);
                         cmd.Parameters.AddWithValue("@ttila", 0);
-                        cmd.Parameters.AddWithValue("@tprio", TaskPrioritySelector.SelectedItem);
+                        cmd.Parameters.AddWithValue("@tprio", Convert.ToInt32(TaskPrioritySelector.Text));
                         cmd.Parameters.AddWithValue("@tkat", TaskCategory.SelectedItem);
-                        cmd.Parameters.AddWithValue("@tvaik", TaskDifficulty.SelectedItem);
+                        cmd.Parameters.AddWithValue("@tvaik", Convert.ToInt32(TaskDifficulty.Text));
                         cmd.Parameters.Add("@tapvm", OleDbType.Date).Value = TaskStartDate.SelectedDate;
                         cmd.Parameters.Add("@tlpvm", OleDbType.Date).Value = TaskEndDate.SelectedDate;
                         cmd.Parameters.AddWithValue("@tspri", sprintId);
@@ -74,11 +74,11 @@ namespace Kanbanboard
                     {
                         MessageBox.Show("Osa tiedoista puuttuu");
                     }
-                //}
-                //catch
-                //{
-                 //   MessageBox.Show("Lisää arvo jokaiseen tietueeseen tai paina Cancel poistuaksesi ikkunasta");
-                //}
+                }
+                catch
+                {
+                    MessageBox.Show("Lisää arvo jokaiseen tietueeseen tai paina Cancel poistuaksesi ikkunasta");
+                }
             }
         }
         public void Lists_populate(object sender, RoutedEventArgs e)
