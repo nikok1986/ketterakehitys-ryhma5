@@ -341,3 +341,5 @@ C:\Users\Henrika\Documents\GitHub\ketterakehitys-ryhma5\Kanbanboard\obj\Debug\ne
 C:\Users\Henrika\Documents\GitHub\ketterakehitys-ryhma5\Kanbanboard\obj\Debug\net6.0-windows\Kanbanboard.csproj.CopyComplete
 C:\Users\Henrika\Documents\GitHub\ketterakehitys-ryhma5\Kanbanboard\obj\Debug\net6.0-windows\Kanbanboard.genruntimeconfig.cache
 C:\Users\Henrika\Documents\GitHub\ketterakehitys-ryhma5\Kanbanboard\obj\Debug\net6.0-windows\ref\Kanbanboard.dll
+C:\Users\storm\OneDrive\Documents\koulu\2022 syksy\Ketterä ohjelmistoprojekti\ketterakehitys-ryhma5\Kanbanboard\obj\Debug\net6.0-windows\AddTeam.g.cs
+C:\Users\storm\OneDrive\Documents\koulu\2022 syksy\Ketterä ohjelmistoprojekti\ketterakehitys-ryhma5\Kanbanboard\obj\Debug\net6.0-windows\AddTeam.baml

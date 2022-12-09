@@ -7,9 +7,7 @@
         mc:Ignorable="d"
         Title="AddProject" Height="450" Width="800"
         WindowStartupLocation="CenterOwner" >
-    <Window.Background>
-        <ImageBrush ImageSource="/kuva.jpg"/>
-    </Window.Background>
+
     <Grid Margin="50" Background="#cec1da" Opacity="0.9">
         <Grid.RowDefinitions>
             <RowDefinition Height="3*"/>
@@ -21,15 +19,15 @@
             <RowDefinition Height="2*"/>
             <RowDefinition Height="2*"/>
         </Grid.RowDefinitions>
-        <Label Grid.Row="0" Content="Lisää käyttäjä" FontFamily="Cooper" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-        <Label Grid.Row="1" Content="Käyttäjän nimi:" FontFamily="Cooper" FontSize="14"  HorizontalAlignment="Center" />
+        <Label Grid.Row="0" Content="Lisää käyttäjä" FontFamily="GG sans" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <Label Grid.Row="1" Content="Käyttäjän nimi:" FontFamily="GG sans" FontSize="14"  HorizontalAlignment="Center" />
         <TextBox x:Name="UserNameInput" Grid.Row="2"  HorizontalAlignment="Center" Width="400"/>
-        <Label Grid.Row="3" Content="Käyttäjän rooli:" FontFamily="Cooper" FontSize="14"  HorizontalAlignment="Center" />
+        <Label Grid.Row="3" Content="Käyttäjän rooli:" FontFamily="GG sans" FontSize="14"  HorizontalAlignment="Center" />
         <TextBox x:Name="UserRoleInput" Grid.Row="4" HorizontalAlignment="Center" Width="400"/>
         <WrapPanel Grid.Row="6"/>
         <WrapPanel Grid.Row="6" HorizontalAlignment="Center">
-            <Button x:Name="AddNewUserButton" FontFamily="Cooper" FontSize="10" Background="#e783b7" Width="50" Margin="5" Content="OK" IsDefault="True" Click="AddUserButton_Click"/>
-            <Button x:Name="CancelAddNewUserButton" FontFamily="Cooper" FontSize="10" Background="#e783b7" Width="50" Margin="5" Content="Cancel" IsCancel="True" Click="CancelAddProjectButton_Click"/>
+            <Button x:Name="AddNewUserButton" FontFamily="GG sans" FontSize="10" Background="#e783b7" Width="50" Margin="5" Content="OK" IsDefault="True" Click="AddUserButton_Click"/>
+            <Button x:Name="CancelAddNewUserButton" FontFamily="GG sans" FontSize="10" Background="#e783b7" Width="50" Margin="5" Content="Cancel" IsCancel="True" Click="CancelAddProjectButton_Click"/>
         </WrapPanel>
     </Grid>
 </Window>

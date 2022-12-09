@@ -7,9 +7,6 @@
         mc:Ignorable="d"
         Title="AddUserStory" Height="450" Width="800"
               WindowStartupLocation="CenterOwner" >
-    <Window.Background>
-        <ImageBrush ImageSource="/kuva.jpg"/>
-    </Window.Background>
 
     <Grid Margin="50" Background="#cec1da" Opacity="0.9">
         <Grid.RowDefinitions>
@@ -22,16 +19,16 @@
             <RowDefinition Height="2*"/>
             <RowDefinition Height="3*"/>
         </Grid.RowDefinitions>
-        <Label Content="Lisää käyttäjätarina" FontFamily="Cooper" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-        <Label Grid.Row="1"  FontFamily="Cooper" FontSize="14"  HorizontalAlignment="Center" Content="Käyttäjätarinan nimi:"/>
+        <Label Content="Lisää käyttäjätarina" FontFamily="GG sans" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <Label Grid.Row="1"  FontFamily="GG sans" FontSize="14"  HorizontalAlignment="Center" Content="Käyttäjätarinan nimi:"/>
         <TextBox x:Name="UserStoryNameInput" Grid.Row="2"  HorizontalAlignment="Center" Width="400"/>
-        <Label Grid.Row="3"  FontFamily="Cooper" FontSize="14"  HorizontalAlignment="Center"  Content="Kuvaus:"/>
+        <Label Grid.Row="3"  FontFamily="GG sans" FontSize="14"  HorizontalAlignment="Center"  Content="Kuvaus:"/>
         <TextBox x:Name="UserStoryDescriptionInput" Grid.Row="4" HorizontalAlignment="Center" Width="400"/>
-        <Label Grid.Row="5"  FontFamily="Cooper" FontSize="14"  HorizontalAlignment="Center"  Content="Projekti:"/>
+        <Label Grid.Row="5"  FontFamily="GG sans" FontSize="14"  HorizontalAlignment="Center"  Content="Projekti:"/>
         <ComboBox x:Name="AddUserStoryProjectSelect"  HorizontalAlignment="Center" Width="400" Grid.Row="6" />
         <WrapPanel Grid.Row="6" HorizontalAlignment="Center" Margin="0,38,0,-37">
-            <Button x:Name="AddUserStoryButton" FontFamily="Cooper" FontSize="10" Background="#e783b7" Width="50" Margin="5" Content="OK" IsDefault="True" Click="AddUserStoryButton_Click"/>
-            <Button x:Name="CancelUserStoryButton" FontFamily="Cooper" FontSize="10"  Background="#e783b7" Width="50" Margin="5" Content="Cancel" IsCancel="True" Click="CancelUserStoryButton_Click"/>
+            <Button x:Name="AddUserStoryButton" FontFamily="GG sans" FontSize="10" Background="#e783b7" Width="50" Margin="5" Content="OK" IsDefault="True" Click="AddUserStoryButton_Click"/>
+            <Button x:Name="CancelUserStoryButton" FontFamily="GG sans" FontSize="10"  Background="#e783b7" Width="50" Margin="5" Content="Cancel" IsCancel="True" Click="CancelUserStoryButton_Click"/>
         </WrapPanel>
     </Grid>
 </Window>

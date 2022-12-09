@@ -23,5 +23,15 @@ namespace Kanbanboard
         {
             InitializeComponent();
         }
+
+        private void AddUserStoryButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void CancelUserStoryButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

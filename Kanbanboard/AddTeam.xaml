@@ -6,9 +6,7 @@
         xmlns:local="clr-namespace:Kanbanboard"
         mc:Ignorable="d"
         Title="Window1" Height="450" Width="800">
-    <Window.Background>
-        <ImageBrush ImageSource="/kuva.jpg"/>
-    </Window.Background>
+
     <Grid Margin="50" Background="#cec1da" Opacity="0.9">
         <Grid.RowDefinitions>
             <RowDefinition Height="3*"/>
@@ -22,14 +20,14 @@
             <RowDefinition Height="6*"/>
             <RowDefinition Height="2*"/>
         </Grid.RowDefinitions>
-        <Label Content="Lisää Tiimi" FontFamily="Cooper" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-        <Label Grid.Row="1"  FontFamily="Cooper" FontSize="14"  HorizontalAlignment="Center" Content="Tiimin nimi:"/>
+        <Label Content="Lisää Tiimi" FontFamily="GG sans" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <Label Grid.Row="1"  FontFamily="GG sans" FontSize="14"  HorizontalAlignment="Center" Content="Tiimin nimi:"/>
         <TextBox x:Name="UserStoryNameInput" Grid.Row="2"  HorizontalAlignment="Center" Width="400"/>
-        <Label Grid.Row="3"  FontFamily="Cooper" FontSize="14"  HorizontalAlignment="Center"  Content="Kuvaus:"/>
+        <Label Grid.Row="3"  FontFamily="GG sans" FontSize="14"  HorizontalAlignment="Center"  Content="Kuvaus:"/>
         <TextBox x:Name="UserStoryDescriptionInput" Grid.Row="4" HorizontalAlignment="Center" Width="400"/>
-        <Label Grid.Row="5"  FontFamily="Cooper" FontSize="14"  HorizontalAlignment="Center"  Content="Projekti:"/>
+        <Label Grid.Row="5"  FontFamily="GG sans" FontSize="14"  HorizontalAlignment="Center"  Content="Projekti:"/>
         <ComboBox x:Name="AddUserStoryProjectSelect"  HorizontalAlignment="Center" Width="300" Grid.Row="6" />
-        <Label Grid.Row="7"  FontFamily="Cooper" FontSize="14"  HorizontalAlignment="Center"  Content="Valitse käyttäjät tiimiin:"/>
+        <Label Grid.Row="7"  FontFamily="GG sans" FontSize="14"  HorizontalAlignment="Center"  Content="Valitse käyttäjät tiimiin:"/>
         <ListBox x:Name="TeamListBox" Grid.Row="8" Width="100" Margin="-200,0,0,0" RenderTransformOrigin="-1.133,0.471"/>
         <Button x:Name="AddTeamMeamberButton" Grid.Row="8" Width="30" Height="20" Content="+" FontWeight="Bold" FontFamily="GG-sans" FontSize="10" VerticalAlignment="Top" Margin="0,13,0,0" Background="Black" Foreground="White"/>
         <ListBox x:Name="AllUsersListBox" Grid.Row="8" Width="100" Margin="200,0,0,0" RenderTransformOrigin="-1.133,0.471"/>
