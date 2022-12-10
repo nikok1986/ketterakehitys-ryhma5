@@ -41,6 +41,12 @@ namespace Kanbanboard
             teams = teams.SkipLast(1).ToArray();
             foreach (string s in teams)
                 UserTeamListBox.Items.Add(s);
+
+            UserTaskListBox.Items.Clear();
+            string[] tasks = reader.DBUserTaskReader().Split('\n');
+            teams = teams.SkipLast(1).ToArray();
+            foreach (string s in tasks)
+                UserTaskListBox.Items.Add(s);
         }
     }
 }

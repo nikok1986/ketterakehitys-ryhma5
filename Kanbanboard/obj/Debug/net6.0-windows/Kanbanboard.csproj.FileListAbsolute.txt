@@ -349,3 +349,5 @@ C:\Users\storm\OneDrive\Documents\koulu\2022 syksy\Ketterä ohjelmistoprojekti\k
 C:\Users\storm\OneDrive\Documents\koulu\2022 syksy\Ketterä ohjelmistoprojekti\ketterakehitys-ryhma5\Kanbanboard\obj\Debug\net6.0-windows\UserReport.g.cs
 C:\Users\storm\OneDrive\Documents\koulu\2022 syksy\Ketterä ohjelmistoprojekti\ketterakehitys-ryhma5\Kanbanboard\obj\Debug\net6.0-windows\SprintReport.baml
 C:\Users\storm\OneDrive\Documents\koulu\2022 syksy\Ketterä ohjelmistoprojekti\ketterakehitys-ryhma5\Kanbanboard\obj\Debug\net6.0-windows\UserReport.baml
+C:\Users\storm\OneDrive\Documents\koulu\2022 syksy\Ketterä ohjelmistoprojekti\ketterakehitys-ryhma5\Kanbanboard\obj\Debug\net6.0-windows\UserStoryReport.g.cs
+C:\Users\storm\OneDrive\Documents\koulu\2022 syksy\Ketterä ohjelmistoprojekti\ketterakehitys-ryhma5\Kanbanboard\obj\Debug\net6.0-windows\UserStoryReport.baml

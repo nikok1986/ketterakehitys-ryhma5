@@ -20,16 +20,8 @@
         </Grid.ColumnDefinitions>
         <Label Content="Käyttäjäraportti" FontFamily="GG sans" FontSize="20" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.ColumnSpan="2" Margin="95,0,0,0"/>
         <ListBox x:Name="UserTeamListBox" Grid.Row="4" Grid.Column="0"  Margin="29,10,19,21"/>
-        <ListBox x:Name="UserTaskListBox" Grid.Row="4" Grid.Column="1"  Margin="21,10,34,21" RenderTransformOrigin="0.5,0.5">
-            <ListBox.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform ScaleX="-1"/>
-                    <SkewTransform/>
-                    <RotateTransform/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </ListBox.RenderTransform>
-        </ListBox>
+        <ListBox x:Name="UserTaskListBox" Grid.Row="4" Grid.Column="1"  Margin="21,10,34,21"/>
+        
         <Label Content="Käyttäjän tiimit" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontFamily="GG sans" FontSize="12" FontWeight="Bold"  HorizontalAlignment="Left" Margin="24,10,0,1" Grid.Row="3" Grid.Column="0" Width="108"/>
         <Label Content="Käyttäjän tehtävät" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontFamily="GG sans" FontSize="12" FontWeight="Bold"  HorizontalAlignment="Left" Margin="14,9,0,1" Grid.Row="3" Grid.Column="1" Width="120" RenderTransformOrigin="0.0,0.0"/>
         <Label Content="Käyttäjän nimi:" FontFamily="GG sans" FontSize="13" FontWeight="Bold" HorizontalAlignment="Left" Margin="29,3,0,0" Grid.Row="1" Grid.Column="0" VerticalAlignment="Top" Height="23" Width="98"/>

@@ -182,9 +182,9 @@
                         <ListView x:Name="UserStoryGridList" Background="#A6A6A6" FontSize="18" HorizontalAlignment="Left" Width="140" BorderThickness="0" Grid.Row="1" Margin="8,2,0,8" Grid.RowSpan="2" Grid.ColumnSpan="3">
                             <ListView.ContextMenu >
                                 <ContextMenu >
-                                    <MenuItem x:Name="RightClickUserStoryEdit"  Header="Muokkaa" Click="RightClickEdit_Click"/>
-                                    <MenuItem x:Name="RightClickUserStoryReport" Header="Näytä raportti" Click="RightClickReport_Click"/>
-                                    <MenuItem x:Name="RightClickUserStoryDelete" Header="Poista projekti" Click="RightClickDelete_Click"/>
+                                    <MenuItem x:Name="RightClickUserStoryEdit"  Header="Muokkaa" Click="RightClickUserStoryEdit_Click"/>
+                                    <MenuItem x:Name="RightClickUserStoryReport" Header="Näytä raportti" Click="RightClickUserStoryReport_Click"/>
+                                    <MenuItem x:Name="RightClickUserStoryDelete" Header="Poista projekti" Click="RightClickUserStoryDelete_Click"/>
                                 </ContextMenu>
                             </ListView.ContextMenu>
                         </ListView>

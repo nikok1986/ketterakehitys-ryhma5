@@ -71,7 +71,7 @@ namespace Kanbanboard
                 return userstories;
             }
         }
-        private String StoryState()
+        public String StoryState()
         {
             string phaseList = DBUserStoryPhaseReader();    //tämä metodi vaihtaa tilaa kuvaavia numeroita täynnä olevan stringin stringiksi, jossa numerot on esitetty sanoina
             string[] stateList = phaseList.Split('\n');
@@ -90,7 +90,7 @@ namespace Kanbanboard
             }
             return finalList;
         }
-        private void ProjectState(object sender, EventArgs e)   //lasketaan valmiiden tehtävien määrä ja jaetaan se tehtävien kokonaismäärällä,saadaan projektin valmiusaste
+        public void ProjectState(object sender, EventArgs e)   //lasketaan valmiiden tehtävien määrä ja jaetaan se tehtävien kokonaismäärällä,saadaan projektin valmiusaste
         {
             string[] allStories = StoryState().Split("\n"); 
             decimal storyCount = allStories.Count() - 1;
@@ -111,7 +111,7 @@ namespace Kanbanboard
                 CompletionState.Text = "Projektia ei ole aloitettu.";
             }
         }
-        private void UpdateLists(object sender, EventArgs e)
+        public void UpdateLists(object sender, EventArgs e)
         {
             UserStoryList.Items.Clear();
             string[] stories = DBUserStoryReader().Split('\n');
@@ -157,7 +157,7 @@ namespace Kanbanboard
                 }
             }
         }
-        private void UserStoryList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        public void UserStoryList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
         }

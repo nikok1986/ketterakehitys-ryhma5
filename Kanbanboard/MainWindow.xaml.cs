@@ -364,7 +364,25 @@ namespace Kanbanboard
                 }
             }
         }
+
         private void RightClickSprintEdit_Click(Object sender, RoutedEventArgs e)
+        {
+
+        }
+        private void RightClickUserStoryEdit_Click(Object sender, RoutedEventArgs e)
+        {
+
+        }
+        private void RightClickUserStoryReport_Click(object sender, RoutedEventArgs e)
+        {
+            if (UserStoryGridList.SelectedItem != null)
+            {
+                string nimi = UserStoryGridList.SelectedItem.ToString();
+                UserStoryReport usr = new UserStoryReport(nimi);
+                usr.ShowDialog();
+            }
+        }
+        private void RightClickUserStoryDelete_Click(object sender, RoutedEventArgs e)
         {
 
         }
@@ -399,10 +417,7 @@ namespace Kanbanboard
             }
         }
 
-        private void RightClickTeamEdit_Click(object sender, RoutedEventArgs e) 
-        {
         
-        }
 
         private void RightClickTeamReport_Click(object sender, RoutedEventArgs e) 
         { 
@@ -434,6 +449,10 @@ namespace Kanbanboard
                     MessageBox.Show("Toiminto peruutettu.");
                 }
             }
+        }
+        private void RightClickTeamEdit_Click(object sender, RoutedEventArgs e)
+        {
+
         }
         private void RightClickTaskkEdit_Click(object sender, RoutedEventArgs e)
         {
