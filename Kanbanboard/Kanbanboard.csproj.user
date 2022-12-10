@@ -16,6 +16,12 @@
     <Compile Update="AddTask.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="AddTeam.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="AddTeamMember.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="AddUser.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -28,10 +34,13 @@
     <Compile Update="EditUserWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="SprintReport.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="TabitemMalli.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="AddTeam.xaml.cs">
+    <Compile Update="UserReport.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
@@ -43,6 +52,12 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="AddTask.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="AddTeam.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="AddTeamMember.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="AddUser.xaml">
@@ -60,10 +75,13 @@
     <Page Update="MainWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="SprintReport.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="TabitemMalli.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="AddTeam.xaml">
+    <Page Update="UserReport.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

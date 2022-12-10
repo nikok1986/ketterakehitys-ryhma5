@@ -15,23 +15,43 @@ using System.Windows.Shapes;
 namespace Kanbanboard
 {
     /// <summary>
-    /// Interaction logic for Window1.xaml
+    /// Interaction logic for AddTeam.xaml
     /// </summary>
-    public partial class Window1 : Window
+    public partial class AddTeam : Window
     {
-        public Window1()
+        public AddTeam()
         {
             InitializeComponent();
+            Loaded += ProjectBox_populate;
+            Loaded += AllUsersListBox_populate;
         }
 
-        private void AddUserStoryButton_Click(object sender, RoutedEventArgs e)
+        private void AddTeamButton_Click(object sender, RoutedEventArgs e)
         {
 
         }
 
-        private void CancelUserStoryButton_Click(object sender, RoutedEventArgs e)
+        private void CancelAddTeamButton_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+        private void ProjectBox_populate(object sender, RoutedEventArgs e)
+        {
+            AddTeamProjectSelect.Items.Clear();
+            Reader reader = new Reader();
+            string[] projects = reader.DBEveryProjectNameReader().Split('\n');
+            projects = projects.SkipLast(1).ToArray();
+            foreach (string s in projects)
+                AddTeamProjectSelect.Items.Add(s);
+        }
+        private void AllUsersListBox_populate(object sender, RoutedEventArgs e)
+        {
+            AllUsersListBox.Items.Clear();
+            Reader reader = new Reader();
+            string[] projects = reader.DBEveryUserNameReader().Split('\n');
+            projects = projects.SkipLast(1).ToArray();
+            foreach (string s in projects)
+                AllUsersListBox.Items.Add(s);
         }
     }
 }

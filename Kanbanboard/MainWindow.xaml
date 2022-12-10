@@ -29,7 +29,14 @@
                     </Style>
                 </Button.Resources>
             </Button>
-            <Button x:Name="AddTeamButton" FontWeight="Bold"  BorderThickness="3" Background="#BFBFBF" FontFamily="GG Sans" Content="Lisää tiimi" VerticalAlignment="Center" Height="41" Click="UpdateProjectListButton_Click" Grid.Row="4">
+            <Button x:Name="AddTeamButton" FontWeight="Bold"  BorderThickness="3" Background="#BFBFBF" FontFamily="GG Sans" Content="Lisää tiimi" VerticalAlignment="Center" Height="41" Click="AddTeamButton_Click" Grid.Row="4" Margin="0,0,83,0">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="5"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+            <Button x:Name="AddTeamMemberButton" FontWeight="Bold"  BorderThickness="3" Background="#BFBFBF" FontFamily="GG Sans" Content="Lisää jäsen" VerticalAlignment="Center" Height="41" Click="AddTeamMemberButton_Click" Grid.Row="4" Margin="86,0,1,0">
                 <Button.Resources>
                     <Style TargetType="Border">
                         <Setter Property="CornerRadius" Value="5"/>
@@ -48,6 +55,13 @@
             </ListView>
             <TextBlock Grid.Column="1" TextAlignment="Center" Margin="890,10,0,529" FontFamily="GG sans" FontSize="20" Text="Sprintit" Height="28" Width="115" Foreground="White"/>
             <ListView x:Name="SprintListing" FontSize="14" Margin="859,0,-870,111" Grid.RowSpan="3" Grid.Row="1" BorderThickness="2" Background="#616161" MouseDoubleClick="SprintListing_MouseDoubleClick" BorderBrush="#FF383838" Foreground="White">
+                <ListView.ContextMenu >
+                    <ContextMenu >
+                        <MenuItem x:Name="RightClickSprintEdit"  Header="Muokkaa" Click="RightClickSprintEdit_Click"/>
+                        <MenuItem x:Name="RightClickSprintReport" Header="Näytä raportti" Click="RightClickSprintReport_Click"/>
+                        <MenuItem x:Name="RightClickSprintDelete" Header="Poista sprintti" Click="RightClickSprintDelete_Click"/>
+                    </ContextMenu>
+                </ListView.ContextMenu>
                 <ListView.Resources>
                     <Style TargetType="Border">
                         <Setter Property="CornerRadius" Value="5"/>
@@ -116,14 +130,28 @@
                         <TextBlock x:Name="StartDateBox" FontSize="12" FontFamily="GG sans"  HorizontalAlignment="Left"  TextWrapping="Wrap" Grid.Column="1" Grid.Row="3" Margin="30,0,0,0"/>
                         <TextBlock x:Name="EndDateBox" FontSize="12" FontFamily="GG sans"  HorizontalAlignment="Left"  TextWrapping="Wrap" VerticalAlignment="Top" Grid.Column="1" Grid.Row="4" Margin="30,0,0,0"/>
                     </StackPanel>
-                    <ListBox x:Name="TeamBox" BorderThickness="1" FontWeight="Bold" Background="#A8A8A8" Grid.Row="4" d:ItemsSource="{d:SampleData ItemCount=5}" Grid.ColumnSpan="2" Margin="92,0,20,20" Grid.RowSpan="2" Grid.Column="2" BorderBrush="#FFE0E0E0">
+                    <ListBox x:Name="TeamBox" BorderThickness="1" FontWeight="Bold" Background="#A8A8A8" Grid.Row="4" Grid.ColumnSpan="2" Margin="92,0,20,20" Grid.RowSpan="2" Grid.Column="2" BorderBrush="#FFE0E0E0">
+                        <ListBox.ContextMenu>
+                            <ContextMenu>
+                                <MenuItem x:Name="RightClickTeamEdit"  Header="Muokkaa" Click="RightClickTeamEdit_Click"/>
+                                <MenuItem x:Name="RightClickTeamReport" Header="Näytä raportti" Click="RightClickTeamReport_Click"/>
+                                <MenuItem x:Name="RightClickTeamDelete" Header="Poista tiimi" Click="RightClickTeamDelete_Click"/>
+                            </ContextMenu>
+                        </ListBox.ContextMenu>
                         <ListBox.Resources>
                             <Style TargetType="Border">
                                 <Setter Property="CornerRadius" Value="5"/>
                             </Style>
                         </ListBox.Resources>
                     </ListBox>
-                    <ListBox x:Name="UsersBox" BorderThickness="1" FontWeight="Bold" Background="#A8A8A8"  Grid.Column="4" Grid.Row="4" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="0,0,14,20" Grid.RowSpan="2" BorderBrush="#FFE0E0E0">
+                    <ListBox x:Name="UsersBox" BorderThickness="1" FontWeight="Bold" Background="#A8A8A8"  Grid.Column="4" Grid.Row="4" Margin="0,0,14,20" Grid.RowSpan="2" BorderBrush="#FFE0E0E0">
+                        <ListBox.ContextMenu>
+                            <ContextMenu >
+                                <MenuItem x:Name="RightClickÜserEdit"  Header="Muokkaa" Click="RightClickUserEdit_Click"/>
+                                <MenuItem x:Name="RightClickUserReport" Header="Näytä raportti" Click="RightClickUserReport_Click"/>
+                                <MenuItem x:Name="RightClickUserDelete" Header="Poista käyttäjä" Click="RightClickUserDelete_Click"/>
+                            </ContextMenu>
+                        </ListBox.ContextMenu>
                         <ListBox.Resources>
                             <Style TargetType="Border">
                                 <Setter Property="CornerRadius" Value="5"/>
@@ -151,7 +179,15 @@
                             <RowDefinition Height="71*"/>
                             <RowDefinition Height="174*"/>
                         </Grid.RowDefinitions>
-                        <ListView x:Name="UserStoryGridList" Background="#A6A6A6" FontSize="18" HorizontalAlignment="Left" Width="140" BorderThickness="0" Grid.Row="1" Margin="8,2,0,8" Grid.RowSpan="2" Grid.ColumnSpan="3"/>
+                        <ListView x:Name="UserStoryGridList" Background="#A6A6A6" FontSize="18" HorizontalAlignment="Left" Width="140" BorderThickness="0" Grid.Row="1" Margin="8,2,0,8" Grid.RowSpan="2" Grid.ColumnSpan="3">
+                            <ListView.ContextMenu >
+                                <ContextMenu >
+                                    <MenuItem x:Name="RightClickUserStoryEdit"  Header="Muokkaa" Click="RightClickEdit_Click"/>
+                                    <MenuItem x:Name="RightClickUserStoryReport" Header="Näytä raportti" Click="RightClickReport_Click"/>
+                                    <MenuItem x:Name="RightClickUserStoryDelete" Header="Poista projekti" Click="RightClickDelete_Click"/>
+                                </ContextMenu>
+                            </ListView.ContextMenu>
+                        </ListView>
                         <Label FontWeight="Bold" FontSize="15" HorizontalAlignment="Left" Grid.RowSpan="2" Margin="9,0,0,142" Grid.Column="1" Grid.ColumnSpan="2" Width="124">Käyttäjätarinat</Label>
                         <Button x:Name="AddTaskButton" FontSize="32" FontWeight="Bold" Content="+" Width="25"  HorizontalAlignment="Right"  Click="AddTaskButton_Click" Margin="5,0,0,142" Grid.RowSpan="2" Grid.ColumnSpan="3" />
                     </Grid>
@@ -175,7 +211,15 @@
                         </Button>
 
 
-                        <ListBox x:Name="ToDoListBox" FontSize="18"  BorderThickness="0" Grid.Row="1" Grid.ColumnSpan="2" Background="LightCoral" Margin="4,5,6,49" Grid.RowSpan="2"/>
+                        <ListBox x:Name="ToDoListBox" FontSize="18"  BorderThickness="0" Grid.Row="1" Grid.ColumnSpan="2" Background="LightCoral" Margin="4,5,6,49" Grid.RowSpan="2">
+                            <ListBox.ContextMenu>
+                                <ContextMenu>
+                                    <MenuItem x:Name="RightClickTaskEdit" Header="Muokkaa" Click="RightClickTaskkEdit_Click"/>
+                                    <MenuItem x:Name="RightClickTaskReport" Header="Näytä tiedot" Click="RightClickTaskInfo_Click"/>
+                                    <MenuItem x:Name="RightClickTaskDelete" Header="Poista projekti" Click="RightClickTaskDelete_Click"/>
+                                </ContextMenu>
+                            </ListBox.ContextMenu>
+                        </ListBox>
 
                     </Grid>
                     <Grid x:Name="TaskInProgressGrid" Background="LightYellow" Grid.Column="2">

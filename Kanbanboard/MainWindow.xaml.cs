@@ -9,6 +9,7 @@ using System.Data.Common;
 using System.Data.OleDb;
 using System.Diagnostics;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -33,7 +34,7 @@ namespace Kanbanboard
         public MainWindow()
         {
             InitializeComponent();
-            Loaded += UpdateProjectListButton_Click;
+            Loaded += UpdateProjectList;
         }
 
         private void AddProjectButton_Click(object sender, RoutedEventArgs e)
@@ -70,7 +71,7 @@ namespace Kanbanboard
             newUser.ShowDialog();
         }
 
-        private void UpdateProjectListButton_Click(object sender, RoutedEventArgs e)
+        private void UpdateProjectList(object sender, RoutedEventArgs e)
         {
             ProjectListing.Items.Clear();
             Reader reader= new Reader();
@@ -145,7 +146,7 @@ namespace Kanbanboard
                     TeamBox.Items.Add(s);
 
                 UsersBox.Items.Clear();
-                string[] userList = reader.DBUserNameReader().Split('\n');
+                string[] userList = reader.DBProjectUserNameReader().Split('\n');
                 userList = userList.SkipLast(1).ToArray();
                 foreach (string s in userList)
                     UsersBox.Items.Add(s);
@@ -174,6 +175,19 @@ namespace Kanbanboard
             addTask.AddTaskButton.Click += new RoutedEventHandler(AddTask);
             addTask.ShowDialog();
         }
+        private void AddTeamButton_Click(object sender, RoutedEventArgs e)
+        {
+            AddTeam addTeam = new AddTeam();
+            addTeam.AddTeamButton.Click += new RoutedEventHandler(AddTeam);
+            addTeam.ShowDialog();
+
+        }
+        private void AddTeamMemberButton_Click(object sender, RoutedEventArgs e)
+        {
+            AddTeamMember addMember = new AddTeamMember();
+            addMember.ShowDialog();
+        }
+
         private void RightClickEdit_Click(object sender, RoutedEventArgs e) 
         {
             if (ProjectListing.SelectedItem != null)
@@ -313,18 +327,148 @@ namespace Kanbanboard
         }
         private void RightClickUserReport_Click(object sender, RoutedEventArgs e)
         {
-
+            if (UsersBox.SelectedItem != null)
+            {
+                string name = UsersBox.SelectedItem.ToString();
+                UserReport ur = new UserReport(name);
+                ur.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Valitse nimi poistettavaksi.");
+            }
         }
         private void RightClickUserDelete_Click(object sender, RoutedEventArgs e)
         {
-
+            using (OleDbConnection con = DataServices.DBConnection())   //Käytetään DataServices.cs tiedostoon luotua tietokantayhteyttä.
+            {                                                           //Using-komennolla yhteys suljetaan automaattisesti suorituksen jälkeen.
+                OleDbCommand cmd;
+                MessageBoxResult result = MessageBox.Show("Haluatko varmasti poistaa käyttäjän " + UsersBox.SelectedItem + "?", "Vahvistus", MessageBoxButton.YesNo);
+                if (result == MessageBoxResult.Yes)
+                {
+                    if (UsersBox.SelectedItem != null)
+                    {
+                        cmd = new OleDbCommand("DELETE FROM users WHERE user_nimi='" + UsersBox.SelectedItem + "';");
+                        cmd.Connection = con;   //Yhteys avataan OleDb-komennolla.
+                        cmd.ExecuteNonQuery();
+                        MessageBox.Show("Käyttäjä " + UsersBox.SelectedItem + " poistettu.");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Valitse poistettava käyttäjä");
+                    }
+                }
+                if (result == MessageBoxResult.No)
+                {
+                    MessageBox.Show("Toiminto peruutettu.");
+                }
+            }
         }
-        private void RightClickUserProjects_Click(object sender, RoutedEventArgs e)
+        private void RightClickSprintEdit_Click(Object sender, RoutedEventArgs e)
         {
 
         }
+        private void RightClickSprintReport_Click(Object sender, RoutedEventArgs e)
+        {
 
+        }
+        private void RightClickSprintDelete_Click(Object sender, RoutedEventArgs e)
+        {
+            using (OleDbConnection con = DataServices.DBConnection())   //Käytetään DataServices.cs tiedostoon luotua tietokantayhteyttä.
+            {                                                           //Using-komennolla yhteys suljetaan automaattisesti suorituksen jälkeen.
+                OleDbCommand cmd;
+                MessageBoxResult result = MessageBox.Show("Haluatko varmasti poistaa sprintin " + SprintListing.SelectedItem + "?", "Vahvistus", MessageBoxButton.YesNo);
+                if (result == MessageBoxResult.Yes)
+                {
+                    if (SprintListing.SelectedItem != null)
+                    {
+                        cmd = new OleDbCommand("DELETE FROM sprints WHERE sprint_nimi='" + SprintListing.SelectedItem + "';");
+                        cmd.Connection = con;   //Yhteys avataan OleDb-komennolla.
+                        cmd.ExecuteNonQuery();
+                        MessageBox.Show("Sprintti " + SprintListing.SelectedItem + " poistettu.");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Valitse poistettava sprintti");
+                    }
+                }
+                if (result == MessageBoxResult.No)
+                {
+                    MessageBox.Show("Toiminto peruutettu.");
+                }
+            }
+        }
 
+        private void RightClickTeamEdit_Click(object sender, RoutedEventArgs e) 
+        {
+        
+        }
+
+        private void RightClickTeamReport_Click(object sender, RoutedEventArgs e) 
+        { 
+        
+        }
+
+        private void RightClickTeamDelete_Click(object sender, RoutedEventArgs e) 
+        {
+            using (OleDbConnection con = DataServices.DBConnection())   //Käytetään DataServices.cs tiedostoon luotua tietokantayhteyttä.
+            {                                                           //Using-komennolla yhteys suljetaan automaattisesti suorituksen jälkeen.
+                OleDbCommand cmd;
+                MessageBoxResult result = MessageBox.Show("Haluatko varmasti poistaa tiimin " + TeamBox.SelectedItem + "?", "Vahvistus", MessageBoxButton.YesNo);
+                if (result == MessageBoxResult.Yes)
+                {
+                    if (UsersBox.SelectedItem != null)
+                    {
+                        cmd = new OleDbCommand("DELETE FROM users WHERE user_nimi='" + TeamBox.SelectedItem + "';");
+                        cmd.Connection = con;   //Yhteys avataan OleDb-komennolla.
+                        cmd.ExecuteNonQuery();
+                        MessageBox.Show("Käyttäjä " + TeamBox.SelectedItem + " poistettu.");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Valitse poistettava tiimi");
+                    }
+                }
+                if (result == MessageBoxResult.No)
+                {
+                    MessageBox.Show("Toiminto peruutettu.");
+                }
+            }
+        }
+        private void RightClickTaskkEdit_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+        private void RightClickTaskInfo_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+        private void RightClickTaskDelete_Click(object sender, RoutedEventArgs e)
+        {
+            using (OleDbConnection con = DataServices.DBConnection())   //Käytetään DataServices.cs tiedostoon luotua tietokantayhteyttä.
+            {                                                           //Using-komennolla yhteys suljetaan automaattisesti suorituksen jälkeen.
+                OleDbCommand cmd;
+                MessageBoxResult result = MessageBox.Show("Haluatko varmasti poistaa tehtävän " + ToDoListBox.SelectedItem + "?", "Vahvistus", MessageBoxButton.YesNo);
+                if (result == MessageBoxResult.Yes)
+                {
+                    if (UsersBox.SelectedItem != null)
+                    {
+                        cmd = new OleDbCommand("DELETE FROM tasks WHERE task_nimi='" + ToDoListBox.SelectedItem + "';");
+                        cmd.Connection = con;   //Yhteys avataan OleDb-komennolla.
+                        cmd.ExecuteNonQuery();
+                        MessageBox.Show("Tehtävä " + ToDoListBox.SelectedItem + " poistettu.");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Valitse poistettava tehtävä");
+                    }
+                }
+                if (result == MessageBoxResult.No)
+                {
+                    MessageBox.Show("Toiminto peruutettu.");
+                }
+            }
+        }
 
         private void AddUserStory(object sender, RoutedEventArgs e)
         {
@@ -342,20 +486,9 @@ namespace Kanbanboard
         {
 
         }
-    }
-    public class Projekti
-    {
-        private string nimi;
-        public string Nimi
+        private void AddTeam(object sender, RoutedEventArgs e)
         {
-            get;
-            set;
-        }
-        private string tiimi;
-        public string Tiimi
-        {
-            get;
-            set;
+
         }
 
     }

@@ -157,6 +157,37 @@ namespace Kanbanboard
                 return userstories;   //Palautetaan nimet sisältävä string
             }
         }
+        public String DBEveryTeamNameReader()
+        {
+            using (OleDbConnection con = DataServices.DBConnection())   //Käytetään DataServices.cs tiedostoon luotua tietokantayhteyttä.
+            {                                                           //Using-komennolla yhteys suljetaan automaattisesti suorituksen jälkeen.
+                OleDbCommand cmd;
+                cmd = new OleDbCommand("SELECT team_nimi FROM teams;");
+                cmd.Connection = con;   //Yhteys avataan OleDb-komennolla.
+                string teams = String.Empty;    //Kerätään nimet tähän tyhjään stringiin.
+
+                string[] teamList = new string[20];     //20 on ihan satunnainen numero, lopullinen numero on varmasti toinen.
+                bool read;
+
+                OleDbDataReader reader = cmd.ExecuteReader();
+                if (reader.Read() == true)
+                {
+                    do
+                    {
+                        int NumberOfRows = reader.GetValues(teamList);
+                        for (int i = 0; i < NumberOfRows; i++)
+                        {
+                            teams += teamList[i].ToString() + "\n"; //Nimet kerätään projectlist-taulukkoon josta ne siirretään users-stringiin omille riveilleen.
+                        }
+                        read = reader.Read();
+                    }
+                    while (read == true);
+                }
+                reader.Close();
+                cmd.ExecuteNonQuery();
+                return teams;   //Palautetaan nimet sisältävä string
+            }
+        }
         public String DBProjectNameReader()
         {
             using (OleDbConnection con = DataServices.DBConnection())   //Käytetään DataServices.cs tiedostoon luotua tietokantayhteyttä.
@@ -239,6 +270,37 @@ namespace Kanbanboard
                 cmd.ExecuteNonQuery();
 
                 return enddate;
+            }
+        }
+        public String DBProjectTeamsReader()
+        { 
+            using (OleDbConnection con = DataServices.DBConnection())   //Käytetään DataServices.cs tiedostoon luotua tietokantayhteyttä.
+            {                                                           //Using-komennolla yhteys suljetaan automaattisesti suorituksen jälkeen.
+                OleDbCommand cmd;
+                cmd = new OleDbCommand("SELECT teams.team_nimi FROM projects INNER JOIN teams on teams.project_id = projects.project_id WHERE projects.project_nimi='" + name + "';");
+                cmd.Connection = con;   //Yhteys avataan OleDb-komennolla.
+                string teams = String.Empty;    //Kerätään nimet tähän tyhjään stringiin.
+
+                string[] projectTeams = new string[20];     //20 on ihan satunnainen numero, lopullinen numero on varmasti toinen.
+                bool read;
+
+                OleDbDataReader reader = cmd.ExecuteReader();
+                if (reader.Read() == true)
+                {
+                    do
+                    {
+                        int NumberOfRows = reader.GetValues(projectTeams);
+                        for (int i = 0; i < NumberOfRows; i++)
+                        {
+                            teams += projectTeams[i].ToString() + "\n"; //Nimet kerätään projectlist-taulukkoon josta ne siirretään users-stringiin omille riveilleen.
+                        }
+                        read = reader.Read();
+                    }
+                    while (read == true);
+                }
+                reader.Close();
+                cmd.ExecuteNonQuery();
+                return teams;   //Palautetaan nimet sisältävä string
             }
         }
         public String DBSprintNameReader()
@@ -344,7 +406,7 @@ namespace Kanbanboard
                 return teams;
             }
         }
-        public String DBUserNameReader()
+        public String DBProjectUserNameReader()
         {
             using (OleDbConnection con = DataServices.DBConnection())   //Käytetään DataServices.cs tiedostoon luotua tietokantayhteyttä.
             {                                                           //Using-komennolla yhteys suljetaan automaattisesti suorituksen jälkeen.
@@ -363,6 +425,59 @@ namespace Kanbanboard
                 cmd.ExecuteNonQuery();
 
                 return users;
+            }
+        }
+        public String DBUserRoleReader()
+        {
+            using (OleDbConnection con = DataServices.DBConnection())   //Käytetään DataServices.cs tiedostoon luotua tietokantayhteyttä.
+            {                                                           //Using-komennolla yhteys suljetaan automaattisesti suorituksen jälkeen.
+                OleDbCommand cmd;
+
+                cmd = new OleDbCommand("SELECT user_rooli FROM users WHERE user_nimi='" + name + "';");
+                cmd.Connection = con;   //Yhteys avataan OleDb-komennolla.
+                string username = String.Empty;    //Kerätään info tähän tyhjään stringiin.
+
+
+                OleDbDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    username += reader.GetString(0) + "\n";
+                }
+                reader.Close();
+                cmd.ExecuteNonQuery();
+
+                return username;
+            }
+        }
+        public String DBUserTeamReader()
+        {
+            using (OleDbConnection con = DataServices.DBConnection())   //Käytetään DataServices.cs tiedostoon luotua tietokantayhteyttä.
+            {                                                           //Using-komennolla yhteys suljetaan automaattisesti suorituksen jälkeen.
+                OleDbCommand cmd;
+                cmd = new OleDbCommand("SELECT teams.team_nimi FROM users INNER JOIN (teams INNER JOIN users_teams_link ON teams.team_id = users_teams_link.team_id) ON users.user_id = users_teams_link.user_id WHERE user_nimi='" + name + "';");
+                cmd.Connection = con;   //Yhteys avataan OleDb-komennolla.
+                string teams = String.Empty;    //Kerätään nimet tähän tyhjään stringiin.
+
+                string[] teamList = new string[20];     //20 on ihan satunnainen numero, lopullinen numero on varmasti toinen.
+                bool read;
+
+                OleDbDataReader reader = cmd.ExecuteReader();
+                if (reader.Read() == true)
+                {
+                    do
+                    {
+                        int NumberOfRows = reader.GetValues(teamList);
+                        for (int i = 0; i < NumberOfRows; i++)
+                        {
+                            teams += teamList[i].ToString() + "\n"; //Nimet kerätään projectlist-taulukkoon josta ne siirretään users-stringiin omille riveilleen.
+                        }
+                        read = reader.Read();
+                    }
+                    while (read == true);
+                }
+                reader.Close();
+                cmd.ExecuteNonQuery();
+                return teams;   //Palautetaan nimet sisältävä string
             }
         }
         public String DBUserStoryReader()
@@ -470,6 +585,39 @@ namespace Kanbanboard
             }
                     
         }
+        public String DBTeamUserReader()
+        {
+            {
+                using (OleDbConnection con = DataServices.DBConnection())   //Käytetään DataServices.cs tiedostoon luotua tietokantayhteyttä.
+                {                                                           //Using-komennolla yhteys suljetaan automaattisesti suorituksen jälkeen.
+                    OleDbCommand cmd;
+                    cmd = new OleDbCommand("SELECT users.user_nimi FROM users INNER JOIN (teams INNER JOIN users_teams_link ON teams.[team_id] = users_teams_link.[team_id]) ON users.[user_id] = users_teams_link.[user_id] WHERE teams.team_nimi ='" + name + "';");
+                    cmd.Connection = con;   //Yhteys avataan OleDb-komennolla.
+                    string users = String.Empty;    //Kerätään nimet tähän tyhjään stringiin.
+
+                    string[] userlist = new string[20];     //20 on ihan satunnainen numero, lopullinen numero on varmasti toinen.
+                    bool read;
+
+                    OleDbDataReader reader = cmd.ExecuteReader();
+                    if (reader.Read() == true)
+                    {
+                        do
+                        {
+                            int NumberOfRows = reader.GetValues(userlist);
+                            for (int i = 0; i < NumberOfRows; i++)
+                            {
+                                users += userlist[i].ToString() + "\n"; //Nimet kerätään projectlist-taulukkoon josta ne siirretään users-stringiin omille riveilleen.
+                            }
+                            read = reader.Read();
+                        }
+                        while (read == true);
+                    }
+                    reader.Close();
+                    cmd.ExecuteNonQuery();
+                    return users;   //Palautetaan nimet sisältävä string
+                }
+            }
+        }
         public Int32 ProjectIdReader()
         {
             using (OleDbConnection con = DataServices.DBConnection())   //Käytetään DataServices.cs tiedostoon luotua tietokantayhteyttä.
@@ -490,7 +638,6 @@ namespace Kanbanboard
                 return i; 
             }
         }
-
         public Int32 SprintIdReader()
         {
             using (OleDbConnection con = DataServices.DBConnection())   //Käytetään DataServices.cs tiedostoon luotua tietokantayhteyttä.
@@ -511,7 +658,6 @@ namespace Kanbanboard
                 return i;
             }
         }
-
         public Int32 UserStoryIdReader()
         {
             using (OleDbConnection con = DataServices.DBConnection())   //Käytetään DataServices.cs tiedostoon luotua tietokantayhteyttä.
@@ -532,7 +678,6 @@ namespace Kanbanboard
                 return i;
             }
         }
-
         public Int32 UserIdReader()
         {
             using (OleDbConnection con = DataServices.DBConnection())   //Käytetään DataServices.cs tiedostoon luotua tietokantayhteyttä.
@@ -551,6 +696,28 @@ namespace Kanbanboard
                 cmd.ExecuteNonQuery();
 
                 return i;
+            }
+        }
+        public Int32 TeamIdReader()
+        {
+            {
+                using (OleDbConnection con = DataServices.DBConnection())   //Käytetään DataServices.cs tiedostoon luotua tietokantayhteyttä.
+                {                                                           //Using-komennolla yhteys suljetaan automaattisesti suorituksen jälkeen.
+                    OleDbCommand cmd;
+                    cmd = new OleDbCommand("SELECT team_id FROM teams WHERE team_nimi='" + name + "';");
+                    cmd.Connection = con;   //Yhteys avataan OleDb-komennolla.
+                    int i = 0;
+
+                    OleDbDataReader reader = cmd.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        i += reader.GetInt32(0);
+                    }
+                    reader.Close();
+                    cmd.ExecuteNonQuery();
+
+                    return i;
+                }
             }
         }
     }
