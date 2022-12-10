@@ -36,41 +36,6 @@ namespace Kanbanboard
             InitializeComponent();
             Loaded += UpdateProjectList;
         }
-
-        private void AddProjectButton_Click(object sender, RoutedEventArgs e)
-        {
-            AddProject addProject = new AddProject();
-            addProject.AddProjectButton.Click += new RoutedEventHandler(AddProject);
-            addProject.Title = "Lisää projekti";
-            addProject.ShowDialog();
-        }
-
-        private void AddUserStoryButton_Click(object sender, RoutedEventArgs e)
-        {
-            AddUserStory addUserStory = new AddUserStory();
-            addUserStory.AddUserStoryButton.Click += new RoutedEventHandler(AddUserStory);
-            addUserStory.ShowDialog();
-        }
-
-        private void AddSprintButton_Click(object sender, RoutedEventArgs e)
-        {
-            //TabItem tabItem = new TabItem();
-            //tabItem.Header = "Sprintti";
-            //tabItem.Content = new TabitemMalli();
-            //SprinttiLaatikko.Items.Insert(SprinttiLaatikko.Items.Count, tabItem);
-            AddSprintWindow sprintWindow = new AddSprintWindow();
-            sprintWindow.Title = "Lisää sprintti";
-            sprintWindow.ShowDialog();
-        }
-
-        private void AddUserButton_Click(object sender, RoutedEventArgs e)
-        {
-            AddUser newUser = new AddUser();
-            newUser.AddNewUserButton.Click += new RoutedEventHandler(AddUser);
-            newUser.Title = "Lisää käyttäjä";
-            newUser.ShowDialog();
-        }
-
         private void UpdateProjectList(object sender, RoutedEventArgs e)
         {
             ProjectListing.Items.Clear();
@@ -102,6 +67,7 @@ namespace Kanbanboard
             foreach (string s in completeList)
                 TaskDoneListBox.Items.Add(s);
         }
+        //<-----------------------------------DOUBLECLICKS----------------------------------->
         private void ProjectListing_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             /**
@@ -156,7 +122,6 @@ namespace Kanbanboard
                 MessageBox.Show("Tuplaklikkaa projektia listalta");
             }
         }
-
         private void SprintListing_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             string name = SprintListing.SelectedItem.ToString();
@@ -169,6 +134,37 @@ namespace Kanbanboard
             TaskLists_populate();
         }
 
+        //<------------------------------------BUTTONS---------------------------------------->
+        private void AddProjectButton_Click(object sender, RoutedEventArgs e)
+        {
+            AddProject addProject = new AddProject();
+            addProject.AddProjectButton.Click += new RoutedEventHandler(AddProject);
+            addProject.Title = "Lisää projekti";
+            addProject.ShowDialog();
+        }
+        private void AddUserStoryButton_Click(object sender, RoutedEventArgs e)
+        {
+            AddUserStory addUserStory = new AddUserStory();
+            addUserStory.AddUserStoryButton.Click += new RoutedEventHandler(AddUserStory);
+            addUserStory.ShowDialog();
+        }
+        private void AddSprintButton_Click(object sender, RoutedEventArgs e)
+        {
+            //TabItem tabItem = new TabItem();
+            //tabItem.Header = "Sprintti";
+            //tabItem.Content = new TabitemMalli();
+            //SprinttiLaatikko.Items.Insert(SprinttiLaatikko.Items.Count, tabItem);
+            AddSprintWindow sprintWindow = new AddSprintWindow();
+            sprintWindow.Title = "Lisää sprintti";
+            sprintWindow.ShowDialog();
+        }
+        private void AddUserButton_Click(object sender, RoutedEventArgs e)
+        {
+            AddUser newUser = new AddUser();
+            newUser.AddNewUserButton.Click += new RoutedEventHandler(AddUser);
+            newUser.Title = "Lisää käyttäjä";
+            newUser.ShowDialog();
+        }
         private void AddTaskButton_Click(object sender, RoutedEventArgs e)
         {
             AddTask addTask = new AddTask();
@@ -188,6 +184,83 @@ namespace Kanbanboard
             addMember.ShowDialog();
         }
 
+        //<----------------------------------KANBAN CONTROLS----------------------------------->
+        private void BacklogMoveTaskRightButton_Click(object sender, RoutedEventArgs e)
+        {
+            using (OleDbConnection con = DataServices.DBConnection())   //Käytetään DataServices.cs tiedostoon luotua tietokantayhteyttä.
+            {                                                           //Using-komennolla yhteys suljetaan automaattisesti suorituksen jälkeen.
+                OleDbCommand cmd;
+                if (ToDoListBox.SelectedItem != null)
+                {
+                    cmd = new OleDbCommand("UPDATE tasks SET task_tila = '1' WHERE task_nimi='" + ToDoListBox.SelectedItem + "';");
+                    cmd.Connection = con;   //Yhteys avataan OleDb-komennolla.
+                    cmd.ExecuteNonQuery();
+                }
+                else
+                {
+                    MessageBox.Show("Valitse tehtävä backlogissa olevien tehtävien listalta");
+                }
+            }
+            TaskLists_populate();
+        }
+        private void TaskInProgressMoveTaskLeftButton_Click(object sender, RoutedEventArgs e)
+        {
+            using (OleDbConnection con = DataServices.DBConnection())   //Käytetään DataServices.cs tiedostoon luotua tietokantayhteyttä.
+            {                                                           //Using-komennolla yhteys suljetaan automaattisesti suorituksen jälkeen.
+                OleDbCommand cmd;
+                if (TaskInProgressListBox.SelectedItem != null)
+                {
+                    cmd = new OleDbCommand("UPDATE tasks SET task_tila = '0' WHERE task_nimi='" + TaskInProgressListBox.SelectedItem + "';");
+                    cmd.Connection = con;   //Yhteys avataan OleDb-komennolla.
+                    cmd.ExecuteNonQuery();
+                }
+                else
+                {
+                    MessageBox.Show("Valitse tehtävä keskeneräisten tehtävien listalta");
+                }
+            }
+            TaskLists_populate();
+        }
+        private void TaskInProgressMoveTaskRightButton_Click(object sender, RoutedEventArgs e)
+        {
+            using (OleDbConnection con = DataServices.DBConnection())   //Käytetään DataServices.cs tiedostoon luotua tietokantayhteyttä.
+            {                                                           //Using-komennolla yhteys suljetaan automaattisesti suorituksen jälkeen.
+                OleDbCommand cmd;
+                if (TaskInProgressListBox.SelectedItem != null)
+                {
+                    cmd = new OleDbCommand("UPDATE tasks SET task_tila = '2' WHERE task_nimi='" + TaskInProgressListBox.SelectedItem + "';");
+                    cmd.Connection = con;   //Yhteys avataan OleDb-komennolla.
+                    cmd.ExecuteNonQuery();
+                }
+                else
+                {
+                    MessageBox.Show("Valitse tehtävä keskeneräisten tehtävien listalta");
+                }
+            }
+            TaskLists_populate();
+        }
+        private void TaskDoneMoveTaskLeftButton_Click(object sender, RoutedEventArgs e)
+        {
+            using (OleDbConnection con = DataServices.DBConnection())   //Käytetään DataServices.cs tiedostoon luotua tietokantayhteyttä.
+            {                                                           //Using-komennolla yhteys suljetaan automaattisesti suorituksen jälkeen.
+                OleDbCommand cmd;
+                if (TaskDoneListBox.SelectedItem != null)
+                {
+                    cmd = new OleDbCommand("UPDATE tasks SET task_tila = '1' WHERE task_nimi='" + TaskDoneListBox.SelectedItem + "';");
+                    cmd.Connection = con;   //Yhteys avataan OleDb-komennolla.
+                    cmd.ExecuteNonQuery();
+
+                    TaskLists_populate();
+                }
+                else
+                {
+                    MessageBox.Show("Valitse tehtävä valmiiden tehtävien listalta");
+                }
+            }
+            TaskLists_populate();
+        }
+
+        //<-------------------------------PROJECT RIGHTCLICKS---------------------------------->
         private void RightClickEdit_Click(object sender, RoutedEventArgs e) 
         {
             if (ProjectListing.SelectedItem != null)
@@ -234,83 +307,7 @@ namespace Kanbanboard
             pr.ShowDialog();
         }
 
-        private void BacklogMoveTaskRightButton_Click(object sender, RoutedEventArgs e)
-        {
-            using (OleDbConnection con = DataServices.DBConnection())   //Käytetään DataServices.cs tiedostoon luotua tietokantayhteyttä.
-            {                                                           //Using-komennolla yhteys suljetaan automaattisesti suorituksen jälkeen.
-                OleDbCommand cmd;
-                if (ToDoListBox.SelectedItem != null)
-                {
-                    cmd = new OleDbCommand("UPDATE tasks SET task_tila = '1' WHERE task_nimi='" + ToDoListBox.SelectedItem + "';");
-                    cmd.Connection = con;   //Yhteys avataan OleDb-komennolla.
-                    cmd.ExecuteNonQuery();
-                }
-                else
-                {
-                    MessageBox.Show("Valitse tehtävä backlogissa olevien tehtävien listalta");
-                }
-            }
-            TaskLists_populate();
-        }
-
-        private void TaskInProgressMoveTaskLeftButton_Click(object sender, RoutedEventArgs e)
-        {
-            using (OleDbConnection con = DataServices.DBConnection())   //Käytetään DataServices.cs tiedostoon luotua tietokantayhteyttä.
-            {                                                           //Using-komennolla yhteys suljetaan automaattisesti suorituksen jälkeen.
-                OleDbCommand cmd;
-                if (TaskInProgressListBox.SelectedItem != null)
-                {
-                    cmd = new OleDbCommand("UPDATE tasks SET task_tila = '0' WHERE task_nimi='" + TaskInProgressListBox.SelectedItem + "';");
-                    cmd.Connection = con;   //Yhteys avataan OleDb-komennolla.
-                    cmd.ExecuteNonQuery();
-                }
-                else
-                {
-                    MessageBox.Show("Valitse tehtävä keskeneräisten tehtävien listalta");
-                }
-            }
-            TaskLists_populate();
-        }
-
-        private void TaskInProgressMoveTaskRightButton_Click(object sender, RoutedEventArgs e)
-        {
-            using (OleDbConnection con = DataServices.DBConnection())   //Käytetään DataServices.cs tiedostoon luotua tietokantayhteyttä.
-            {                                                           //Using-komennolla yhteys suljetaan automaattisesti suorituksen jälkeen.
-                OleDbCommand cmd;
-                if (TaskInProgressListBox.SelectedItem != null)
-                {
-                    cmd = new OleDbCommand("UPDATE tasks SET task_tila = '2' WHERE task_nimi='" + TaskInProgressListBox.SelectedItem + "';");
-                    cmd.Connection = con;   //Yhteys avataan OleDb-komennolla.
-                    cmd.ExecuteNonQuery();
-                }
-                else
-                {
-                    MessageBox.Show("Valitse tehtävä keskeneräisten tehtävien listalta");
-                }
-            }
-            TaskLists_populate();
-        }
-
-        private void TaskDoneMoveTaskLeftButton_Click(object sender, RoutedEventArgs e)
-        {
-            using (OleDbConnection con = DataServices.DBConnection())   //Käytetään DataServices.cs tiedostoon luotua tietokantayhteyttä.
-            {                                                           //Using-komennolla yhteys suljetaan automaattisesti suorituksen jälkeen.
-                OleDbCommand cmd;
-                if (TaskDoneListBox.SelectedItem != null)
-                {
-                    cmd = new OleDbCommand("UPDATE tasks SET task_tila = '1' WHERE task_nimi='" + TaskDoneListBox.SelectedItem + "';");
-                    cmd.Connection = con;   //Yhteys avataan OleDb-komennolla.
-                    cmd.ExecuteNonQuery();
-
-                    TaskLists_populate();
-                }
-                else
-                {
-                    MessageBox.Show("Valitse tehtävä valmiiden tehtävien listalta");
-                }
-            }
-            TaskLists_populate();
-        }
+        //<---------------------------------USER RIGHTCLICKS------------------------------------>
         private void RightClickUserEdit_Click(object sender, RoutedEventArgs e)
         {
             if (UsersBox.SelectedItem != null)
@@ -365,10 +362,7 @@ namespace Kanbanboard
             }
         }
 
-        private void RightClickSprintEdit_Click(Object sender, RoutedEventArgs e)
-        {
-
-        }
+        //<-------------------------------USERSTORY RIGHTCLICKS---------------------------------->
         private void RightClickUserStoryEdit_Click(Object sender, RoutedEventArgs e)
         {
 
@@ -383,6 +377,12 @@ namespace Kanbanboard
             }
         }
         private void RightClickUserStoryDelete_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        //<----------------------------------SPRINT RIGHTCLICKS----------------------------------->
+        private void RightClickSprintEdit_Click(Object sender, RoutedEventArgs e)
         {
 
         }
@@ -417,13 +417,11 @@ namespace Kanbanboard
             }
         }
 
-        
-
+        //<----------------------------------TEAM RIGHTCLICK -------------------------------------->
         private void RightClickTeamReport_Click(object sender, RoutedEventArgs e) 
         { 
         
         }
-
         private void RightClickTeamDelete_Click(object sender, RoutedEventArgs e) 
         {
             using (OleDbConnection con = DataServices.DBConnection())   //Käytetään DataServices.cs tiedostoon luotua tietokantayhteyttä.
@@ -454,6 +452,8 @@ namespace Kanbanboard
         {
 
         }
+
+        //<----------------------------------TASK RIGHTCLICK--------------------------------------->
         private void RightClickTaskkEdit_Click(object sender, RoutedEventArgs e)
         {
 
@@ -488,7 +488,34 @@ namespace Kanbanboard
                 }
             }
         }
+        private void RightClickRemoveTaskUser_Click(object sender, RoutedEventArgs e)
+        {
+            using (OleDbConnection con = DataServices.DBConnection())   //Käytetään DataServices.cs tiedostoon luotua tietokantayhteyttä.
+            {                                                           //Using-komennolla yhteys suljetaan automaattisesti suorituksen jälkeen.
+                OleDbCommand cmd;
+                MessageBoxResult result = MessageBox.Show("Haluatko varmasti poistaa tehtävän tehtävältä käyttäjän?", "Vahvistus", MessageBoxButton.YesNo);
+                if (result == MessageBoxResult.Yes)
+                {
+                    if (ToDoListBox.SelectedItem != null)
+                    {
+                        cmd = new OleDbCommand("UPDATE tasks SET user_id=null WHERE task_nimi='" + ToDoListBox.SelectedItem + "';");
+                        cmd.Connection = con;   //Yhteys avataan OleDb-komennolla.
+                        cmd.ExecuteNonQuery();
+                        MessageBox.Show("Tehtävän käyttäjä poistettu.");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Valitse käyttäjätarina.");
+                    }
+                }
+                if (result == MessageBoxResult.No)
+                {
+                    MessageBox.Show("Toiminto peruutettu.");
+                }
+            }
+        }
 
+        //<------------------------------------ROUTED CRAP------------------------------------------>
         private void AddUserStory(object sender, RoutedEventArgs e)
         {
 

@@ -190,6 +190,7 @@ namespace Kanbanboard
                 return teams;   //Palautetaan nimet sisältävä string
             }
         }
+
         //<-----------------------------------PROJECT READERS-------------------------------->
         public String DBProjectNameReader()
         {
@@ -327,6 +328,7 @@ namespace Kanbanboard
                 return users;
             }
         }
+
         //<-----------------------------------SPRINT READERS------------------------------->
         public String DBSprintNameReader()
         {
@@ -410,6 +412,7 @@ namespace Kanbanboard
                 return enddate;
             }
         }
+
         //<-----------------------------------USER READERS---------------------------------->
         public String DBUserRoleReader()
         {
@@ -495,6 +498,7 @@ namespace Kanbanboard
                 return teams;   //Palautetaan nimet sisältävä string
             }
         }
+
         //<-----------------------------------USERSTORY READERS------------------------------>
         public String DBUserStoryReader()
         {
@@ -557,6 +561,7 @@ namespace Kanbanboard
                 return userStoryTasks;
             }
         }
+
         //<-----------------------------------TASK READERS------------------------------------>
         public String DBBackLogReader()
         {
@@ -621,6 +626,7 @@ namespace Kanbanboard
                 return taskname;
             }
         }
+
         //<-----------------------------------TEAM READERS------------------------------------>
         public String DBTeamUserReader()
         {
@@ -676,6 +682,7 @@ namespace Kanbanboard
                 return teams;
             }
         }
+
         //<------------------------------------ID READERS------------------------------------->
         public Int32 ProjectIdReader()
         {

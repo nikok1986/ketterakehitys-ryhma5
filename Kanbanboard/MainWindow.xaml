@@ -217,6 +217,7 @@
                                     <MenuItem x:Name="RightClickTaskEdit" Header="Muokkaa" Click="RightClickTaskkEdit_Click"/>
                                     <MenuItem x:Name="RightClickTaskReport" Header="Näytä tiedot" Click="RightClickTaskInfo_Click"/>
                                     <MenuItem x:Name="RightClickTaskDelete" Header="Poista projekti" Click="RightClickTaskDelete_Click"/>
+                                    <MenuItem x:Name="RightClickRemoveTaskUser" Header="Poista tekijä" Click="RightClickRemoveTaskUser_Click"/>
                                 </ContextMenu>
                             </ListBox.ContextMenu>
                         </ListBox>
