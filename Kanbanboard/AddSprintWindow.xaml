@@ -38,8 +38,8 @@
             <WrapPanel Grid.Row="10"/>
             <ComboBox Grid.Row="8" x:Name="ProjectList" HorizontalAlignment="Center" Height="25"  Width="200" Grid.RowSpan="1" SelectionChanged="ProjectList_SelectionChanged"/>
             <WrapPanel Grid.Row="11" HorizontalAlignment="Center">
-                <Button x:Name="AddProjectButton"  FontFamily="GG sans" FontSize="12" VerticalAlignment="Center" Background="Black" Width="50" Margin="5" Content="OK" IsDefault="True" Click="AddProjectButton_Click" Foreground="White"/>
-                <Button x:Name="CancelAddProjectButton"  FontFamily="GG sans" FontSize="12"  VerticalAlignment="Center" Background="Black" Width="50" Margin="5" Content="Cancel" IsCancel="True" Click="CancelAddProjectButton_Click" Foreground="White"/>
+                <Button x:Name="AddSprintButton"  FontFamily="GG sans" FontSize="12" VerticalAlignment="Center" Background="Black" Width="50" Margin="5" Content="OK" IsDefault="True" Click="AddSprintButton_Click" Foreground="White"/>
+                <Button x:Name="CancelAddSprintButton"  FontFamily="GG sans" FontSize="12"  VerticalAlignment="Center" Background="Black" Width="50" Margin="5" Content="Cancel" IsCancel="True" Click="CancelAddSprintButton_Click" Foreground="White"/>
             </WrapPanel>
         </Grid>
     </Border>

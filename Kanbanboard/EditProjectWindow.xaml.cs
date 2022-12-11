@@ -35,8 +35,8 @@ namespace Kanbanboard
                 cmd = new OleDbCommand();
                 string test = string.Empty;
                 cmd.Connection = con;
-                //try
-                //{
+                try
+                {
                     if (ProjectNameInput.Text != test)
                     {
                         cmd.CommandText = "UPDATE projects SET project_nimi = @pnimi, project_info = @pinfo, project_aloitus_pvm = @papvm, project_lopetus_pvm = @plpvm WHERE project_nimi='" + projectName + "';";
@@ -53,11 +53,11 @@ namespace Kanbanboard
                     {
                         MessageBox.Show("Nimilaatikko on tyhjä!");
                     }
-                //}
-                //catch
-                //{
-                //    MessageBox.Show("Lisää arvo jokaiseen tietueeseen tai paina Cancel poistuaksesi ikkunasta");
-                //}
+                }
+                catch
+                {
+                    MessageBox.Show("Lisää arvo jokaiseen tietueeseen tai paina Cancel poistuaksesi ikkunasta");
+                }
             }
         }
 

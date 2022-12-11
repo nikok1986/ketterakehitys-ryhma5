@@ -26,11 +26,11 @@
             </Grid.RowDefinitions>
             <Label Content="Lisää Tiimi" FontFamily="GG sans" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
             <Label Grid.Row="1"  FontFamily="GG sans" FontSize="14"  HorizontalAlignment="Center" Content="Tiimin nimi:"  FontWeight="Bold"/>
-            <TextBox x:Name="UserStoryNameInput" Grid.Row="2"  HorizontalAlignment="Center" Width="300"/>
+            <TextBox x:Name="TeamNameInput" Grid.Row="2"  HorizontalAlignment="Center" Width="300"/>
             <Label Grid.Row="3"  FontFamily="GG sans" FontSize="14"  HorizontalAlignment="Center"  Content="Kuvaus:"  FontWeight="Bold"/>
-            <TextBox x:Name="UserStoryDescriptionInput" Grid.Row="4" HorizontalAlignment="Center" Width="300"/>
+            <TextBox x:Name="TeamDescriptionInput" Grid.Row="4" HorizontalAlignment="Center" Width="300"/>
             <Label Grid.Row="5"  FontFamily="GG sans" FontSize="14"  HorizontalAlignment="Center"  Content="Projekti:"  FontWeight="Bold"/>
-            <ComboBox x:Name="AddTeamProjectSelect"  HorizontalAlignment="Center" Width="300" Grid.Row="6"  />
+            <ComboBox x:Name="TeamProjectSelect"  HorizontalAlignment="Center" Width="300" Grid.Row="6"  />
             <Label Grid.Row="7"  FontFamily="GG sans" FontSize="14"  HorizontalAlignment="Center"  Content="Valitse käyttäjät tiimiin:"  FontWeight="Bold"/>
             <ListBox x:Name="TeamListBox" Grid.Row="8" Width="100" Margin="-200,0,0,0" RenderTransformOrigin="-1.133,0.471"/>
             <Button x:Name="AddTeamMeamberButton" Grid.Row="8" Width="50"  Content="+" FontWeight="Bold" FontFamily="GG-sans" FontSize="10" VerticalAlignment="Top" Margin="0,13,0,0" Background="Black" Foreground="White"/>

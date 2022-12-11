@@ -5,8 +5,29 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Kanbanboard"
         mc:Ignorable="d"
-        Title="SprintReport" Height="450" Width="800">
+        Title="SprintReport" Height="500" Width="400">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="1.5*"/>
+            <RowDefinition Height="1.5*"/>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="15*"/>
+        </Grid.RowDefinitions>
+        <ListBox x:Name="BackLogTaskList" Grid.Row="5" Margin="19,12,272,67"/>
+        <ListBox x:Name="InProgressTaskList" Grid.Row="5" Margin="151,12,144,67"/>
+        <ListBox x:Name="CompleteTaskList" Grid.Row="5" Margin="279,12,16,67"/>
+        <Label Grid.Row="0" Content="Sprinttiraportti" FontFamily="GG sans" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <Label Grid.Row="1" Content="AloitusPvm" HorizontalAlignment="Left" Margin="74,0,0,0" VerticalAlignment="Center" VerticalContentAlignment="Center"/>
+        <TextBlock x:Name="ProjectStartDateBox" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="188,0,0,0" TextWrapping="Wrap" Width="68" Height="18"/>
+        <Label Grid.Row="2" Content="LopetusPvm" HorizontalAlignment="Left" Margin="74,0,0,0" VerticalAlignment="Center" VerticalContentAlignment="Center"/>
+        <TextBlock Grid.Row="2" x:Name="ProjectEndDateBox" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="188,0,0,0" TextWrapping="Wrap" Width="68" Height="18"/>
+        <Label Grid.Row="3" Content="Tieto sprintistä" HorizontalAlignment="Left" Margin="14,0,0,0" VerticalAlignment="Center" VerticalContentAlignment="Center"/>
+        <TextBlock Grid.Row="3" x:Name="ProjectInfoBox" HorizontalAlignment="Left" VerticalAlignment="Center" TextWrapping="Wrap" Width="271" Height="48" Margin="110,0,0,0"/>
+        <Label Content="Backlog" HorizontalAlignment="Left" Margin="46,0,0,0" Grid.Row="4" VerticalAlignment="Bottom"/>
+        <Label Content="Kesken" HorizontalAlignment="Center" Margin="0,11,0,0" Grid.Row="4" VerticalAlignment="Top" Grid.RowSpan="2"/>
+        <Label Content="Tehty" HorizontalAlignment="Right" Margin="0,11,51,0" Grid.Row="4" VerticalAlignment="Top" Grid.RowSpan="2"/>
+
     </Grid>
 </Window>

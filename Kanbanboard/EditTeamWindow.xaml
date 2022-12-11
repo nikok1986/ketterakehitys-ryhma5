@@ -24,21 +24,21 @@
                 <RowDefinition Height="6*"/>
                 <RowDefinition Height="2*"/>
             </Grid.RowDefinitions>
-            <Label Content="Lisää Tiimi" FontFamily="GG sans" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-            <Label Grid.Row="1"  FontFamily="GG sans" FontSize="14"  HorizontalAlignment="Center" Content="Tiimin nimi:"  FontWeight="Bold"/>
-            <TextBox x:Name="UserStoryNameInput" Grid.Row="2"  HorizontalAlignment="Center" Width="300"/>
-            <Label Grid.Row="3"  FontFamily="GG sans" FontSize="14"  HorizontalAlignment="Center"  Content="Kuvaus:"  FontWeight="Bold"/>
-            <TextBox x:Name="UserStoryDescriptionInput" Grid.Row="4" HorizontalAlignment="Center" Width="300"/>
+            <Label Content="Muokkaa tiimiä" FontFamily="GG sans" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <Label Grid.Row="1"  FontFamily="GG sans" FontSize="14" VerticalAlignment="Bottom"  HorizontalAlignment="Center" Content="Tiimin nimi:"  FontWeight="Bold"/>
+            <TextBox x:Name="EditTeamNameInput" Grid.Row="2"  HorizontalAlignment="Center" Width="300"/>
+            <Label Grid.Row="3"  FontFamily="GG sans" FontSize="14" VerticalAlignment="Bottom"  HorizontalAlignment="Center"  Content="Kuvaus:"  FontWeight="Bold"/>
+            <TextBox x:Name="EditTeamDescriptionInput" Grid.Row="4" HorizontalAlignment="Center" Width="300"/>
             <Label Grid.Row="5"  FontFamily="GG sans" FontSize="14"  HorizontalAlignment="Center"  Content="Projekti:"  FontWeight="Bold"/>
-            <ComboBox x:Name="AddTeamProjectSelect"  HorizontalAlignment="Center" Width="300" Grid.Row="6"  />
-            <Label Grid.Row="7"  FontFamily="GG sans" FontSize="14"  HorizontalAlignment="Center"  Content="Valitse käyttäjät tiimiin:"  FontWeight="Bold"/>
+            <ComboBox x:Name="EditTeamProjectSelect"  HorizontalAlignment="Center" Width="300" Grid.Row="6"  />
+            <Label Grid.Row="7"  FontFamily="GG sans" FontSize="14" VerticalAlignment="Bottom"  HorizontalAlignment="Center"  Content="Valitse käyttäjät tiimiin:"  FontWeight="Bold"/>
             <ListBox x:Name="TeamListBox" Grid.Row="8" Width="100" Margin="-200,0,0,0" RenderTransformOrigin="-1.133,0.471"/>
             <Button x:Name="AddTeamMeamberButton" Grid.Row="8" Width="50"  Content="+" FontWeight="Bold" FontFamily="GG-sans" FontSize="10" VerticalAlignment="Top" Margin="0,13,0,0" Background="Black" Foreground="White"/>
             <ListBox x:Name="AllUsersListBox" Grid.Row="8" Width="100" Margin="200,0,0,0" RenderTransformOrigin="-1.133,0.471"/>
             <Button x:Name="RemoveUserButton" Grid.Row="8" Width="50" Content="-" FontWeight="Bold" FontFamily="GG-sans" FontSize="10" VerticalAlignment="Top" Margin="0,43,0,0" Background="Black" Foreground="White"/>
             <WrapPanel Grid.Row="9" HorizontalAlignment="Center" >
-                <Button x:Name="AddTeamButton" FontFamily="GG-sans" FontSize="12" Background="Black" Width="50" Margin="5" Content="OK" IsDefault="True" Click="AddTeamButton_Click" Foreground="#FFFAFAFA"/>
-                <Button x:Name="CancelAddTeamButton" FontFamily="GG-sans" FontSize="12"  Background="Black" Width="50" Margin="5" Content="Cancel" IsCancel="True" Click="CancelAddTeamButton_Click" Foreground="White"/>
+                <Button x:Name="EditTeamButton" FontFamily="GG-sans" FontSize="12" Background="Black" Width="50" Margin="5" Content="OK" IsDefault="True" Click="EditTeamButton_Click" Foreground="#FFFAFAFA"/>
+                <Button x:Name="CancelEditTeamButton" FontFamily="GG-sans" FontSize="12"  Background="Black" Width="50" Margin="5" Content="Cancel" IsCancel="True" Click="CancelEditTeamButton_Click" Foreground="White"/>
             </WrapPanel>
         </Grid>
     </Border>

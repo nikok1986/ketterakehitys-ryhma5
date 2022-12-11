@@ -424,3 +424,11 @@ C:\Users\Henrika\Desktop\Ketterä muokattu\ketterakehitys-ryhma5\Kanbanboard\obj
 C:\Users\Henrika\Desktop\Ketterä muokattu\ketterakehitys-ryhma5\Kanbanboard\obj\Debug\net6.0-windows\EditTaskWindow.baml
 C:\Users\Henrika\Desktop\Ketterä muokattu\ketterakehitys-ryhma5\Kanbanboard\obj\Debug\net6.0-windows\EditTeamWindow.baml
 C:\Users\Henrika\Desktop\Ketterä muokattu\ketterakehitys-ryhma5\Kanbanboard\obj\Debug\net6.0-windows\EditUserStoryWindow.baml
+C:\Users\storm\OneDrive\Documents\koulu\2022 syksy\Ketterä ohjelmistoprojekti\ketterakehitys-ryhma5\Kanbanboard\obj\Debug\net6.0-windows\EditSprintWindow.g.cs
+C:\Users\storm\OneDrive\Documents\koulu\2022 syksy\Ketterä ohjelmistoprojekti\ketterakehitys-ryhma5\Kanbanboard\obj\Debug\net6.0-windows\EditTaskWindow.g.cs
+C:\Users\storm\OneDrive\Documents\koulu\2022 syksy\Ketterä ohjelmistoprojekti\ketterakehitys-ryhma5\Kanbanboard\obj\Debug\net6.0-windows\EditTeamWindow.g.cs
+C:\Users\storm\OneDrive\Documents\koulu\2022 syksy\Ketterä ohjelmistoprojekti\ketterakehitys-ryhma5\Kanbanboard\obj\Debug\net6.0-windows\EditUserStoryWindow.g.cs
+C:\Users\storm\OneDrive\Documents\koulu\2022 syksy\Ketterä ohjelmistoprojekti\ketterakehitys-ryhma5\Kanbanboard\obj\Debug\net6.0-windows\EditSprintWindow.baml
+C:\Users\storm\OneDrive\Documents\koulu\2022 syksy\Ketterä ohjelmistoprojekti\ketterakehitys-ryhma5\Kanbanboard\obj\Debug\net6.0-windows\EditTaskWindow.baml
+C:\Users\storm\OneDrive\Documents\koulu\2022 syksy\Ketterä ohjelmistoprojekti\ketterakehitys-ryhma5\Kanbanboard\obj\Debug\net6.0-windows\EditTeamWindow.baml
+C:\Users\storm\OneDrive\Documents\koulu\2022 syksy\Ketterä ohjelmistoprojekti\ketterakehitys-ryhma5\Kanbanboard\obj\Debug\net6.0-windows\EditUserStoryWindow.baml

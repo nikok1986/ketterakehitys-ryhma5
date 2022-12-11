@@ -20,47 +20,37 @@ namespace Kanbanboard
     /// </summary>
     public partial class EditUserStoryWindow : Window
     {
-        public EditUserStoryWindow()
+        string name;
+        public EditUserStoryWindow(string nimi)
         {
             InitializeComponent();
+            name = nimi;
         }
         private void CancelUserStoryButton_Click(object sender, RoutedEventArgs e)
         {
             DialogResult = false;
         }
-        private void AddUserStoryProjectSelect_populate(object sender, RoutedEventArgs e)
-        {
-            Reader reader = new Reader();
-            string[] projectList = reader.DBEveryProjectNameReader().Split('\n');
-            projectList = projectList.SkipLast(1).ToArray();
-            foreach (string s in projectList)
-                AddUserStoryProjectSelect.Items.Add(s);
-        }
-
         private void AddUserStoryButton_Click(object sender, RoutedEventArgs e)
         {
             using (OleDbConnection con = DataServices.DBConnection())   //Käytetään DataServices.cs tiedostoon luotua tietokantayhteyttä.
             {
                 OleDbCommand cmd;
                 cmd = new OleDbCommand();
-                string pjName = AddUserStoryProjectSelect.Text.ToString();
                 string test = string.Empty;
-                Reader reader = new Reader(pjName);
-                int i = reader.ProjectIdReader();
 
                 cmd.Connection = con;
                 try
                 {
-                    if (UserStoryNameInput.Text != test)
+                    if (UserStoryNameInput.Text != test && UserStoryDescriptionInput.Text != test)
                     {
-                        cmd.CommandText = "INSERT INTO user_stories (user_story_nimi, user_story_info, user_story_tila, project_id)values(@ktnimi, @ktinfo, 0, @pjid)";
+                        cmd.CommandText = "UPDATE user_stories SET user_story_nimi = @ktnimi, user_story_info = @ktinfo WHERE user_story_nimi='" + name +"';";
                         cmd.Parameters.AddWithValue("@ktimi", UserStoryNameInput.Text);
                         cmd.Parameters.AddWithValue("@ktinfo", UserStoryDescriptionInput.Text);
-                        cmd.Parameters.AddWithValue("@pjid", i);
 
 
                         cmd.ExecuteNonQuery();
                         MessageBox.Show("Tietue tallennettu!");
+                        DialogResult = false;
                     }
                     if (UserStoryNameInput.Text == test || UserStoryDescriptionInput.Text == test)
                     {

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.OleDb;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -28,7 +29,39 @@ namespace Kanbanboard
 
         private void AddTeamButton_Click(object sender, RoutedEventArgs e)
         {
+            using (OleDbConnection con = DataServices.DBConnection())   //Käytetään DataServices.cs tiedostoon luotua tietokantayhteyttä.
+            {
+                OleDbCommand cmd;
+                cmd = new OleDbCommand();
+                string selectedProject = TeamProjectSelect.SelectedItem.ToString();
+                Reader reader = new Reader(selectedProject);
+                int i = reader.ProjectIdReader();
+                string test = string.Empty;
 
+                cmd.Connection = con;
+                //try
+                //{
+                    if (TeamNameInput.Text != test && TeamDescriptionInput.Text != test)
+                    {
+                        cmd.CommandText = "INSERT INTO teams (team_nimi, team_info, project_id)values(@tnimi, @tinfo, @pjid)";
+                        cmd.Parameters.AddWithValue("@tnimi", TeamNameInput.Text);
+                        cmd.Parameters.AddWithValue("@tinfo", TeamDescriptionInput.Text);
+                        cmd.Parameters.AddWithValue("@pjid", i);
+
+
+                        cmd.ExecuteNonQuery();
+                        MessageBox.Show("Tietue tallennettu!");
+                    }
+                    if (TeamNameInput.Text == test)    //testi NimiBoxin sisällölle
+                    {
+                        MessageBox.Show("Anna tiimille nimi, info ja projekti.");
+                    }
+                //}
+                //catch
+                //{
+                   // MessageBox.Show("Lisää arvo jokaiseen tietueeseen tai paina Cancel poistuaksesi ikkunasta");
+                //}
+            }
         }
 
         private void CancelAddTeamButton_Click(object sender, RoutedEventArgs e)
@@ -37,12 +70,12 @@ namespace Kanbanboard
         }
         private void ProjectBox_populate(object sender, RoutedEventArgs e)
         {
-            AddTeamProjectSelect.Items.Clear();
+            TeamProjectSelect.Items.Clear();
             Reader reader = new Reader();
             string[] projects = reader.DBEveryProjectNameReader().Split('\n');
             projects = projects.SkipLast(1).ToArray();
             foreach (string s in projects)
-                AddTeamProjectSelect.Items.Add(s);
+                TeamProjectSelect.Items.Add(s);
         }
         private void AllUsersListBox_populate(object sender, RoutedEventArgs e)
         {

@@ -20,36 +20,53 @@ namespace Kanbanboard
     /// </summary>
     public partial class EditSprintWindow : Window
     {
-        public EditSprintWindow()
+        string name;
+        public EditSprintWindow(string nimi)
         {
             InitializeComponent();
+            name = nimi;
+            Loaded += ProjectList_populate;
         }
-        public String DBProjectInfoReader()
+        private void EditSprintButton_Click(object sender, RoutedEventArgs e)
         {
             using (OleDbConnection con = DataServices.DBConnection())   //Käytetään DataServices.cs tiedostoon luotua tietokantayhteyttä.
             {                                                           //Using-komennolla yhteys suljetaan automaattisesti suorituksen jälkeen.
                 OleDbCommand cmd;
+                cmd = new OleDbCommand();
+                string test = string.Empty;
+                string projectName = ProjectList.SelectedItem.ToString();
+                Reader reader = new Reader(projectName);
+                int i = reader.ProjectIdReader();
 
-                cmd = new OleDbCommand("SELECT project_info FROM projects WHERE project_nimi='" + ProjectList.SelectedItem + "';");
-                cmd.Connection = con;   //Yhteys avataan OleDb-komennolla.
-                string projectinfo = String.Empty;    //Kerätään info tähän tyhjään stringiin.
-
-                OleDbDataReader reader = cmd.ExecuteReader();
-                while (reader.Read())
+                cmd.Connection = con;
+                if (SprintNameInput.Text != test || SprintDescriptionInput.Text != test)
                 {
-                    projectinfo = reader.GetString(0);
-                }
-                reader.Close();
-                cmd.ExecuteNonQuery();
+                    cmd.CommandText = "UPDATE sprints SET sprint_nimi = @snimi, sprint_info = @sinfo, sprint_aloitus_pvm = sapvm, sprint_lopetus_pvm = slpvp, project_id = @pjid WHERE sprint_nimi='" + name + "';";
+                    cmd.Parameters.AddWithValue("@nimi", SprintNameInput.Text);
+                    cmd.Parameters.AddWithValue("@pinfo", SprintDescriptionInput.Text);
+                    cmd.Parameters.Add("@sapvm", OleDbType.Date).Value = SprintStartDate.SelectedDate;
+                    cmd.Parameters.Add("@slpvm", OleDbType.Date).Value = SprintEndDate.SelectedDate;
+                    cmd.Parameters.AddWithValue("@pjid", i);
 
-                return projectinfo;
-            }
+                    cmd.ExecuteNonQuery();
+                    MessageBox.Show("Sprintti " + name + " muokattu.");
+                    DialogResult = false;
+                }
+                else
+                {
+                    MessageBox.Show("Anna kaikki sprintin tiedot.");
+                }
+        }
+        }
+        private void CancelEditSprintButton_Click(object sender, RoutedEventArgs e)
+        {
+            DialogResult = false;
         }
         private void ProjectList_populate(object sender, EventArgs e)
         {
             ProjectList.Items.Clear();
             Reader reader = new Reader();
-            string[] projects = reader.DBProjectNameReader().Split('\n');
+            string[] projects = reader.DBEveryProjectNameReader().Split('\n');
             foreach (string s in projects)
                 ProjectList.Items.Add(s);
             if (ProjectList.Items.Count > 0)
@@ -62,14 +79,8 @@ namespace Kanbanboard
 
         }
 
-        private void AddProjectButton_Click(object sender, RoutedEventArgs e)
-        {
 
-        }
 
-        private void CancelAddProjectButton_Click(object sender, RoutedEventArgs e)
-        {
-            DialogResult = false;
-        }
+
     }
 }

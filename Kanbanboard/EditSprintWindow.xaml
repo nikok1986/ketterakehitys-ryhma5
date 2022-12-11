@@ -25,7 +25,7 @@
                 <RowDefinition Height="2*"/>
                 <RowDefinition Height="2*"/>
             </Grid.RowDefinitions>
-            <Label Grid.Row="0" Content="Lisää sprintti"  FontFamily="GG sans" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <Label Grid.Row="0" Content="Muokkaa sprinttiä"  FontFamily="GG sans" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
             <Label Grid.Row="1" Content="Sprintin nimi:"  FontFamily="GG sans" FontSize="14"  HorizontalAlignment="Center" Grid.RowSpan="1"  FontWeight="Bold"/>
             <TextBox x:Name="SprintNameInput"  Grid.Row="2" HorizontalAlignment="Center" Width="300"/>
             <Label Grid.Row="3" Content="Sprintin info:" FontFamily="GG sans" FontSize="14"  HorizontalAlignment="Center" Grid.RowSpan="1"  FontWeight="Bold"/>
@@ -38,8 +38,8 @@
             <WrapPanel Grid.Row="10"/>
             <ComboBox Grid.Row="8" x:Name="ProjectList" HorizontalAlignment="Center" Height="25"  Width="200" Grid.RowSpan="1" SelectionChanged="ProjectList_SelectionChanged"/>
             <WrapPanel Grid.Row="11" HorizontalAlignment="Center">
-                <Button x:Name="AddProjectButton"  FontFamily="GG sans" FontSize="12" VerticalAlignment="Center" Background="Black" Width="50" Margin="5" Content="OK" IsDefault="True" Click="AddProjectButton_Click" Foreground="White"/>
-                <Button x:Name="CancelAddProjectButton"  FontFamily="GG sans" FontSize="12"  VerticalAlignment="Center" Background="Black" Width="50" Margin="5" Content="Cancel" IsCancel="True" Click="CancelAddProjectButton_Click" Foreground="White"/>
+                <Button x:Name="EditSprintButton"  FontFamily="GG sans" FontSize="12" VerticalAlignment="Center" Background="Black" Width="50" Margin="5" Content="OK" IsDefault="True" Click="EditSprintButton_Click" Foreground="White"/>
+                <Button x:Name="CancelEditSprintButton"  FontFamily="GG sans" FontSize="12"  VerticalAlignment="Center" Background="Black" Width="50" Margin="5" Content="Cancel" IsCancel="True" Click="CancelEditSprintButton_Click" Foreground="White"/>
             </WrapPanel>
         </Grid>
     </Border>
