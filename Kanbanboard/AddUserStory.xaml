@@ -20,12 +20,12 @@
             <RowDefinition Height="3*"/>
         </Grid.RowDefinitions>
         <Label Content="Lisää käyttäjätarina" FontFamily="GG sans" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-        <Label Grid.Row="1"  FontFamily="GG sans" FontSize="14"  HorizontalAlignment="Center" Content="Käyttäjätarinan nimi:"/>
-        <TextBox x:Name="UserStoryNameInput" Grid.Row="2"  HorizontalAlignment="Center" Width="400"/>
-        <Label Grid.Row="3"  FontFamily="GG sans" FontSize="14"  HorizontalAlignment="Center"  Content="Kuvaus:"/>
-        <TextBox x:Name="UserStoryDescriptionInput" Grid.Row="4" HorizontalAlignment="Center" Width="400"/>
+        <Label Grid.Row="1" FontFamily="GG sans" FontSize="14"  HorizontalAlignment="Center" Content="Käyttäjätarinan nimi:"/>
+        <TextBox x:Name="UserStoryNameInput" Grid.Row="2" FontFamily="GG sans" FontSize="18" VerticalContentAlignment="Center" HorizontalAlignment="Center" Width="400"/>
+        <Label Grid.Row="3" FontFamily="GG sans" FontSize="14"  HorizontalAlignment="Center"  Content="Kuvaus:"/>
+        <TextBox x:Name="UserStoryDescriptionInput" Grid.Row="4" FontFamily="GG sans" FontSize="18" HorizontalAlignment="Center" Width="400"/>
         <Label Grid.Row="5"  FontFamily="GG sans" FontSize="14"  HorizontalAlignment="Center"  Content="Projekti:"/>
-        <ComboBox x:Name="AddUserStoryProjectSelect"  HorizontalAlignment="Center" Width="400" Grid.Row="6" />
+        <ComboBox x:Name="AddUserStoryProjectSelect" VerticalContentAlignment="Center" FontSize="15" FontFamily="GG sans" HorizontalAlignment="Center" Width="400" Grid.Row="6" />
         <WrapPanel Grid.Row="6" HorizontalAlignment="Center" Margin="0,38,0,-37">
             <Button x:Name="AddUserStoryButton" FontFamily="GG sans" FontSize="10" Background="#e783b7" Width="50" Margin="5" Content="OK" IsDefault="True" Click="AddUserStoryButton_Click"/>
             <Button x:Name="CancelUserStoryButton" FontFamily="GG sans" FontSize="10"  Background="#e783b7" Width="50" Margin="5" Content="Cancel" IsCancel="True" Click="CancelUserStoryButton_Click"/>

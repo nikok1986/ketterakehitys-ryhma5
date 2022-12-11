@@ -38,7 +38,7 @@ namespace Kanbanboard
                 {
                     cmd.CommandText = "INSERT INTO users (user_nimi, user_rooli)values(@knimi, @krole)";
                     cmd.Parameters.AddWithValue("@knimi", UserNameInput.Text);
-                    cmd.Parameters.AddWithValue("@krole", UserRoleInput.Text);
+                    cmd.Parameters.AddWithValue("@krole", UserRoleComboBox.Text);
                     cmd.ExecuteNonQuery();
                     MessageBox.Show("Tietue tallennettu!");
                 }
