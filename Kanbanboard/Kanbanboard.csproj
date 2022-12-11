@@ -8,6 +8,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="floor.jpg" />
+    <None Remove="kuva.jpg" />
+    <None Remove="tausta.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="floor.jpg" />
+    <Resource Include="tausta.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="System.Data.OleDb" Version="7.0.0" />
   </ItemGroup>
 

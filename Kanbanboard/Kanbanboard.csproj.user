@@ -31,6 +31,18 @@
     <Compile Update="EditProjectWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="EditSprintWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="EditTaskWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="EditTeamWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="EditUserStoryWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="EditUserWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -70,6 +82,18 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="EditProjectWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="EditSprintWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="EditTaskWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="EditTeamWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="EditUserStoryWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="EditUserWindow.xaml">

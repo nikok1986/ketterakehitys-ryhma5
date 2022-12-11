@@ -138,6 +138,7 @@ namespace Kanbanboard
         private void AddProjectButton_Click(object sender, RoutedEventArgs e)
         {
             AddProject addProject = new AddProject();
+            addProject.Owner= this;
             addProject.AddProjectButton.Click += new RoutedEventHandler(AddProject);
             addProject.Title = "Lisää projekti";
             addProject.ShowDialog();
@@ -145,6 +146,7 @@ namespace Kanbanboard
         private void AddUserStoryButton_Click(object sender, RoutedEventArgs e)
         {
             AddUserStory addUserStory = new AddUserStory();
+            addUserStory.Owner = this;
             addUserStory.AddUserStoryButton.Click += new RoutedEventHandler(AddUserStory);
             addUserStory.ShowDialog();
         }
@@ -155,12 +157,14 @@ namespace Kanbanboard
             //tabItem.Content = new TabitemMalli();
             //SprinttiLaatikko.Items.Insert(SprinttiLaatikko.Items.Count, tabItem);
             AddSprintWindow sprintWindow = new AddSprintWindow();
+            sprintWindow.Owner = this;
             sprintWindow.Title = "Lisää sprintti";
             sprintWindow.ShowDialog();
         }
         private void AddUserButton_Click(object sender, RoutedEventArgs e)
         {
             AddUser newUser = new AddUser();
+            newUser.Owner = this;
             newUser.AddNewUserButton.Click += new RoutedEventHandler(AddUser);
             newUser.Title = "Lisää käyttäjä";
             newUser.ShowDialog();
@@ -168,12 +172,14 @@ namespace Kanbanboard
         private void AddTaskButton_Click(object sender, RoutedEventArgs e)
         {
             AddTask addTask = new AddTask();
+            addTask.Owner = this;
             addTask.AddTaskButton.Click += new RoutedEventHandler(AddTask);
             addTask.ShowDialog();
         }
         private void AddTeamButton_Click(object sender, RoutedEventArgs e)
         {
             AddTeam addTeam = new AddTeam();
+            addTeam.Owner = this;
             addTeam.AddTeamButton.Click += new RoutedEventHandler(AddTeam);
             addTeam.ShowDialog();
 
@@ -181,6 +187,7 @@ namespace Kanbanboard
         private void AddTeamMemberButton_Click(object sender, RoutedEventArgs e)
         {
             AddTeamMember addMember = new AddTeamMember();
+            addMember.Owner = this;
             addMember.ShowDialog();
         }
 

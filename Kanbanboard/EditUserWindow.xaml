@@ -5,25 +5,31 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Kanbanboard"
         mc:Ignorable="d"
-        Title="EditUserWindow" Height="450" Width="800">
-    <Grid Margin="50" Background="AliceBlue">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="3*"/>
-            <RowDefinition Height="2*"/>
-            <RowDefinition Height="2*"/>
-            <RowDefinition Height="2*"/>
-            <RowDefinition Height="2*"/>
-            <RowDefinition Height="3*"/>
-        </Grid.RowDefinitions>
-        <Label Grid.Row="0" Content="Muokkaa käyttäjää" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-        <Label Grid.Row="1" Content="Käyttäjän nimi:" FontSize="20"/>
-        <TextBox x:Name="UserNameInput" Grid.Row="2" Margin="5"/>
-        <Label Grid.Row="2" Content="Käyttäjän rooli:" Margin="0,48,0,47" Grid.RowSpan="3" FontSize="20"/>
-        <TextBox x:Name="UserRoleInput" Grid.Row="4" Margin="5"/>
-        <WrapPanel Grid.Row="10"/>
-        <WrapPanel Grid.Row="11" HorizontalAlignment="Center">
-            <Button x:Name="AddNewUserButton" Width="50" Margin="5" Content="OK" IsDefault="True" Click="AddUserButton_Click"/>
-            <Button x:Name="CancelAddNewUserButton" Width="50" Margin="5" Content="Cancel" IsCancel="True" Click="CancelAddProjectButton_Click"/>
-        </WrapPanel>
-    </Grid>
+        Title="EditUserWindow" Height="450" Width="800"
+         WindowStartupLocation="CenterOwner" >
+    <Window.Background>
+        <ImageBrush ImageSource="/tausta.jpg"/>
+    </Window.Background>
+    <Border  Margin="50" Background="#FF927D7D" Opacity="0.8" BorderBrush="#FF261A13" BorderThickness="2" CornerRadius="30"  >
+        <Grid >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+            <Label Grid.Row="0" Content="Muokkaa käyttäjää" FontSize="20" FontFamily="GG" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" />
+            <Label Grid.Row="1" Content="Käyttäjän nimi:" FontFamily="GG" FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontWeight="Bold" />
+            <TextBox x:Name="UserNameInput" Grid.Row="2" FontFamily="GG" Margin="5" Width="300"/>
+            <Label Grid.Row="2" Content="Käyttäjän rooli:" FontFamily="GG" Margin="0,48,0,47" Grid.RowSpan="3" FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Bottom"  FontWeight="Bold"/>
+            <TextBox x:Name="UserRoleInput" Grid.Row="4" FontFamily="GG" Margin="5" Width="300"/>
+            <WrapPanel Grid.Row="10"/>
+            <WrapPanel Grid.Row="11" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Button x:Name="AddNewUserButton" Width="50" Margin="5" FontSize="12" Content="OK" IsDefault="True" Click="AddUserButton_Click" Foreground="#FFFCF9F9" Background="#FF0E0E0E"/>
+                <Button x:Name="CancelAddNewUserButton" Width="50" FontSize="12" Margin="5" Content="Cancel" IsCancel="True" Click="CancelAddProjectButton_Click" Background="#FF090909" Foreground="#FFFFF1F1"/>
+            </WrapPanel>
+        </Grid>
+    </Border>
 </Window>
