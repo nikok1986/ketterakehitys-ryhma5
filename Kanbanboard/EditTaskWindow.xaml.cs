@@ -20,9 +20,12 @@ namespace Kanbanboard
     /// </summary>
     public partial class EditTaskWindow : Window
     {
-        public EditTaskWindow()
+        string name;
+        public EditTaskWindow(string nimi)
         {
             InitializeComponent();
+            name= nimi;
+            Loaded += Lists_populate;
         }
         private void CancelAddTaskButton_Click(object sender, RoutedEventArgs e)
         {
@@ -46,11 +49,11 @@ namespace Kanbanboard
                 int diff = TaskDifficulty.SelectedIndex;
 
                 cmd.Connection = con;
-                try
-                {
+                //try
+                //{
                     if (TaskNameInput.Text != test)
                     {
-                        cmd.CommandText = "INSERT INTO tasks (task_nimi, task_info, task_tila, task_prioriteetti, task_kategoria, task_vaikeustaso, task_aloitus_pvm, task_lopetus_pvm, sprint_id, user_story_id, user_id)values(@tnimi, @tinfo, @ttila, @tprio, @tkat, @tvaik, @tapvm, @tlpvm, @tspri, @tust, @tuser)";
+                        cmd.CommandText = "UPDATE tasks SET task_nimi = @tnimi, task_info = @tinfo, task_tila = @ttila, task_prioriteetti = @tprio, task_kategoria = @tkat, task_vaikeustaso = @tvaik, task_aloitus_pvm = tapvm, task_lopetus_pvm = tlpvm, sprint_id = @tspri, user_story_id = @tust, user_id = @tuser WHERE task_nimi='" + name + "';";
                         cmd.Parameters.AddWithValue("@tnimi", TaskNameInput.Text);  //(@tnimi, @tinfo, @ttila, @tprio, @tkat, @tvaik, @tapvm, @tlpvm, @tspri, @tust)"
                         cmd.Parameters.AddWithValue("@tinfo", TaskDescriptionInput.Text);
                         cmd.Parameters.AddWithValue("@ttila", 0);
@@ -71,15 +74,17 @@ namespace Kanbanboard
                     {
                         MessageBox.Show("Osa tiedoista puuttuu");
                     }
-                }
-                catch
-                {
-                    MessageBox.Show("Lisää arvo jokaiseen tietueeseen tai paina Cancel poistuaksesi ikkunasta");
-                }
+                //}
+                //catch
+               //{
+                    //MessageBox.Show("Lisää arvo jokaiseen tietueeseen tai paina Cancel poistuaksesi ikkunasta");
+                //}
             }
         }
         public void Lists_populate(object sender, RoutedEventArgs e)
         {
+            TaskNameBox.Text = name;
+
             AddedSprintList.Items.Clear();
             Reader reader = new Reader();
             string[] sprints = reader.DBEverySprintNameReader().Split('\n');

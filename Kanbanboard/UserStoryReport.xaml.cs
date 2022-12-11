@@ -29,15 +29,16 @@ namespace Kanbanboard
         }
         public void AllLists_populate(object sender, RoutedEventArgs e)
         {
-            ProjectNameTextBox.Text= name;
-
+            UserStoryNameBox.Text= name;
             Reader reader = new Reader(name);
+            ProjectNameTextBox.Text = reader.DBUserStoryProjectReader();
+            UserStoryInfoBox.Text = reader.DBUserStoryInfoReader();
+
             string[] tasks = reader.DBUserStoryTaskReader().Split('\n');
             tasks = tasks.SkipLast(1).ToArray();
             foreach (string s in tasks)
                 UserStoryTaskListBox.Items.Add(s);
 
-            reader = new Reader(name);
             string[] taskStates = reader.DBUserStoryTaskStateReader().Split('\n');
             taskStates = taskStates.SkipLast(1).ToArray();
             string finalState = String.Empty;

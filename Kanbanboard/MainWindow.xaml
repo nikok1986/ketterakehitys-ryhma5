@@ -59,7 +59,7 @@
                     </Button.Resources>
                 </Button>
             </Grid>
-            <ListView x:Name="ProjectListing" FontSize="14" BorderThickness="2" Background="#FF908688" Opacity="0.7" Grid.Row="2" Grid.RowSpan="2" MouseDoubleClick="ProjectListing_MouseDoubleClick" BorderBrush="#FF383838" Foreground="White" Margin="3,3,3,3">
+            <ListView x:Name="ProjectListing" FontSize="14" BorderThickness="2" Background="#FF908688" Opacity="0.7" Grid.Row="2" Grid.RowSpan="2" MouseDoubleClick="ProjectListing_MouseDoubleClick" BorderBrush="#FF383838" Foreground="Black" Margin="3,3,3,3">
                 <ListView.Resources>
                     <Style TargetType="Border">
                         <Setter Property="CornerRadius" Value="5"/>
@@ -190,11 +190,20 @@
                                     <ContextMenu >
                                         <MenuItem x:Name="RightClickUserStoryEdit"  Header="Muokkaa" Click="RightClickUserStoryEdit_Click"/>
                                         <MenuItem x:Name="RightClickUserStoryReport" Header="Näytä raportti" Click="RightClickUserStoryReport_Click"/>
-                                        <MenuItem x:Name="RightClickUserStoryDelete" Header="Poista projekti" Click="RightClickUserStoryDelete_Click"/>
+                                        <MenuItem x:Name="RightClickUserStoryDelete" Header="Poista käyttäjätarina" Click="RightClickUserStoryDelete_Click"/>
                                     </ContextMenu>
                                 </ListView.ContextMenu>
                             </ListView>
-                            <Label FontWeight="Bold" FontSize="15" HorizontalAlignment="Left" Grid.RowSpan="2" Margin="9,0,0,142" Grid.Column="1" Grid.ColumnSpan="2" Width="124" Background="#FFD2CBCB">Käyttäjätarinat</Label>
+                            <Label FontWeight="Bold" FontSize="15" HorizontalAlignment="Left" Margin="8,0,0,1" Grid.Column="1" Grid.ColumnSpan="2" Width="114" Background="#FFD2CBCB" RenderTransformOrigin="0.5,0.5">
+                                <Label.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform/>
+                                        <SkewTransform AngleX="0.464"/>
+                                        <RotateTransform/>
+                                        <TranslateTransform X="0.325"/>
+                                    </TransformGroup>
+                                </Label.RenderTransform> Käyttäjätarinat
+                            </Label>
                             <Button x:Name="AddTaskButton" FontSize="32"  Content="+" Width="30" HorizontalAlignment="Right"  Click="AddTaskButton_Click" Grid.RowSpan="1" Grid.ColumnSpan="3" Background="#FF908688" Opacity="0.8"/>
                         </Grid>
                         <Grid x:Name="TaskBacklogGrid" Background="LightCoral" Grid.Column="1">
@@ -236,16 +245,16 @@
                                 <RowDefinition Height="110*"/>
                                 <RowDefinition Height="13*"/>
                             </Grid.RowDefinitions>
-                            <Label FontWeight="Bold" FontSize="15" HorizontalAlignment="Center" Margin="0,0,0,439" Grid.RowSpan="3">Työn alla</Label>
+                            <Label FontWeight="Bold" FontSize="15" HorizontalAlignment="Center" Grid.RowSpan="2">Työn alla</Label>
                             <WrapPanel Grid.Row="3" VerticalAlignment="Bottom" Grid.Column="2" HorizontalAlignment="Center">
-                                <Button x:Name="TaskInProgressMoveTaskLeftButton" FontSize="30"  Content="←" Grid.Row="1" HorizontalAlignment="Left" Click="TaskInProgressMoveTaskLeftButton_Click" Width="80" Height="40" Grid.RowSpan="2" Background="#FF908688">
+                                <Button x:Name="TaskInProgressMoveTaskLeftButton" FontSize="30"  Content="←" Grid.Row="1" HorizontalAlignment="Left" Click="TaskInProgressMoveTaskLeftButton_Click" Width="79" Height="40" Grid.RowSpan="2" Background="#FF908688">
                                     <Button.Resources>
                                         <Style TargetType="Border">
                                             <Setter Property="CornerRadius" Value="5"/>
                                         </Style>
                                     </Button.Resources>
                                 </Button>
-                                <Button x:Name="TaskInProgressMoveTaskRightButton" FontSize="30" Content="→" Grid.Row="1" HorizontalAlignment="Right" Click="TaskInProgressMoveTaskRightButton_Click" Width="80" Height="40" Grid.RowSpan="2" Background="#FF908688">
+                                <Button x:Name="TaskInProgressMoveTaskRightButton" FontSize="30" Content="→" Grid.Row="1" HorizontalAlignment="Right" Click="TaskInProgressMoveTaskRightButton_Click" Width="79" Height="40" Grid.RowSpan="2" Background="#FF908688">
                                     <Button.Resources>
                                         <Style TargetType="Border">
                                             <Setter Property="CornerRadius" Value="5"/>
@@ -289,7 +298,7 @@
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <ListView x:Name="SprintListing" FontSize="14" Margin="3" Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="1" Grid.RowSpan="3" BorderThickness="2" Background="#FF908688" Opacity="0.8" MouseDoubleClick="SprintListing_MouseDoubleClick" BorderBrush="#FF383838" Foreground="White">
+            <ListView x:Name="SprintListing" FontSize="14" Margin="3" Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="1" Grid.RowSpan="3" BorderThickness="2" Background="#FF908688" Opacity="0.8" MouseDoubleClick="SprintListing_MouseDoubleClick" BorderBrush="#FF383838" Foreground="Black">
                 <ListView.ContextMenu >
                     <ContextMenu >
                         <MenuItem x:Name="RightClickSprintEdit"  Header="Muokkaa" Click="RightClickSprintEdit_Click"/>

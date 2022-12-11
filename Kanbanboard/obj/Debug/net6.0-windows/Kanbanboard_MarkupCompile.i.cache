@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
 C:\Users\storm\OneDrive\Documents\koulu\2022 syksy\Ketterä ohjelmistoprojekti\ketterakehitys-ryhma5\Kanbanboard\App.xaml
-19-1338593342
+181059027987
 
-25857701603
+24-394621380
 196-1894834142
-AddProject.xaml;AddSprintWindow.xaml;AddTask.xaml;AddTeam.xaml;AddTeamMember.xaml;AddUser.xaml;AddUserStory.xaml;EditProjectWindow.xaml;EditSprintWindow.xaml;EditTaskWindow.xaml;EditTeamWindow.xaml;EditUserStoryWindow.xaml;EditUserWindow.xaml;MainWindow.xaml;ProjectReport.xaml;SprintReport.xaml;TabitemMalli.xaml;UserReport.xaml;UserStoryReport.xaml;
+AddProject.xaml;AddSprintWindow.xaml;AddTask.xaml;AddTeam.xaml;AddTeamMember.xaml;AddUser.xaml;AddUserStory.xaml;EditProjectWindow.xaml;EditSprintWindow.xaml;EditTaskWindow.xaml;EditTeamWindow.xaml;EditUserStoryWindow.xaml;EditUserWindow.xaml;MainWindow.xaml;ProjectReport.xaml;SprintReport.xaml;UserReport.xaml;UserStoryReport.xaml;
 
-False
+True
 

@@ -22,6 +22,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Xml.Linq;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace Kanbanboard
 {
@@ -386,6 +387,10 @@ namespace Kanbanboard
                 UserStoryReport usr = new UserStoryReport(nimi);
                 usr.ShowDialog();
             }
+            else
+            {
+                MessageBox.Show("Valitse käyttäjätarina");
+            }
         }
         private void RightClickUserStoryDelete_Click(object sender, RoutedEventArgs e)
         {
@@ -469,7 +474,7 @@ namespace Kanbanboard
             }
         }
 
-        //<----------------------------------TEAM RIGHTCLICK ---------------------------------------> DONE
+        //<----------------------------------TEAM RIGHTCLICK ---------------------------------------> 2/3
         private void RightClickTeamReport_Click(object sender, RoutedEventArgs e) 
         { 
         
@@ -479,26 +484,27 @@ namespace Kanbanboard
             using (OleDbConnection con = DataServices.DBConnection())   //Käytetään DataServices.cs tiedostoon luotua tietokantayhteyttä.
             {                                                           //Using-komennolla yhteys suljetaan automaattisesti suorituksen jälkeen.
                 OleDbCommand cmd;
-                string teamName = TeamBox.SelectedItem.ToString();
                 string test = string.Empty;
-                MessageBoxResult result = MessageBox.Show("Haluatko varmasti poistaa tiimin " + TeamBox.SelectedItem + "?", "Vahvistus", MessageBoxButton.YesNo);
-                if (result == MessageBoxResult.Yes)
+                if (UsersBox.SelectedItem != test)
                 {
-                    if (UsersBox.SelectedItem != test)
+                    string teamName = TeamBox.SelectedItem.ToString();
+                    MessageBoxResult result = MessageBox.Show("Haluatko varmasti poistaa tiimin " + TeamBox.SelectedItem + "?", "Vahvistus", MessageBoxButton.YesNo);
+                    if (result == MessageBoxResult.Yes)
                     {
                         cmd = new OleDbCommand("DELETE FROM teams WHERE team_nimi='" + teamName + "';");
                         cmd.Connection = con;   //Yhteys avataan OleDb-komennolla.
                         cmd.ExecuteNonQuery();
                         MessageBox.Show("Tiimi " + TeamBox.SelectedItem + " poistettu.");
+                    
                     }
-                    else
+                    if (result == MessageBoxResult.No)
                     {
-                        MessageBox.Show("Valitse poistettava tiimi");
-                    }
+                        MessageBox.Show("Toiminto peruutettu.");
+                    } 
                 }
-                if (result == MessageBoxResult.No)
+                else
                 {
-                    MessageBox.Show("Toiminto peruutettu.");
+                    MessageBox.Show("Valitse poistettava tiimi");
                 }
             }
         }
@@ -520,7 +526,16 @@ namespace Kanbanboard
         //<----------------------------------TASK RIGHTCLICK----------------------------------------> 2/4
         private void RightClickTaskkEdit_Click(object sender, RoutedEventArgs e)
         {
-
+            if (ToDoListBox.SelectedItem != null)
+            {
+                string taskName = ToDoListBox.SelectedItem.ToString();
+                EditTaskWindow etw = new EditTaskWindow(taskName);
+                etw.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Valitse tehtävä backlogista");
+            }
         }
         private void RightClickTaskInfo_Click(object sender, RoutedEventArgs e)
         {
@@ -579,7 +594,7 @@ namespace Kanbanboard
             }
         }
 
-        //<------------------------------------ROUTED CRAP------------------------------------------>
+        //<------------------------------------ROUTED----------------------------------------------->
         private void AddUserStory(object sender, RoutedEventArgs e)
         {
 

@@ -9,18 +9,20 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="3*"/>
-            <RowDefinition Height="2*"/>
+            <RowDefinition Height="1.5*"/>
+            <RowDefinition Height="3*"/>
             <RowDefinition Height="2*"/>
             <RowDefinition Height="15*"/>
         </Grid.RowDefinitions>
 
-        <ListBox x:Name="UserStoryTaskListBox" Grid.Row="2" BorderThickness="0" Margin="44,39,181,40" Grid.RowSpan="2"/>
-        <Label Content="Käyttäjätarinaraportti" FontFamily="GG sans" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-        <Label Content="Projekti:" FontSize="14" FontWeight="Bold" HorizontalAlignment="Left" Margin="49,59,0,0" VerticalAlignment="Top" Height="36" Grid.RowSpan="2" Width="91"/>
-        <Label Content="Label" HorizontalAlignment="Left" Margin="260,30,0,0" Grid.Row="1" VerticalAlignment="Top"/>
-        <TextBox x:Name="ProjectNameTextBox" BorderThickness="0" HorizontalAlignment="Left" FontSize="14" FontWeight="Bold" Margin="134,7,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="164" Height="30"/>
-        <ListBox x:Name="UserStoryTaskStateListBox" Grid.Row="2" BorderThickness="0" Margin="171,39,54,40" Grid.RowSpan="2"/>
-        <Label Content="Tehtävä" Grid.Row="2" FontSize="13" FontWeight="Bold" HorizontalAlignment="Left" Margin="59,8,0,2"/>
-        <Label Content="Tehtävän tila" Grid.Row="2" FontSize="13" FontWeight="Bold" HorizontalAlignment="Right" Margin="0,8,81,2"/>
+        <ListBox x:Name="UserStoryTaskListBox" FontFamily="GG sans" Grid.Row="4" BorderThickness="0" Margin="49,10,176,22"/>
+        <Label Content="Projekti:" FontSize="14" FontFamily="GG sans" FontWeight="Bold" HorizontalAlignment="Left" Margin="60,50,0,8" Height="27" Width="91" Grid.RowSpan="2"/>
+        <TextBox x:Name="ProjectNameTextBox" FontFamily="GG sans" BorderThickness="0" HorizontalAlignment="Left" FontSize="14" Margin="145,0,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Center" Width="132" Height="27"/>
+        <ListBox x:Name="UserStoryTaskStateListBox" Grid.Row="4" FontFamily="GG sans" BorderThickness="0" Margin="174,10,51,22"/>
+        <Label Content="Tehtävä" Grid.Row="3" FontFamily="GG sans" FontSize="13" FontWeight="Bold" HorizontalAlignment="Left" Margin="59,8,0,2"/>
+        <Label Content="Tehtävän tila" Grid.Row="3" FontFamily="GG sans" FontSize="13" FontWeight="Bold" HorizontalAlignment="Right" Margin="0,8,81,2"/>
+        <TextBlock x:Name="UserStoryNameBox"  HorizontalAlignment="Left" FontFamily="GG sans" FontSize="20" FontWeight="Bold" Margin="94,0,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Center" Height="20" Width="175"/>
+        <Label Content="Info:" FontSize="14" FontFamily="GG sans" Grid.Row="1" FontWeight="Bold" HorizontalAlignment="Left" Margin="60,22,0,31" Height="27" Width="46" Grid.RowSpan="2"/>
+        <TextBlock x:Name="UserStoryInfoBox" HorizontalAlignment="Left" FontFamily="GG sans" Margin="141,2,0,35" Grid.Row="2" TextWrapping="Wrap" Width="173" Grid.RowSpan="2"/>
     </Grid>
 </Window>

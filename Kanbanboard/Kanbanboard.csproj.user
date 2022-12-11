@@ -49,9 +49,6 @@
     <Compile Update="SprintReport.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="TabitemMalli.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Update="UserReport.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -103,9 +100,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="SprintReport.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="TabitemMalli.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="UserReport.xaml">

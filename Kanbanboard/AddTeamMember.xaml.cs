@@ -31,17 +31,17 @@ namespace Kanbanboard
 
         }
 
-        private void RemoveUserButton_Click(object sender, RoutedEventArgs e)
+        private void RemoveTeamMemberButton_Click(object sender, RoutedEventArgs e)
         {
 
         }
 
-        private void CompleteAddingTeamMemberButton_Click(object sender, RoutedEventArgs e)
+        private void CompleteAddingTeamMembersButton_Click(object sender, RoutedEventArgs e)
         {
 
         }
 
-        private void CancelAddTeamMemberButton_Click(object sender, RoutedEventArgs e)
+        private void CancelAddTeamMembersButton_Click(object sender, RoutedEventArgs e)
         {
 
         }

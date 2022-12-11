@@ -521,6 +521,48 @@ namespace Kanbanboard
                 return userstories;
             }
         }
+        public String DBUserStoryProjectReader()
+        {
+            using (OleDbConnection con = DataServices.DBConnection())   //Käytetään DataServices.cs tiedostoon luotua tietokantayhteyttä.
+            {                                                           //Using-komennolla yhteys suljetaan automaattisesti suorituksen jälkeen.
+                OleDbCommand cmd;
+
+                cmd = new OleDbCommand("SELECT projects.project_nimi FROM projects INNER JOIN user_stories ON projects.project_id = user_stories.project_id WHERE user_stories.user_story_nimi='" + name + "';");
+                cmd.Connection = con;   //Yhteys avataan OleDb-komennolla.
+                string userstories = String.Empty;    //Kerätään info tähän tyhjään stringiin.
+
+                OleDbDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    userstories += reader.GetString(0) + "\n";
+                }
+                reader.Close();
+                cmd.ExecuteNonQuery();
+
+                return userstories;
+            }
+        }
+        public String DBUserStoryInfoReader()
+        {
+            using (OleDbConnection con = DataServices.DBConnection())   //Käytetään DataServices.cs tiedostoon luotua tietokantayhteyttä.
+            {                                                           //Using-komennolla yhteys suljetaan automaattisesti suorituksen jälkeen.
+                OleDbCommand cmd;
+
+                cmd = new OleDbCommand("SELECT user_story_info FROM user_stories WHERE user_story_nimi='" + name + "';");
+                cmd.Connection = con;   //Yhteys avataan OleDb-komennolla.
+                string userstories = String.Empty;    //Kerätään info tähän tyhjään stringiin.
+
+                OleDbDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    userstories += reader.GetString(0) + "\n";
+                }
+                reader.Close();
+                cmd.ExecuteNonQuery();
+
+                return userstories;
+            }
+        }
         public String DBUserStoryTaskReader()
         {
             using (OleDbConnection con = DataServices.DBConnection())   //Käytetään DataServices.cs tiedostoon luotua tietokantayhteyttä.

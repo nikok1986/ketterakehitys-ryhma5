@@ -24,11 +24,16 @@ namespace Kanbanboard
         {
             InitializeComponent();
             name = nimi;
-            Loaded += TaskLists_populate;
+            Loaded += Lists_populate;
         }
-        private void TaskLists_populate(object sender, RoutedEventArgs e)
+        private void Lists_populate(object sender, RoutedEventArgs e)
         {
             Reader reader = new Reader(name);
+            SprintTitleBox.Text = name;
+            SprintInfoBox.Text = reader.DBSprintInfoReader();
+            SprintStartDateBox.Text = reader.DBSprintStartDate().ToString("dd-MM-yyyy");
+            SprintEndDateBox.Text = reader.DBSprintEndDate().ToString("dd-MM-yyyy");
+
             BackLogTaskList.Items.Clear();
             string[] taskList = reader.DBBackLogReader().Split('\n');
             taskList = taskList.SkipLast(1).ToArray();
