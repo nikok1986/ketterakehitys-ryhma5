@@ -437,19 +437,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\storm\\.nuget\\packages\\": {}
+    "C:\\Users\\Henrika\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\storm\\OneDrive\\Documents\\koulu\\2022 syksy\\Ketterä ohjelmistoprojekti\\ketterakehitys-ryhma5\\Kanbanboard\\Kanbanboard.csproj",
+      "projectUniqueName": "C:\\Users\\Henrika\\Documents\\GitHub\\ketterakehitys-ryhma5\\Kanbanboard\\Kanbanboard.csproj",
       "projectName": "Kanbanboard",
-      "projectPath": "C:\\Users\\storm\\OneDrive\\Documents\\koulu\\2022 syksy\\Ketterä ohjelmistoprojekti\\ketterakehitys-ryhma5\\Kanbanboard\\Kanbanboard.csproj",
-      "packagesPath": "C:\\Users\\storm\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\storm\\OneDrive\\Documents\\koulu\\2022 syksy\\Ketterä ohjelmistoprojekti\\ketterakehitys-ryhma5\\Kanbanboard\\obj\\",
+      "projectPath": "C:\\Users\\Henrika\\Documents\\GitHub\\ketterakehitys-ryhma5\\Kanbanboard\\Kanbanboard.csproj",
+      "packagesPath": "C:\\Users\\Henrika\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Henrika\\Documents\\GitHub\\ketterakehitys-ryhma5\\Kanbanboard\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\storm\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Henrika\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

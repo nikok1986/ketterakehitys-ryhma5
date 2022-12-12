@@ -5,42 +5,49 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Kanbanboard"
         mc:Ignorable="d"
-        Title="TeamReport" Height="450" Width="400" ResizeMode="NoResize"
-        WindowStartupLocation="CenterOwner">
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="2*"/>
-            <RowDefinition Height="1*"/>
-            <RowDefinition Height="2*"/>
-            <RowDefinition Height="6*"/>
-        </Grid.RowDefinitions>
-        <TextBlock x:Name="TeamHeaderBox" Grid.Row="0" FontFamily="GG sans" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,0,0,0" TextWrapping="Wrap" VerticalAlignment="Center"/>
-        <Label Content="Tiimin projekti" Grid.Row="1" VerticalContentAlignment="Center" FontFamily="GG sans" FontSize="16" FontWeight="Bold" HorizontalAlignment="Left" Margin="21,0,0,0" VerticalAlignment="Center" Height="39" Width="122"/>
-        <TextBlock x:Name="TeamProjectsBox" HorizontalAlignment="Left" FontFamily="GG sans" FontSize="16" Margin="178,0,0,0" Grid.Row="1" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Center" Height="19" Width="203"/>
-        <Label Content="Tietoa tiimistä" Grid.Row="1" VerticalContentAlignment="Center" FontFamily="GG sans" FontSize="16" FontWeight="Bold" HorizontalAlignment="Left" Margin="21,36,0,0" VerticalAlignment="Top" Height="39" Width="122" Grid.RowSpan="2"/>
-        <TextBlock x:Name="TeamInfoBox" HorizontalAlignment="Left" FontFamily="GG sans" FontSize="16" Margin="178,6,0,0" Grid.Row="2" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="21" Width="203"/>
-        <Label Content="Tiimin jäsenet" Grid.Row="3" VerticalContentAlignment="Center" FontFamily="GG sans" FontSize="16" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,0,0,0" VerticalAlignment="Top" Height="39" Width="122" Grid.RowSpan="2"/>
-        <ListBox x:Name="TeamMembersListBox" Grid.Row="3" HorizontalAlignment="Left" Margin="137,35,0,8" Width="150" BorderThickness="0" HorizontalContentAlignment="Center">
-            <ListBox.Resources>
-                <Style TargetType="GridViewColumnHeader">
-                    <Setter Property="Visibility" Value="Collapsed" />
-                </Style>
-            </ListBox.Resources>
-            <ListBox.ItemContainerStyle>
-                <Style TargetType="ListBoxItem">
-                    <Setter Property="Focusable" Value="false"/>
-                    <Setter Property="IsSelected" Value="{Binding Content.IsSelected, Mode=TwoWay, RelativeSource={RelativeSource Self}}"/>
-                    <Setter Property="Template">
-                        <Setter.Value>
-                            <ControlTemplate TargetType="ListBoxItem">
-                                <ContentPresenter/>
-                            </ControlTemplate>
-                        </Setter.Value>
-                    </Setter>
-                </Style>
-            </ListBox.ItemContainerStyle>
-        </ListBox>
+        Title="TeamReport" Height="450" Width="400" 
+        WindowStartupLocation="CenterOwner" ResizeMode="NoResize">
+    <Window.Background>
+        <ImageBrush ImageSource="/tausta.jpg"/>
+    </Window.Background>
+    <Border  Margin="20" Background="#FF927D7D" Opacity="0.8" BorderBrush="#FF261A13" BorderThickness="2" CornerRadius="20"  >
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="6*"/>
+            </Grid.RowDefinitions>
+            
+            <TextBlock x:Name="TeamHeaderBox" Grid.Row="0" FontFamily="GG sans" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center"  />
+            <Label Content="Tiimin projekti:" Grid.Row="1" FontFamily="GG sans" FontSize="14" FontWeight="Bold"  VerticalAlignment="Top" />
+            <TextBlock x:Name="TeamProjectsBox" FontFamily="GG sans" FontSize="14"  Grid.Row="1" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Bottom"  Height="30" Width="175" Margin="160,0,0,0" FontWeight="Bold" />
+            <Label Content="Tietoa tiimistä:"  FontFamily="GG sans" FontSize="14" FontWeight="Bold"  VerticalAlignment="Top"  Grid.Row="2" />
+            <TextBlock x:Name="TeamInfoBox"  FontFamily="GG sans" FontSize="14" Margin="160,0,0,0" Grid.Row="2" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"  Height="60" Width="175" FontWeight="Bold" />
+            <Label Content="Tiimin jäsenet:" Grid.Row="3" VerticalContentAlignment="Bottom" FontFamily="GG sans" FontSize="14" FontWeight="Bold" HorizontalAlignment="Center" />
+            <ListBox x:Name="TeamMembersListBox" Grid.Row="4" HorizontalAlignment="Center"  Width="150" Height="180" VerticalAlignment="Top" FontFamily="GG sans" FontSize="14"  >
+                <ListBox.Resources>
+                    <Style TargetType="GridViewColumnHeader">
+                        <Setter Property="Visibility" Value="Collapsed" />
+                    </Style>
+                </ListBox.Resources>
+                <ListBox.ItemContainerStyle>
+                    <Style TargetType="ListBoxItem">
+                        <Setter Property="Focusable" Value="false"/>
+                        <Setter Property="IsSelected" Value="{Binding Content.IsSelected, Mode=TwoWay, RelativeSource={RelativeSource Self}}"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="ListBoxItem">
+                                    <ContentPresenter/>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </ListBox.ItemContainerStyle>
+            </ListBox>
 
 
-    </Grid>
+        </Grid>
+    </Border>
 </Window>

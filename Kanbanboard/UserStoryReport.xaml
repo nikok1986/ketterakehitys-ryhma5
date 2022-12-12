@@ -6,24 +6,28 @@
         xmlns:local="clr-namespace:Kanbanboard"
         mc:Ignorable="d"
         Title="UserStoryReport" Height="450" Width="350"
-        WindowStartupLocation="CenterOwner">
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="3*"/>
-            <RowDefinition Height="1.5*"/>
-            <RowDefinition Height="3*"/>
-            <RowDefinition Height="2*"/>
-            <RowDefinition Height="15*"/>
-        </Grid.RowDefinitions>
-
-        <ListBox x:Name="UserStoryTaskListBox" FontFamily="GG sans" Grid.Row="4" BorderThickness="0" Margin="49,10,176,22"/>
-        <Label Content="Projekti:" FontSize="14" FontFamily="GG sans" FontWeight="Bold" HorizontalAlignment="Left" Margin="60,50,0,8" Height="27" Width="91" Grid.RowSpan="2"/>
-        <TextBox x:Name="ProjectNameTextBox" FontFamily="GG sans" BorderThickness="0" HorizontalAlignment="Left" FontSize="14" Margin="145,0,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Center" Width="132" Height="27"/>
-        <ListBox x:Name="UserStoryTaskStateListBox" Grid.Row="4" FontFamily="GG sans" BorderThickness="0" Margin="174,10,51,22"/>
-        <Label Content="Tehtävä" Grid.Row="3" FontFamily="GG sans" FontSize="13" FontWeight="Bold" HorizontalAlignment="Left" Margin="59,8,0,2"/>
-        <Label Content="Tehtävän tila" Grid.Row="3" FontFamily="GG sans" FontSize="13" FontWeight="Bold" HorizontalAlignment="Right" Margin="0,8,81,2"/>
-        <TextBlock x:Name="UserStoryNameBox"  HorizontalAlignment="Left" FontFamily="GG sans" FontSize="20" FontWeight="Bold" Margin="94,0,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Center" Height="20" Width="175"/>
-        <Label Content="Info:" FontSize="14" FontFamily="GG sans" Grid.Row="1" FontWeight="Bold" HorizontalAlignment="Left" Margin="60,22,0,31" Height="27" Width="46" Grid.RowSpan="2"/>
-        <TextBlock x:Name="UserStoryInfoBox" HorizontalAlignment="Left" FontFamily="GG sans" Margin="141,2,0,35" Grid.Row="2" TextWrapping="Wrap" Width="173" Grid.RowSpan="2"/>
-    </Grid>
+        WindowStartupLocation="CenterOwner" ResizeMode="NoResize">
+    <Window.Background>
+        <ImageBrush ImageSource="/tausta.jpg"/>
+    </Window.Background>
+    <Border  Margin="20" Background="#FF927D7D" Opacity="0.8" BorderBrush="#FF261A13" BorderThickness="2" CornerRadius="20"  >
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="3*"/>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="3*"/>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="13*"/>
+            </Grid.RowDefinitions>
+            <TextBlock x:Name="UserStoryNameBox" FontFamily="GG sans" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.ColumnSpan="2" />
+            <ListBox x:Name="UserStoryTaskListBox" FontSize="12"  FontFamily="GG sans"  Grid.Row="4" Width="120" Height="220" FontWeight="Bold" Margin="0,0,140,10"/>
+            <Label Content="Projekti:" FontSize="14" FontFamily="GG sans" FontWeight="Bold" Grid.Row="1" Margin="40,0,140,0" VerticalAlignment="Top"/>
+            <TextBlock x:Name="ProjectNameTextBox" FontFamily="GG sans" FontWeight="Bold"  FontSize="14"  Grid.Row="1" TextWrapping="Wrap"  Width="120" Height="25" Margin="140,0,0,0"  />
+            <ListBox x:Name="UserStoryTaskStateListBox" FontSize="12" Grid.Row="4" FontFamily="GG sans"  Margin="140,0,0,10" Height="220" Width="120" />
+            <Label Content="Tehtävä:" VerticalAlignment="Bottom" Grid.Row="3" FontFamily="GG sans" FontSize="14" FontWeight="Bold" Margin="40,0,140,0"  />
+            <Label Content="Tehtävän tila:" VerticalAlignment="Bottom" Grid.Row="3" FontFamily="GG sans" FontSize="14" FontWeight="Bold" Margin="170,0,0,0"  />
+            <Label Content="Info:" VerticalAlignment="Top" FontSize="14" FontFamily="GG sans" Grid.Row="1" FontWeight="Bold"  Margin="40,28,180,0" Grid.RowSpan="2"    />
+            <TextBlock x:Name="UserStoryInfoBox"  FontFamily="GG sans" Margin="141,2,0,35" Grid.Row="2" TextWrapping="Wrap" Width="160" Grid.RowSpan="2" FontSize="14" FontWeight="Bold" />
+        </Grid>
+    </Border>
 </Window>

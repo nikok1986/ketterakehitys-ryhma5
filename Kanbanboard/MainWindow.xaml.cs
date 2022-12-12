@@ -276,8 +276,9 @@ namespace Kanbanboard
         {
             if (ProjectListing.SelectedItem != null)
             {
-                string pjName = ProjectListing.SelectedItem.ToString();
+                string pjName = ProjectListing.SelectedItem.ToString(); 
                 EditProjectWindow epw = new EditProjectWindow(pjName);
+                epw.Owner = this;
                 epw.Title = "Muokkaa projektia " + pjName;
                 epw.ShowDialog();
             }
@@ -316,6 +317,7 @@ namespace Kanbanboard
         private void RightClickReport_Click(object sender, RoutedEventArgs e)
         {
             ProjectReport pr = new ProjectReport(ProjectListing.SelectedItem.ToString());
+            pr.Owner = this;
             pr.ShowDialog();
         }
 
@@ -326,6 +328,7 @@ namespace Kanbanboard
             {
                 string name = UsersBox.SelectedItem.ToString();
                 EditUserWindow euw = new EditUserWindow(name);
+                euw.Owner = this;
                 euw.Title = "Muokkaa käyttäjää " + name;
                 euw.ShowDialog();
             }
@@ -340,6 +343,7 @@ namespace Kanbanboard
             {
                 string name = UsersBox.SelectedItem.ToString();
                 UserReport ur = new UserReport(name);
+                ur.Owner = this;
                 ur.ShowDialog();
             }
             else
@@ -381,6 +385,7 @@ namespace Kanbanboard
             {
                 string utName = UserStoryGridList.SelectedItem.ToString();
                 EditUserStoryWindow eust = new EditUserStoryWindow(utName);
+                eust.Owner = this;
                 eust.Title = "Muokkaa käyttäjätarinaa " + utName;
                 eust.ShowDialog();
             }
@@ -395,6 +400,7 @@ namespace Kanbanboard
             {
                 string nimi = UserStoryGridList.SelectedItem.ToString();
                 UserStoryReport usr = new UserStoryReport(nimi);
+                usr.Owner = this;
                 usr.ShowDialog();
             }
             else
@@ -436,6 +442,7 @@ namespace Kanbanboard
             {
                 string sprintName = SprintListing.SelectedItem.ToString();
                 EditSprintWindow esw = new EditSprintWindow(sprintName);
+                esw.Owner = this;
                 esw.Title = "Muokkaa sprinttiä " + sprintName;
                 esw.ShowDialog();
             }
@@ -450,6 +457,7 @@ namespace Kanbanboard
             {
                 string sprintName = SprintListing.SelectedItem.ToString();
                 SprintReport sr = new SprintReport(sprintName);
+                sr.Owner = this;
                 sr.ShowDialog();
             }
             else
@@ -491,6 +499,7 @@ namespace Kanbanboard
             {
                 string teamName = TeamBox.SelectedItem.ToString();
                 TeamReport tr = new TeamReport(teamName);
+                tr.Owner = this;
                 tr.ShowDialog();
             }
             else
@@ -533,6 +542,7 @@ namespace Kanbanboard
             {
                 string tmName = TeamBox.SelectedItem.ToString();
                 EditTeamWindow eust = new EditTeamWindow(tmName);
+                eust.Owner = this;
                 eust.Title = "Muokkaa tiimiä " + tmName;
                 eust.ShowDialog();
             }
@@ -549,6 +559,7 @@ namespace Kanbanboard
             {
                 string taskName = ToDoListBox.SelectedItem.ToString();
                 EditTaskWindow etw = new EditTaskWindow(taskName);
+                etw.Owner = this;
                 etw.ShowDialog();
             }
             else
@@ -562,6 +573,7 @@ namespace Kanbanboard
             {
                 string taskName = ToDoListBox.SelectedItem.ToString();
                 TaskInfo ti = new TaskInfo(taskName);
+                ti.Owner = this;
                 ti.ShowDialog();
             }
         }

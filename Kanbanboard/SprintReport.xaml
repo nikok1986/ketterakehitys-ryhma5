@@ -6,30 +6,33 @@
         xmlns:local="clr-namespace:Kanbanboard"
         mc:Ignorable="d"
         Title="SprintReport" Height="500" Width="400"
-        WindowStartupLocation="CenterOwner">
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="3*"/>
-            <RowDefinition Height="1.5*"/>
-            <RowDefinition Height="1.5*"/>
-            <RowDefinition Height="3*"/>
-            <RowDefinition Height="2*"/>
-            <RowDefinition Height="15*"/>
-            <RowDefinition Height="3*"/>
-        </Grid.RowDefinitions>
-        <ListBox x:Name="BackLogTaskList" FontFamily="GG sans" BorderThickness="0" Grid.Row="5" Margin="19,12,272,20"/>
-        <ListBox x:Name="InProgressTaskList" FontFamily="GG sans" BorderThickness="0" Grid.Row="5" Margin="151,12,144,20"/>
-        <ListBox x:Name="CompleteTaskList" FontFamily="GG sans" BorderThickness="0" Grid.Row="5" Margin="279,12,16,20"/>
-        <Label Content="AloitusPvm" FontFamily="GG sans" FontWeight="Bold" HorizontalAlignment="Left" Margin="74,48,0,0" VerticalAlignment="Top" VerticalContentAlignment="Center" Grid.RowSpan="2"/>
-        <TextBlock x:Name="SprintStartDateBox" Grid.Row="1" FontFamily="GG sans" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="161,-2,0,0" TextWrapping="Wrap" Width="168" Height="18"/>
-        <Label Grid.Row="1" Content="LopetusPvm" FontFamily="GG sans" FontWeight="Bold" HorizontalAlignment="Left" Margin="74,23,0,0" VerticalAlignment="Top" VerticalContentAlignment="Center" Grid.RowSpan="2"/>
-        <TextBlock Grid.Row="2" x:Name="SprintEndDateBox" FontFamily="GG sans" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="161,-2,0,0" TextWrapping="Wrap" Width="168" Height="18"/>
-        <Label Grid.Row="2" FontFamily="GG sans" FontWeight="Bold" Content="Tietoa sprintistä" HorizontalAlignment="Left" Margin="14,21,0,0" VerticalAlignment="Top" VerticalContentAlignment="Center" Grid.RowSpan="2"/>
-        <TextBlock Grid.Row="3" x:Name="SprintInfoBox" FontFamily="GG sans" HorizontalAlignment="Left" VerticalAlignment="Center" TextWrapping="Wrap" Width="271" Height="45" Margin="120,0,0,0"/>
-        <Label Content="Backlog" FontFamily="GG sans" FontWeight="Bold" HorizontalAlignment="Left" Margin="46,0,0,0" Grid.Row="4" VerticalAlignment="Bottom"/>
-        <Label Content="Kesken" FontFamily="GG sans" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,11,0,0" Grid.Row="4" VerticalAlignment="Top" Grid.RowSpan="2"/>
-        <Label Content="Tehty" FontFamily="GG sans" FontWeight="Bold" HorizontalAlignment="Right" Margin="0,11,51,0" Grid.Row="4" VerticalAlignment="Top" Grid.RowSpan="2"/>
-        <TextBlock x:Name="SprintTitleBox" Grid.Row="0" HorizontalAlignment="Center" FontFamily="GG sans" FontSize="20" FontWeight="Bold" Margin="0,0,0,0" TextWrapping="Wrap" VerticalAlignment="Center"/>
-
-    </Grid>
+        WindowStartupLocation="CenterOwner" ResizeMode="NoResize">
+    <Window.Background>
+        <ImageBrush ImageSource="/tausta.jpg"/>
+    </Window.Background>
+    <Border  Margin="20" Background="#FF927D7D" Opacity="0.8" BorderBrush="#FF261A13" BorderThickness="2" CornerRadius="20"  >
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="3*"/>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="3*"/>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="14*"/>
+            </Grid.RowDefinitions>
+            <TextBlock x:Name="SprintTitleBox" FontFamily="GG sans" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.ColumnSpan="2" Grid.Row="0" />
+            <ListBox x:Name="BackLogTaskList" FontFamily="GG sans" FontSize="12" Grid.Row="5" Width="90" Height="200" Margin="0,0,240,0" VerticalAlignment="Top"/>
+            <ListBox x:Name="InProgressTaskList" FontFamily="GG sans"  FontSize="12"  Grid.Row="5" Width="90" Height="200" Margin="0,0,0,0" VerticalAlignment="Top"/>
+            <ListBox x:Name="CompleteTaskList" FontFamily="GG sans" FontSize="12"  Grid.Row="5" Width="90" Height="200" Margin="240,0,0,0" VerticalAlignment="Top"/>
+            <Label Content="AloitusPvm:" FontFamily="GG sans" FontWeight="Bold"  FontSize="14" VerticalAlignment="Top" Grid.Row="1" Margin="10,0,200,0"/>
+            <TextBlock x:Name="SprintStartDateBox" FontWeight="Bold"  Grid.Row="1" FontFamily="GG sans" FontSize="14" Margin="160,0,0,0" TextWrapping="Wrap" />
+            <Label Grid.Row="2" Content="LopetusPvm:" FontFamily="GG sans"  FontSize="14"  FontWeight="Bold" VerticalAlignment="Top"  Margin="10,0,200,0" />
+            <TextBlock Grid.Row="2" FontWeight="Bold"  x:Name="SprintEndDateBox" FontFamily="GG sans" FontSize="14" Margin="160,0,0,0" TextWrapping="Wrap" />
+            <Label Content="Tietoa sprintistä:" Grid.Row="3" FontFamily="GG sans"   FontSize="14" FontWeight="Bold" Margin="10,0,200,0" VerticalAlignment="Top" />
+            <TextBlock Grid.Row="3" FontWeight="Bold"  x:Name="SprintInfoBox" FontFamily="GG sans" FontSize="14" TextWrapping="Wrap" Margin="160,0,0,0" />
+            <Label Content="Backlog:" FontFamily="GG sans" FontWeight="Bold"  FontSize="14" Margin="25,0,0,0" Grid.Row="4" VerticalAlignment="Bottom"/>
+            <Label Content="Kesken:" FontFamily="GG sans" FontWeight="Bold"  FontSize="14" HorizontalAlignment="Center"  Grid.Row="4" VerticalAlignment="Bottom" />
+            <Label Content="Tehty:" FontFamily="GG sans" FontWeight="Bold"  FontSize="14" Margin="270,0,0,0" Grid.Row="4" VerticalAlignment="Bottom" />
+        </Grid>
+    </Border>
 </Window>
