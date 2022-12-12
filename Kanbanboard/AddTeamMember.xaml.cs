@@ -60,12 +60,38 @@ namespace Kanbanboard
 
         private void RemoveTeamMemberButton_Click(object sender, RoutedEventArgs e)
         {
+            using (OleDbConnection con = DataServices.DBConnection())   //Käytetään DataServices.cs tiedostoon luotua tietokantayhteyttä.
+            {                                                           //Using-komennolla yhteys suljetaan automaattisesti suorituksen jälkeen.
+                string test = string.Empty;
+                OleDbCommand cmd;
+                if (TeamListBox.SelectedItem != null || SelectedProjectTeamsBox.Text != test)
+                {
+                    Reader reader1 = new Reader(SelectedProjectTeamsBox.Text);
+                    int teamId = reader1.TeamIdReader();
+                    reader1 = new Reader(TeamListBox.SelectedItem.ToString());
+                    int userId = reader1.UserIdReader();
+                    cmd = new OleDbCommand("DELETE FROM users_teams_link WHERE user_id = " + userId + " AND team_id = " + teamId + ";");
+                    cmd.Connection = con;   //Yhteys avataan OleDb-komennolla.
+                    cmd.ExecuteNonQuery();
 
+
+                }
+                else
+                {
+                    MessageBox.Show("Valitse tehtävä backlogissa olevien tehtävien listalta");
+                }
+            }
+            TeamListBox.Items.Clear();
+            string teamName = SelectedProjectTeamsBox.Text;
+            Reader reader = new Reader(teamName);
+            string[] teamMembers = reader.DBTeamUserReader().Split('\n');
+            teamMembers = teamMembers.SkipLast(1).ToArray();
+            foreach (string s in teamMembers) TeamListBox.Items.Add(s);
         }
 
         private void CompleteAddingTeamMembersButton_Click(object sender, RoutedEventArgs e)
         {
-
+            DialogResult = false;
         }
 
         private void CancelAddTeamMembersButton_Click(object sender, RoutedEventArgs e)

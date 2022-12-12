@@ -93,7 +93,7 @@ namespace Kanbanboard {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/Kanbanboard;V1.0.0.0;component/addteam.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/Kanbanboard;component/addteam.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\AddTeam.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);
