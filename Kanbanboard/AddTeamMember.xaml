@@ -31,14 +31,13 @@
             <ComboBox x:Name="SelectedProjectTeamsBox" Grid.Row="5" HorizontalAlignment="Center" Width="220" Margin="0,0,80,0" />
             <Button x:Name="RefreshProjectTeamsBoxButton" Grid.Row="5" Width="50" Height="20" Content="Päivitä" Margin="250,0,0,30" FontSize="10" Grid.RowSpan="2"  Click="RefreshProjectTeamsBoxButton_Click" Background="Black" Foreground="White" VerticalAlignment="Center"/>
             <Label Grid.Row="7"  FontFamily="GG sans" FontSize="14"  HorizontalAlignment="Center"  Content="Valitse käyttäjät tiimiin:"  FontWeight="Bold"/>
-            <ListBox x:Name="TeamListBox" Grid.Row="8" Width="100" Margin="-200,0,0,0" />
-            <Button x:Name="AddTeamMeamberButton" Grid.Row="8" Width="50"  Content="+" FontWeight="Bold" FontFamily="GG-sans" FontSize="10" Margin="0,5,0,0" VerticalAlignment="Top"  Background="Black" Foreground="White" Click="AddTeamMeamberButton_Click"/>
-            <ListBox x:Name="AllUsersListBox" Grid.Row="8" Width="100" Margin="200,0,0,0" />
+            <ListBox x:Name="AllUsersListBox" Grid.Row="8" Width="100" Margin="-200,0,0,0" />
+            <Button x:Name="AddTeamMemberButton" Grid.Row="8" Width="50"  Content="+" FontWeight="Bold" FontFamily="GG-sans" FontSize="10" Margin="0,5,0,0" VerticalAlignment="Top"  Background="Black" Foreground="White" Click="AddTeamMemberButton_Click"/>
+            <ListBox x:Name="TeamListBox" Grid.Row="8" Width="100" Margin="200,0,0,0" />
             <Button x:Name="RemoveUserButton" Grid.Row="8" Width="50"  Content="-" FontWeight="Bold" FontFamily="GG-sans" FontSize="11" VerticalAlignment="Top" Margin="0,30,0,0" Background="Black" Foreground="White" Click="RemoveTeamMemberButton_Click"/>
             <Button x:Name="RefreshTeamMembers" Grid.Row="8" Width="50" FontSize="10" Content="Päivitä"  VerticalAlignment="Bottom" Margin="0,0,0,5" Click="RefreshTeamMembers_Click" Foreground="White" Background="Black"/>
             <WrapPanel Grid.Row="9" HorizontalAlignment="Center" >
                 <Button x:Name="CompleteAddingTeamMemberButton" FontFamily="GG-sans" FontSize="12" Background="Black" Width="50" Margin="5" Content="OK" IsDefault="True" Click="CompleteAddingTeamMembersButton_Click" Foreground="#FFFAFAFA"/>
-                <Button x:Name="CancelAddTeamMemberButton" FontFamily="GG-sans" FontSize="12"  Background="Black" Width="50" Margin="5" Content="Cancel" IsCancel="True" Click="CancelAddTeamMembersButton_Click" Foreground="White"/>
             </WrapPanel>
         </Grid>
     </Border>

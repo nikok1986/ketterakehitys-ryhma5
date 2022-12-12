@@ -36,8 +36,9 @@ namespace Kanbanboard
         {
             InitializeComponent();
             Loaded += UpdateProjectList;
+            Activated += UpdateProjectList;
         }
-        private void UpdateProjectList(object sender, RoutedEventArgs e)
+        public void UpdateProjectList(object sender, EventArgs e)
         {
             ProjectListing.Items.Clear();
             Reader reader= new Reader();
@@ -46,7 +47,7 @@ namespace Kanbanboard
             foreach (string s in projects)
                 ProjectListing.Items.Add(s);
         }
-        private void TaskLists_populate()
+        public void TaskLists_populate()
         {
             string name = SprintListing.SelectedItem.ToString();
             Reader reader = new Reader(name);
@@ -68,7 +69,7 @@ namespace Kanbanboard
             foreach (string s in completeList)
                 TaskDoneListBox.Items.Add(s);
         }
-        private void UpdateTaskLists(object sender, RoutedEventArgs e)
+        public void UpdateTaskLists(object sender, RoutedEventArgs e)
         {
 
         }   //Mietinnän alla

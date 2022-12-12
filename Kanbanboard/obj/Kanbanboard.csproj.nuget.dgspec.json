@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\storm\\OneDrive\\Documents\\koulu\\2022 syksy\\Ketterä ohjelmistoprojekti\\ketterakehitys-ryhma5\\Kanbanboard\\Kanbanboard.csproj": {}
+    "C:\\Users\\Juuso\\Source\\Repos\\nikok1986\\ketterakehitys-ryhma5\\Kanbanboard\\Kanbanboard.csproj": {}
   },
   "projects": {
-    "C:\\Users\\storm\\OneDrive\\Documents\\koulu\\2022 syksy\\Ketterä ohjelmistoprojekti\\ketterakehitys-ryhma5\\Kanbanboard\\Kanbanboard.csproj": {
+    "C:\\Users\\Juuso\\Source\\Repos\\nikok1986\\ketterakehitys-ryhma5\\Kanbanboard\\Kanbanboard.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\storm\\OneDrive\\Documents\\koulu\\2022 syksy\\Ketterä ohjelmistoprojekti\\ketterakehitys-ryhma5\\Kanbanboard\\Kanbanboard.csproj",
+        "projectUniqueName": "C:\\Users\\Juuso\\Source\\Repos\\nikok1986\\ketterakehitys-ryhma5\\Kanbanboard\\Kanbanboard.csproj",
         "projectName": "Kanbanboard",
-        "projectPath": "C:\\Users\\storm\\OneDrive\\Documents\\koulu\\2022 syksy\\Ketterä ohjelmistoprojekti\\ketterakehitys-ryhma5\\Kanbanboard\\Kanbanboard.csproj",
-        "packagesPath": "C:\\Users\\storm\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\storm\\OneDrive\\Documents\\koulu\\2022 syksy\\Ketterä ohjelmistoprojekti\\ketterakehitys-ryhma5\\Kanbanboard\\obj\\",
+        "projectPath": "C:\\Users\\Juuso\\Source\\Repos\\nikok1986\\ketterakehitys-ryhma5\\Kanbanboard\\Kanbanboard.csproj",
+        "packagesPath": "C:\\Users\\Juuso\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Juuso\\Source\\Repos\\nikok1986\\ketterakehitys-ryhma5\\Kanbanboard\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\storm\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Juuso\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [

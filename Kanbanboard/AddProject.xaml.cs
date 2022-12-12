@@ -53,6 +53,7 @@ namespace Kanbanboard
 
                         cmd.ExecuteNonQuery();
                         MessageBox.Show("Tietue tallennettu!");
+                        DialogResult = false;
                     }
                     if (ProjectNameInput.Text == test)    //testi NimiBoxin sisällölle
                     {

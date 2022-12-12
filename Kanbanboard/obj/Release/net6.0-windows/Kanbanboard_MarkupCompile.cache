@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\Juuso\Source\Repos\GitHub\nikok1986\ketterakehitys-ryhma5\Kanbanboard\obj\Release\net6.0-windows\
+C:\Users\Juuso\Source\Repos\nikok1986\ketterakehitys-ryhma5\Kanbanboard\obj\Release\net6.0-windows\
 Kanbanboard
 none
 false
 TRACE;RELEASE;NET;NET6_0;NETCOREAPP
-C:\Users\Juuso\Source\Repos\GitHub\nikok1986\ketterakehitys-ryhma5\Kanbanboard\App.xaml
-9-1359466834
+C:\Users\Juuso\Source\Repos\nikok1986\ketterakehitys-ryhma5\Kanbanboard\App.xaml
+20330204386
 
-131510982702
+24-681408155
 194-2004305220
-AddProject.xaml;AddSprintWindow.xaml;AddTask.xaml;AddUser.xaml;AddUserStory.xaml;EditProjectWindow.xaml;MainWindow.xaml;ProjectReport.xaml;TabitemMalli.xaml;
+AddProject.xaml;AddSprintWindow.xaml;AddTask.xaml;AddTeam.xaml;AddTeamMember.xaml;AddUser.xaml;AddUserStory.xaml;EditProjectWindow.xaml;EditSprintWindow.xaml;EditTaskWindow.xaml;EditTeamWindow.xaml;EditUserStoryWindow.xaml;EditUserWindow.xaml;MainWindow.xaml;ProjectReport.xaml;SprintReport.xaml;TaskInfo.xaml;TeamReport.xaml;UserReport.xaml;UserStoryReport.xaml;
 
 True
 

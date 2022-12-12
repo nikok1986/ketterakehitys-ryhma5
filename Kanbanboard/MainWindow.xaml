@@ -125,8 +125,8 @@
                             <RowDefinition/>
                             <RowDefinition/>
                         </Grid.RowDefinitions>
-                        <TextBlock x:Name="TitleBox" FontSize="20" FontFamily="GG sans" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="1" TextWrapping="Wrap" Margin="32,0,0,0" />
-                        <TextBlock x:Name="InfoBox"  FontSize="14" FontFamily="GG sans" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Grid.Row="1" Grid.Column="1" Margin="32,0,0,0"/>
+                        <TextBlock x:Name="TitleBox" FontSize="20" FontFamily="GG sans" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="1" TextWrapping="Wrap" Margin="32,0,0,0" Grid.ColumnSpan="5" Width="400" />
+                        <TextBlock x:Name="InfoBox"  FontSize="14" FontFamily="GG sans" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Grid.Row="1" Grid.Column="1" Margin="32,0,0,0" Grid.ColumnSpan="6" Width="531" Height="197" Grid.RowSpan="2"/>
                         <StackPanel Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="5"  Grid.RowSpan="1" Margin="32,0,108,0">
                             <!--pistää StackPanelin sisällä olevat elementit automaattisesti allekkain ilman välejä-->
                             <TextBlock x:Name= "StartDateLabel" FontSize="12"  HorizontalAlignment="Left"  TextWrapping="Wrap" Text="Aloitettu:" FontWeight="Bold"  Grid.Row="1" />

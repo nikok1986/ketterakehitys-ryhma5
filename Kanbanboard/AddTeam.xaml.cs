@@ -24,7 +24,6 @@ namespace Kanbanboard
         {
             InitializeComponent();
             Loaded += ProjectBox_populate;
-            Loaded += AllUsersListBox_populate;
         }
 
         private void AddTeamButton_Click(object sender, RoutedEventArgs e)
@@ -76,15 +75,6 @@ namespace Kanbanboard
             projects = projects.SkipLast(1).ToArray();
             foreach (string s in projects)
                 TeamProjectSelect.Items.Add(s);
-        }
-        private void AllUsersListBox_populate(object sender, RoutedEventArgs e)
-        {
-            AllUsersListBox.Items.Clear();
-            Reader reader = new Reader();
-            string[] projects = reader.DBEveryUserNameReader().Split('\n');
-            projects = projects.SkipLast(1).ToArray();
-            foreach (string s in projects)
-                AllUsersListBox.Items.Add(s);
         }
     }
 }
