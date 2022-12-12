@@ -51,7 +51,7 @@ namespace Kanbanboard
                 int i = reader.ProjectIdReader();
 
                 cmd.Connection = con;
-                if (SprintNameInput.Text != test || SprintDescriptionInput.Text != test)
+                if (SprintNameInput.Text != test || SprintDescriptionInput.Text != test || SprintStartDate.SelectedDate != null || SprintEndDate.SelectedDate != null)
                 {
                     cmd.CommandText = "INSERT INTO sprints (sprint_nimi, sprint_info, sprint_aloitus_pvm, sprint_lopetus_pvm, project_id)values(@snimi, @sinfo, @sapvm, @slpvp, @pjid);";
                     cmd.Parameters.AddWithValue("@nimi", SprintNameInput.Text);
@@ -62,6 +62,7 @@ namespace Kanbanboard
 
                     cmd.ExecuteNonQuery();
                     MessageBox.Show("Sprintti tallennettu.");
+                    DialogResult = false;
                 }
                 else
                 {

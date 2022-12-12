@@ -34,13 +34,14 @@ namespace Kanbanboard
                 string test = string.Empty;
 
                 cmd.Connection = con;
-                if (UserNameInput.Text != test)
+                if (UserNameInput.Text != test || UserRoleComboBox.Text != test)
                 {
                     cmd.CommandText = "INSERT INTO users (user_nimi, user_rooli)values(@knimi, @krole)";
                     cmd.Parameters.AddWithValue("@knimi", UserNameInput.Text);
                     cmd.Parameters.AddWithValue("@krole", UserRoleComboBox.Text);
                     cmd.ExecuteNonQuery();
-                    MessageBox.Show("Tietue tallennettu!");
+                    MessageBox.Show("Käyttäjä tallennettu!");
+                    DialogResult = false;
                 }
                 if (UserNameInput.Text == test)    //Helppo testi NimiBoxin sisällölle
                 {

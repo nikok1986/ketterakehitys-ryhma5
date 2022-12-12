@@ -42,7 +42,7 @@ namespace Kanbanboard
                 cmd.Connection = con;
                 try
                 {
-                    if (ProjectNameInput.Text != test)
+                    if (ProjectNameInput.Text != test || ProjectNameInput.Text != test || ProjectStartDate.SelectedDate != null || ProjectEndDate.SelectedDate != null)
                     {
                         cmd.CommandText = "INSERT INTO projects (project_nimi, project_info, project_aloitus_pvm, project_lopetus_pvm)values(@pnimi, @pinfo, @papvm, @plpvm)";
                         cmd.Parameters.AddWithValue("@nimi", ProjectNameInput.Text);

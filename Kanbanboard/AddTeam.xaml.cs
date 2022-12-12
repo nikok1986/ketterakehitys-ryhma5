@@ -38,8 +38,8 @@ namespace Kanbanboard
                 string test = string.Empty;
 
                 cmd.Connection = con;
-                //try
-                //{
+                try
+                {
                     if (TeamNameInput.Text != test && TeamDescriptionInput.Text != test)
                     {
                         cmd.CommandText = "INSERT INTO teams (team_nimi, team_info, project_id)values(@tnimi, @tinfo, @pjid)";
@@ -50,16 +50,17 @@ namespace Kanbanboard
 
                         cmd.ExecuteNonQuery();
                         MessageBox.Show("Tietue tallennettu!");
+                        DialogResult = false;
                     }
                     if (TeamNameInput.Text == test)    //testi NimiBoxin sisällölle
                     {
                         MessageBox.Show("Anna tiimille nimi, info ja projekti.");
                     }
-                //}
-                //catch
-                //{
-                   // MessageBox.Show("Lisää arvo jokaiseen tietueeseen tai paina Cancel poistuaksesi ikkunasta");
-                //}
+                }
+                catch
+                {
+                    MessageBox.Show("Lisää arvo jokaiseen tietueeseen tai paina Cancel poistuaksesi ikkunasta");
+                }
             }
         }
 

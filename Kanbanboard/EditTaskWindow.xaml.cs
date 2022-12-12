@@ -49,9 +49,9 @@ namespace Kanbanboard
                 int diff = TaskDifficulty.SelectedIndex;
 
                 cmd.Connection = con;
-                //try
-                //{
-                    if (TaskNameInput.Text != test)
+                try
+                {
+                    if (TaskNameInput.Text != test || TaskDescriptionInput.Text != test || TaskStartDate.SelectedDate != null || TaskEndDate != null || AddedUserStoryList.Text != test || AddedUserList.Text != test || AddedSprintList.Text != test || TaskDifficulty.Text != test || TaskCategory.Text != test || TaskPrioritySelector.Text != test)
                     {
                         cmd.CommandText = "UPDATE tasks SET task_nimi = @tnimi, task_info = @tinfo, task_tila = @ttila, task_prioriteetti = @tprio, task_kategoria = @tkat, task_vaikeustaso = @tvaik, task_aloitus_pvm = tapvm, task_lopetus_pvm = tlpvm, sprint_id = @tspri, user_story_id = @tust, user_id = @tuser WHERE task_nimi='" + name + "';";
                         cmd.Parameters.AddWithValue("@tnimi", TaskNameInput.Text);  //(@tnimi, @tinfo, @ttila, @tprio, @tkat, @tvaik, @tapvm, @tlpvm, @tspri, @tust)"
@@ -69,16 +69,17 @@ namespace Kanbanboard
 
                         cmd.ExecuteNonQuery();
                         MessageBox.Show("Tietue tallennettu!");
+                        DialogResult = false;
                     }
                     if (TaskNameInput.Text == test)    //testi NimiBoxin sisällölle
                     {
                         MessageBox.Show("Osa tiedoista puuttuu");
                     }
-                //}
-                //catch
-               //{
+                }
+                catch
+                {
                     //MessageBox.Show("Lisää arvo jokaiseen tietueeseen tai paina Cancel poistuaksesi ikkunasta");
-                //}
+                }
             }
         }
         public void Lists_populate(object sender, RoutedEventArgs e)

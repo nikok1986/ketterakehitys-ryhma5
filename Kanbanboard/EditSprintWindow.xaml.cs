@@ -39,7 +39,7 @@ namespace Kanbanboard
                 int i = reader.ProjectIdReader();
 
                 cmd.Connection = con;
-                if (SprintNameInput.Text != test || SprintDescriptionInput.Text != test)
+                if (SprintNameInput.Text != test || SprintDescriptionInput.Text != test || SprintStartDate.SelectedDate != null || SprintEndDate.SelectedDate != null)
                 {
                     cmd.CommandText = "UPDATE sprints SET sprint_nimi = @snimi, sprint_info = @sinfo, sprint_aloitus_pvm = sapvm, sprint_lopetus_pvm = slpvp, project_id = @pjid WHERE sprint_nimi='" + name + "';";
                     cmd.Parameters.AddWithValue("@nimi", SprintNameInput.Text);

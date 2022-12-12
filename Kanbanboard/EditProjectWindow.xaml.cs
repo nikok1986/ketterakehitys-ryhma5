@@ -37,7 +37,7 @@ namespace Kanbanboard
                 cmd.Connection = con;
                 try
                 {
-                    if (ProjectNameInput.Text != test)
+                    if (ProjectNameInput.Text != test || ProjectNameInput.Text != test || ProjectStartDate.SelectedDate != null || ProjectEndDate.SelectedDate != null)
                     {
                         cmd.CommandText = "UPDATE projects SET project_nimi = @pnimi, project_info = @pinfo, project_aloitus_pvm = @papvm, project_lopetus_pvm = @plpvm WHERE project_nimi='" + projectName + "';";
                         cmd.Parameters.AddWithValue("@nimi", ProjectNameInput.Text);

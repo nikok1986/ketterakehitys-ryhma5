@@ -40,17 +40,18 @@ namespace Kanbanboard
                 cmd.Connection = con;
                 try
                 {
-                    if (EditTeamNameInput.Text != test)
+                    if (TeamNameInput.Text != test && TeamDescriptionInput.Text != test)
                     {
                         cmd.CommandText = "UPDATE teams SET team_nimi = @tnimi, team_info = @tinfo, project_id = @pjid WHERE team_nimi='" + name + "';";
-                        cmd.Parameters.AddWithValue("@tnimi", EditTeamNameInput.Text);
-                        cmd.Parameters.AddWithValue("@tinfo", EditTeamDescriptionInput.Text);
+                        cmd.Parameters.AddWithValue("@tnimi", TeamNameInput.Text);
+                        cmd.Parameters.AddWithValue("@tinfo", TeamDescriptionInput.Text);
                         cmd.Parameters.AddWithValue("@pjid", i);
 
                         cmd.ExecuteNonQuery();
                         MessageBox.Show("Tietue muokattu!");
+                        DialogResult = false;
                     }
-                    if (EditTeamNameInput.Text == test)    //testi NimiBoxin sisällölle
+                    if (TeamNameInput.Text == test)    //testi NimiBoxin sisällölle
                     {
                         MessageBox.Show("Nimilaatikko on tyhjä!");
                     }

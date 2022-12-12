@@ -56,6 +56,7 @@ namespace Kanbanboard
             string[] teamMembers = reader.DBTeamUserReader().Split('\n');
             teamMembers = teamMembers.SkipLast(1).ToArray();
             foreach (string s in teamMembers) TeamListBox.Items.Add(s);
+            DialogResult = false;
         }
 
         private void RemoveTeamMemberButton_Click(object sender, RoutedEventArgs e)

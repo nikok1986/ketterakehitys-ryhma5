@@ -62,6 +62,7 @@ namespace Kanbanboard
 
                         cmd.ExecuteNonQuery();
                         MessageBox.Show("Tietue tallennettu!");
+                        DialogResult = false;
                     }
                     if (UserStoryNameInput.Text == test || UserStoryDescriptionInput.Text == test)  
                     {

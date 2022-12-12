@@ -43,6 +43,7 @@ namespace Kanbanboard
                     cmd.Parameters.AddWithValue("@krole", UserRoleComboBox.Text);
                     cmd.ExecuteNonQuery();
                     MessageBox.Show("Tietue tallennettu!");
+                    DialogResult = false;
                 }
                 if (UserNameInput.Text == test) 
                 {

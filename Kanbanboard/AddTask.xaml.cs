@@ -53,7 +53,7 @@ namespace Kanbanboard
                 cmd.Connection = con;
                 try
                 {
-                    if (TaskNameInput.Text != test)
+                    if (TaskNameInput.Text != test || TaskDescriptionInput.Text != test || TaskStartDate.SelectedDate != null || TaskEndDate != null || AddedUserStoryList.Text != test || AddedUserList.Text != test || AddedSprintList.Text != test || TaskDifficulty.Text != test || TaskCategory.Text != test || TaskPrioritySelector.Text != test)
                     {
                         cmd.CommandText = "INSERT INTO tasks (task_nimi, task_info, task_tila, task_prioriteetti, task_kategoria, task_vaikeustaso, task_aloitus_pvm, task_lopetus_pvm, sprint_id, user_story_id, user_id)values(@tnimi, @tinfo, @ttila, @tprio, @tkat, @tvaik, @tapvm, @tlpvm, @tspri, @tust, @tuser)";
                         cmd.Parameters.AddWithValue("@tnimi", TaskNameInput.Text);  //(@tnimi, @tinfo, @ttila, @tprio, @tkat, @tvaik, @tapvm, @tlpvm, @tspri, @tust)"
@@ -71,6 +71,7 @@ namespace Kanbanboard
 
                         cmd.ExecuteNonQuery();
                         MessageBox.Show("Tietue tallennettu!");
+                        DialogResult = false;
                     }
                     if (TaskNameInput.Text == test)    //testi NimiBoxin sisällölle
                     {
