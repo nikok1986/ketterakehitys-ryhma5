@@ -291,15 +291,16 @@ namespace Kanbanboard
             using (OleDbConnection con = DataServices.DBConnection())   //Käytetään DataServices.cs tiedostoon luotua tietokantayhteyttä.
             {                                                           //Using-komennolla yhteys suljetaan automaattisesti suorituksen jälkeen.
                 OleDbCommand cmd;
-                MessageBoxResult result = MessageBox.Show("Haluatko varmasti poistaa projektin " + ProjectListing.SelectedItem + "?", "Vahvistus", MessageBoxButton.YesNo);
+                string pjName = ProjectListing.SelectedItem.ToString();
+                MessageBoxResult result = MessageBox.Show("Haluatko varmasti poistaa projektin " + pjName + "?", "Vahvistus", MessageBoxButton.YesNo);
                 if (result == MessageBoxResult.Yes)
                 {
-                    if (ProjectListing.SelectedItem != null)
+                    if (pjName != null)
                     {
-                        cmd = new OleDbCommand("DELETE FROM projects WHERE project_nimi='" + ProjectListing.SelectedItem + "';");
+                        cmd = new OleDbCommand("DELETE FROM projects WHERE project_nimi='" + pjName + "';");
                         cmd.Connection = con;   //Yhteys avataan OleDb-komennolla.
                         cmd.ExecuteNonQuery();
-                        MessageBox.Show("Projekti " + ProjectListing.SelectedItem + " poistettu.");
+                        MessageBox.Show("Projekti " + pjName + " poistettu.");
                     }
                     else
                     {

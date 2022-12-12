@@ -144,11 +144,11 @@ namespace Kanbanboard
                     reader = new Reader(userstoryNames[i]); //muutetaan readerin syötettä, annetaan loopissa sillä hetkellä olevan käyttäjätarinan nimi
                     result = reader.DBUserStoryTaskStateReader(); //DBUserStoryTaskReader käyttää syötteenä annettua käyttäjätarinan nimeä hakemaan siihen liittyvien taskien tilat
 
-                    if (!result.Contains("1") && !result.Contains("2")) //eli jos string EI sisällä 1 tai 2, se sisältää pelkkiä nollia = user storyn tila on siis myös 0 eli aloittamatta tai aivan alussa
+                    if (!result.Contains('1') && !result.Contains('2')) //eli jos string EI sisällä 1 tai 2, se sisältää pelkkiä nollia = user storyn tila on siis myös 0 eli aloittamatta tai aivan alussa
                     {
                         cmd = new OleDbCommand("UPDATE user_stories SET user_story_tila = 0 WHERE user_story_nimi='" + userstoryNames[i] + "';");
                     }
-                    if (!result.Contains("0") && !result.Contains("1")) //jos EI sisällä 0 tai 1, kaikkien tehtävien on siis pakko olla 2, eli user storyn tila = 2
+                    else if (!result.Contains('0') && !result.Contains('1')) //jos EI sisällä 0 tai 1, kaikkien tehtävien on siis pakko olla 2, eli user storyn tila = 2
                     {
                         cmd = new OleDbCommand("UPDATE user_stories SET user_story_tila = 2 WHERE user_story_nimi='" + userstoryNames[i] + "';");
                     }

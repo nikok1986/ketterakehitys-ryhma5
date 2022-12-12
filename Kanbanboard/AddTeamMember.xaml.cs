@@ -98,6 +98,7 @@ namespace Kanbanboard
         {
 
         }
+
         private void ProjectBox_populate(object sender, RoutedEventArgs e)
         {
             TeamProjectSelect.Items.Clear();
