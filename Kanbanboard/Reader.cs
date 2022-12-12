@@ -843,17 +843,17 @@ namespace Kanbanboard
 
                 cmd = new OleDbCommand("SELECT task_kesto FROM tasks WHERE task_nimi='" + name + "';");
                 cmd.Connection = con;   //Yhteys avataan OleDb-komennolla.
-                string teams = String.Empty;    //Kerätään info tähän tyhjään stringiin.
+                string taskKesto = String.Empty;    //Kerätään info tähän tyhjään stringiin.
 
                 OleDbDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
-                    teams += reader.GetInt32(0) + "\n";
+                    taskKesto += reader.GetInt32(0);
                 }
                 reader.Close();
                 cmd.ExecuteNonQuery();
 
-                return teams;
+                return taskKesto;
             }
         }
         public DateTime DBTaskStartDateReader()

@@ -603,6 +603,20 @@ namespace Kanbanboard
                 }
             }
         }
+        private void RightClickAddUserToTask_Click(object sender, RoutedEventArgs e)
+        {
+            if (ToDoListBox.SelectedItem != null)
+            {
+                string username = ToDoListBox.SelectedItem.ToString();
+                AddUserToTask adduser = new AddUserToTask(username);
+                adduser.Owner = this;
+                adduser.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Valitse tehtävä listalta.");
+            }
+        }
         private void RightClickRemoveTaskUser_Click(object sender, RoutedEventArgs e)
         {
             using (OleDbConnection con = DataServices.DBConnection())   //Käytetään DataServices.cs tiedostoon luotua tietokantayhteyttä.

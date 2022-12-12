@@ -40,17 +40,17 @@
             <Label Content="Aloituspvm:" Grid.Column="0" FontFamily="GG sans" FontSize="14" VerticalContentAlignment="Top" FontWeight="Bold" Grid.Row="7"/>
             <Label Content="Deadline:" Grid.Column="0" FontFamily="GG sans" FontSize="14" VerticalContentAlignment="Top" FontWeight="Bold" Grid.Row="8" />
             <Label Content="Vaikeustaso:" Grid.Column="0" FontFamily="GG sans" FontSize="14" VerticalContentAlignment="Top" FontWeight="Bold"  Grid.Row="9"/>
-            <Label Content="Arvioitu kesto:" Grid.Column="0" FontFamily="GG sans" FontSize="14" VerticalContentAlignment="Top" FontWeight="Bold"  Grid.Row="10"/>
-            <TextBlock x:Name="TaskUserStoryBox" FontFamily="GG sans" FontSize="14" Grid.Row="1" TextWrapping="Wrap" Text="TextBlock"  Grid.Column="1" FontWeight="Bold" />
-            <TextBlock x:Name="TaskSprintBox" Grid.Column="1"  FontFamily="GG sans" FontSize="14" Grid.Row="2" TextWrapping="Wrap" Text="TextBlock" FontWeight="Bold"  />
-            <TextBlock x:Name="TaskUserBox" Grid.Column="1"  FontFamily="GG sans" FontSize="14" Grid.Row="3" TextWrapping="Wrap" Text="TextBlock" FontWeight="Bold" />
-            <TextBlock x:Name="TaskInfoBox" Grid.Column="1"  FontFamily="GG sans" FontSize="14" Grid.Row="4" TextWrapping="Wrap" Text="TextBlock" FontWeight="Bold" />
-            <TextBlock x:Name="TaskPrioBox" Grid.Column="1"  FontFamily="GG sans" FontSize="14" Grid.Row="5" TextWrapping="Wrap" Text="TextBlock" FontWeight="Bold" />
-            <TextBlock x:Name="TaskStateBox" Grid.Column="1"  FontFamily="GG sans" FontSize="14" HorizontalAlignment="Left" Grid.Row="6" TextWrapping="Wrap" Text="TextBlock" FontWeight="Bold" />
-            <TextBlock x:Name="TaskStartDateBox" Grid.Column="1"  FontFamily="GG sans" FontSize="14" Grid.Row="7" TextWrapping="Wrap" Text="TextBlock" FontWeight="Bold" />
-            <TextBlock x:Name="TaskDeadLineBox" Grid.Column="1"  FontFamily="GG sans" FontSize="14" Grid.Row="8" TextWrapping="Wrap" Text="TextBlock" FontWeight="Bold" />
-            <TextBlock x:Name="TaskDifficultyBox" Grid.Column="1"  FontFamily="GG sans" FontSize="14" Grid.Row="9" TextWrapping="Wrap" Text="TextBlock" FontWeight="Bold"  />
-            <TextBlock x:Name="TaskDurationBox" Grid.Column="1"  FontFamily="GG sans" FontSize="14"  Grid.Row="10" TextWrapping="Wrap" Text="TextBlock" FontWeight="Bold" />
+            <Label Content="Arvioitu kesto (h):" Grid.Column="0" FontFamily="GG sans" FontSize="14" VerticalContentAlignment="Top" FontWeight="Bold"  Grid.Row="10"/>
+            <TextBlock x:Name="TaskUserStoryBox" FontFamily="GG sans" FontSize="14" Grid.Row="1" TextWrapping="Wrap" Text="TextBlock"  Grid.Column="1" FontWeight="Bold" Margin="0,6,0,25" Grid.RowSpan="2" />
+            <TextBlock x:Name="TaskSprintBox" Grid.Column="1"  FontFamily="GG sans" FontSize="14" Grid.Row="2" TextWrapping="Wrap" Text="TextBlock" FontWeight="Bold" Margin="0,5,0,26" Grid.RowSpan="2"  />
+            <TextBlock x:Name="TaskUserBox" Grid.Column="1"  FontFamily="GG sans" FontSize="14" Grid.Row="3" TextWrapping="Wrap" Text="TextBlock" FontWeight="Bold" Margin="0,4,0,59" Grid.RowSpan="2" />
+            <TextBlock x:Name="TaskInfoBox" Grid.Column="1"  FontFamily="GG sans" FontSize="14" Grid.Row="4" TextWrapping="Wrap" Text="TextBlock" FontWeight="Bold" Margin="0,3,0,28" Grid.RowSpan="2" />
+            <TextBlock x:Name="TaskPrioBox" Grid.Column="1"  FontFamily="GG sans" FontSize="14" Grid.Row="5" TextWrapping="Wrap" Text="TextBlock" FontWeight="Bold" Margin="0,2,0,29" Grid.RowSpan="2" />
+            <TextBlock x:Name="TaskStateBox" Grid.Column="1"  FontFamily="GG sans" FontSize="14" HorizontalAlignment="Left" Grid.Row="6" TextWrapping="Wrap" Text="TextBlock" FontWeight="Bold" Margin="0,2,0,29" Grid.RowSpan="2" />
+            <TextBlock x:Name="TaskStartDateBox" Grid.Column="1"  FontFamily="GG sans" FontSize="14" Grid.Row="7" TextWrapping="Wrap" Text="TextBlock" FontWeight="Bold" Margin="0,2,0,30" Grid.RowSpan="2" />
+            <TextBlock x:Name="TaskDeadLineBox" Grid.Column="1"  FontFamily="GG sans" FontSize="14" Grid.Row="8" TextWrapping="Wrap" Text="TextBlock" FontWeight="Bold" Margin="0,2,0,29" Grid.RowSpan="2" />
+            <TextBlock x:Name="TaskDifficultyBox" Grid.Column="1"  FontFamily="GG sans" FontSize="14" Grid.Row="9" TextWrapping="Wrap" Text="TextBlock" FontWeight="Bold" Margin="0,2,0,29" Grid.RowSpan="2"  />
+            <TextBlock x:Name="TaskDurationBox" Grid.Column="1"  FontFamily="GG sans" FontSize="14"  Grid.Row="10" TextWrapping="Wrap" Text="TextBlock" FontWeight="Bold" Margin="0,2,0,-2" />
 
         </Grid>
     </Border>

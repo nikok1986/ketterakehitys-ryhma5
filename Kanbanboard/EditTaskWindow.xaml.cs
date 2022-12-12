@@ -47,19 +47,21 @@ namespace Kanbanboard
                 int userId = reader.UserIdReader();
                 int prio = TaskPrioritySelector.SelectedIndex;
                 int diff = TaskDifficulty.SelectedIndex;
+                int dura = Convert.ToInt32(TaskDurationTextBox.Text);
 
                 cmd.Connection = con;
                 try
                 {
                     if (TaskNameInput.Text != test || TaskDescriptionInput.Text != test || TaskStartDate.SelectedDate != null || TaskEndDate != null || AddedUserStoryList.Text != test || AddedUserList.Text != test || AddedSprintList.Text != test || TaskDifficulty.Text != test || TaskCategory.Text != test || TaskPrioritySelector.Text != test)
                     {
-                        cmd.CommandText = "UPDATE tasks SET task_nimi = @tnimi, task_info = @tinfo, task_tila = @ttila, task_prioriteetti = @tprio, task_kategoria = @tkat, task_vaikeustaso = @tvaik, task_aloitus_pvm = tapvm, task_lopetus_pvm = tlpvm, sprint_id = @tspri, user_story_id = @tust, user_id = @tuser WHERE task_nimi='" + name + "';";
+                        cmd.CommandText = "UPDATE tasks SET task_nimi = @tnimi, task_info = @tinfo, task_tila = @ttila, task_prioriteetti = @tprio, task_kategoria = @tkat, task_vaikeustaso = @tvaik, task_kesto = @tdura, task_aloitus_pvm = tapvm, task_lopetus_pvm = tlpvm, sprint_id = @tspri, user_story_id = @tust, user_id = @tuser WHERE task_nimi='" + name + "';";
                         cmd.Parameters.AddWithValue("@tnimi", TaskNameInput.Text);  //(@tnimi, @tinfo, @ttila, @tprio, @tkat, @tvaik, @tapvm, @tlpvm, @tspri, @tust)"
                         cmd.Parameters.AddWithValue("@tinfo", TaskDescriptionInput.Text);
                         cmd.Parameters.AddWithValue("@ttila", 0);
                         cmd.Parameters.AddWithValue("@tprio", prio);
                         cmd.Parameters.AddWithValue("@tkat", TaskCategory.SelectedItem);
                         cmd.Parameters.AddWithValue("@tvaik", diff);
+                        cmd.Parameters.AddWithValue("@tdura", dura);
                         cmd.Parameters.Add("@tapvm", OleDbType.Date).Value = TaskStartDate.SelectedDate;
                         cmd.Parameters.Add("@tlpvm", OleDbType.Date).Value = TaskEndDate.SelectedDate;
                         cmd.Parameters.AddWithValue("@tspri", sprintId);

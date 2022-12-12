@@ -28,6 +28,9 @@
     <Compile Update="AddUserStory.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="AddUserToTask.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="EditProjectWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -82,6 +85,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="AddUserStory.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="AddUserToTask.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="EditProjectWindow.xaml">
