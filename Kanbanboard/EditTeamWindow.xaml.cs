@@ -76,14 +76,5 @@ namespace Kanbanboard
             foreach (string s in projects)
                 EditTeamProjectSelect.Items.Add(s);
         }
-        private void AllUsersListBox_populate(object sender, RoutedEventArgs e)
-        {
-            AllUsersListBox.Items.Clear();
-            Reader reader = new Reader();
-            string[] projects = reader.DBEveryUserNameReader().Split('\n');
-            projects = projects.SkipLast(1).ToArray();
-            foreach (string s in projects)
-                AllUsersListBox.Items.Add(s);
-        }
     }
 }
