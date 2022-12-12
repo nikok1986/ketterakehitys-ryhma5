@@ -49,6 +49,12 @@
     <Compile Update="SprintReport.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="TaskInfo.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="TeamReport.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="UserReport.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -100,6 +106,12 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="SprintReport.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="TaskInfo.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="TeamReport.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="UserReport.xaml">

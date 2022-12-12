@@ -94,6 +94,7 @@ namespace Kanbanboard
                 foreach (string s in sprints)
                     SprintListing.Items.Add(s);
 
+                UserStoryBlock.Text = ProjectListing.SelectedItem.ToString();
                 UserStoryGridList.Items.Clear();
                 string[] userstoryList = reader.DBUserStoryReader().Split('\n');
                 userstoryList = userstoryList.SkipLast(1).ToArray();
@@ -125,6 +126,13 @@ namespace Kanbanboard
             SeeSprintInfo.Text = reader.DBSprintInfoReader();
             SeeSprintStartDate.Text = reader.DBSprintStartDate().ToString("dd-MM-yyyy");
             SeeSprintEndDate.Text = reader.DBSprintEndDate().ToString("dd-MM-yyyy");
+
+            UserStoryBlock.Text = SprintListing.SelectedItem.ToString();
+            UserStoryGridList.Items.Clear();
+            string[] userstoryList = reader.DBUserStoryInSprintReader().Split('\n');
+            userstoryList = userstoryList.SkipLast(1).ToArray();
+            foreach (string s in userstoryList)
+                UserStoryGridList.Items.Add(s);
 
             TaskLists_populate();
         }
@@ -474,10 +482,19 @@ namespace Kanbanboard
             }
         }
 
-        //<----------------------------------TEAM RIGHTCLICK ---------------------------------------> 2/3
+        //<----------------------------------TEAM RIGHTCLICK ---------------------------------------> DONE
         private void RightClickTeamReport_Click(object sender, RoutedEventArgs e) 
-        { 
-        
+        {
+            if (TeamBox.SelectedItem != null)
+            {
+                string teamName = TeamBox.SelectedItem.ToString();
+                TeamReport tr = new TeamReport(teamName);
+                tr.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Valitse tiimi listalta");
+            }
         }
         private void RightClickTeamDelete_Click(object sender, RoutedEventArgs e) 
         {
@@ -523,7 +540,7 @@ namespace Kanbanboard
             }
         }
 
-        //<----------------------------------TASK RIGHTCLICK----------------------------------------> 2/4
+        //<----------------------------------TASK RIGHTCLICK----------------------------------------> 3/4
         private void RightClickTaskkEdit_Click(object sender, RoutedEventArgs e)
         {
             if (ToDoListBox.SelectedItem != null)
@@ -539,7 +556,12 @@ namespace Kanbanboard
         }
         private void RightClickTaskInfo_Click(object sender, RoutedEventArgs e)
         {
-
+            if (ToDoListBox.SelectedItem != null)
+            {
+                string taskName = ToDoListBox.SelectedItem.ToString();
+                TaskInfo ti = new TaskInfo(taskName);
+                ti.ShowDialog();
+            }
         }
         private void RightClickTaskDelete_Click(object sender, RoutedEventArgs e)
         {

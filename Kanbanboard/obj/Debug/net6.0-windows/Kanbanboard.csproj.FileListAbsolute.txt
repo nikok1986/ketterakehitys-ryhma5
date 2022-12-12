@@ -430,3 +430,7 @@ C:\Users\storm\OneDrive\Documents\koulu\2022 syksy\Ketterä ohjelmistoprojekti\k
 C:\Users\storm\OneDrive\Documents\koulu\2022 syksy\Ketterä ohjelmistoprojekti\ketterakehitys-ryhma5\Kanbanboard\obj\Debug\net6.0-windows\EditTaskWindow.baml
 C:\Users\storm\OneDrive\Documents\koulu\2022 syksy\Ketterä ohjelmistoprojekti\ketterakehitys-ryhma5\Kanbanboard\obj\Debug\net6.0-windows\EditTeamWindow.baml
 C:\Users\storm\OneDrive\Documents\koulu\2022 syksy\Ketterä ohjelmistoprojekti\ketterakehitys-ryhma5\Kanbanboard\obj\Debug\net6.0-windows\EditUserStoryWindow.baml
+C:\Users\storm\OneDrive\Documents\koulu\2022 syksy\Ketterä ohjelmistoprojekti\ketterakehitys-ryhma5\Kanbanboard\obj\Debug\net6.0-windows\TaskInfo.g.cs
+C:\Users\storm\OneDrive\Documents\koulu\2022 syksy\Ketterä ohjelmistoprojekti\ketterakehitys-ryhma5\Kanbanboard\obj\Debug\net6.0-windows\TeamReport.g.cs
+C:\Users\storm\OneDrive\Documents\koulu\2022 syksy\Ketterä ohjelmistoprojekti\ketterakehitys-ryhma5\Kanbanboard\obj\Debug\net6.0-windows\TaskInfo.baml
+C:\Users\storm\OneDrive\Documents\koulu\2022 syksy\Ketterä ohjelmistoprojekti\ketterakehitys-ryhma5\Kanbanboard\obj\Debug\net6.0-windows\TeamReport.baml

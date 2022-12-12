@@ -24,9 +24,9 @@
             </Grid.RowDefinitions>
             <Label Grid.Row="0" Content="Lisää käyttäjä" FontFamily="GG sans" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
             <Label Grid.Row="1" Content="Käyttäjän nimi:" FontFamily="GG sans" FontSize="14" VerticalAlignment="Bottom"  HorizontalAlignment="Center"  FontWeight="Bold" />
-            <TextBox x:Name="UserNameInput" Grid.Row="2" FontFamily="GG sans" FontSize="14" VerticalContentAlignment="Center" HorizontalAlignment="Center" Width="300"/>
+            <TextBox x:Name="UserNameInput" Grid.Row="2" FontFamily="GG sans" FontSize="18" VerticalContentAlignment="Center" HorizontalAlignment="Center" Width="300"/>
             <Label Grid.Row="3" Content="Käyttäjän rooli:" FontFamily="GG sans" FontSize="14" VerticalAlignment="Bottom"  HorizontalAlignment="Center"  FontWeight="Bold"/>
-            <ComboBox x:Name="UserRoleComboBox" Grid.Row="4" FontSize="14" FontFamily="GG sans" HorizontalAlignment="Center" Width="300">
+            <ComboBox x:Name="UserRoleComboBox" Grid.Row="4" FontFamily="GG sans" FontSize="18" VerticalContentAlignment="Center" HorizontalAlignment="Center" Width="300">
                 <ComboBoxItem Content="koodari"/>
                 <ComboBoxItem Content="suunnittelija"/>
                 <ComboBoxItem Content="graafikko"/>

@@ -1,0 +1,45 @@
+﻿<Window x:Class="Kanbanboard.TaskInfo"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Kanbanboard"
+        mc:Ignorable="d"
+        Title="TaskInfo" Height="450" Width="400"
+        WindowStartupLocation="CenterOwner">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1.5*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <TextBlock x:Name="TaskNameBox" Grid.Row="0" FontFamily="GG sans" FontSize="18" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,0,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Center"/>
+        <Label Content="Tehtävän käyttäjätarina" FontFamily="GG sans" FontSize="15" VerticalContentAlignment="Center" FontWeight="Bold" HorizontalAlignment="Left" Margin="24,0,0,0" Grid.Row="1" VerticalAlignment="Center" Height="37" Width="180"/>
+        <Label Content="Tehtävän sprintti" FontFamily="GG sans" FontSize="15" VerticalContentAlignment="Center" FontWeight="Bold" HorizontalAlignment="Left" Margin="24,0,0,0" Grid.Row="2" VerticalAlignment="Center" Height="37" Width="180"/>
+        <Label Content="Tehtävän suorittaja" FontFamily="GG sans" FontSize="15" VerticalContentAlignment="Center" FontWeight="Bold" HorizontalAlignment="Left" Margin="24,0,0,0" Grid.Row="3" VerticalAlignment="Center" Height="37" Width="180"/>
+        <Label Content="Tehtävän info" FontFamily="GG sans" FontSize="15" VerticalContentAlignment="Center" FontWeight="Bold" HorizontalAlignment="Left" Margin="24,0,0,0" Grid.Row="4" VerticalAlignment="Top" Height="37" Width="118"/>
+        <Label Content="Prioriteetti:" FontFamily="GG sans" FontSize="15" VerticalContentAlignment="Center" FontWeight="Bold" HorizontalAlignment="Left" Margin="24,0,0,0" Grid.Row="5" VerticalAlignment="Center" Height="37" Width="90"/>
+        <Label Content="Tila:" FontFamily="GG sans" FontSize="15" VerticalContentAlignment="Center" FontWeight="Bold" HorizontalAlignment="Center" Grid.Row="5" VerticalAlignment="Center" Height="37" Width="58" Margin="12,0,0,0"/>
+        <Label Content="Aloituspvm:" FontFamily="GG sans" FontSize="15" VerticalContentAlignment="Center" FontWeight="Bold" HorizontalAlignment="Left" Margin="24,0,0,0" Grid.Row="6" VerticalAlignment="Center" Height="37" Width="99"/>
+        <Label Content="Deadline:" FontFamily="GG sans" FontSize="15" VerticalContentAlignment="Center" FontWeight="Bold" HorizontalAlignment="Left" Margin="24,0,0,0" Grid.Row="7" VerticalAlignment="Center" Height="37" Width="99"/>
+        <Label Content="Vaikeustaso:" FontFamily="GG sans" FontSize="15" VerticalContentAlignment="Center" FontWeight="Bold" HorizontalAlignment="Left" Margin="24,0,0,0" Grid.Row="8" VerticalAlignment="Center" Height="37" Width="99"/>
+        <Label Content="Arvioitu kesto:" FontFamily="GG sans" FontSize="15" VerticalContentAlignment="Center" FontWeight="Bold" HorizontalAlignment="Center" Grid.Row="8" VerticalAlignment="Center" Height="37" Width="112" Margin="60,0,0,0"/>
+        <TextBlock x:Name="TaskUserStoryBox" FontFamily="GG sans" FontSize="14" HorizontalAlignment="Left" Margin="216,1,0,0" Grid.Row="1" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Center" Height="17" Width="128"/>
+        <TextBlock x:Name="TaskSprintBox" FontFamily="GG sans" FontSize="14" HorizontalAlignment="Left" Margin="216,14,0,0" Grid.Row="2" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="17" Width="128"/>
+        <TextBlock x:Name="TaskUserBox" FontFamily="GG sans" FontSize="14" HorizontalAlignment="Left" Margin="216,13,0,0" Grid.Row="3" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="17" Width="128"/>
+        <TextBlock x:Name="TaskInfoBox" FontFamily="GG sans" FontSize="13" HorizontalAlignment="Left" Margin="216,0,0,0" Grid.Row="4" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Center" Height="54" Width="174"/>
+        <TextBlock x:Name="TaskPrioBox" FontFamily="GG sans" FontSize="14" HorizontalAlignment="Left" Grid.Row="5" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="17" Width="60" Margin="115,13,0,0"/>
+        <TextBlock x:Name="TaskStateBox" FontFamily="GG sans" FontSize="14" HorizontalAlignment="Left" Grid.Row="5" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="17" Width="86" Margin="217,13,0,0"/>
+        <TextBlock x:Name="TaskStartDateBox" FontFamily="GG sans" FontSize="14" HorizontalAlignment="Center" Grid.Row="6" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Center" Height="17" Width="128" Margin="0,1,0,0"/>
+        <TextBlock x:Name="TaskDeadLineBox" FontFamily="GG sans" FontSize="14" HorizontalAlignment="Center" Grid.Row="7" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="17" Width="128" Margin="0,14,0,0"/>
+        <TextBlock x:Name="TaskDifficultyBox" FontFamily="GG sans" FontSize="14" HorizontalAlignment="Left" Grid.Row="8" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="17" Width="47" Margin="122,13,0,0"/>
+        <TextBlock x:Name="TaskDurationBox" FontFamily="GG sans" FontSize="14" HorizontalAlignment="Left" Grid.Row="8" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="17" Width="101" Margin="289,13,0,0"/>
+
+    </Grid>
+</Window>

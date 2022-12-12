@@ -603,6 +603,26 @@ namespace Kanbanboard
                 return userStoryTasks;
             }
         }
+        public String DBUserStoryInSprintReader()
+        {
+            using (OleDbConnection con = DataServices.DBConnection())   //Käytetään DataServices.cs tiedostoon luotua tietokantayhteyttä.
+            {                                                           //Using-komennolla yhteys suljetaan automaattisesti suorituksen jälkeen.
+                OleDbCommand cmd;
+                cmd = new OleDbCommand("SELECT DISTINCT user_stories.user_story_nimi FROM (user_stories INNER JOIN tasks ON user_stories.[user_story_id] = tasks.[user_story_id]) INNER JOIN sprints ON sprints.[sprint_id] = tasks.[sprint_id] WHERE sprints.sprint_nimi='" + name + "';");
+                cmd.Connection = con;   //Yhteys avataan OleDb-komennolla.
+                string taskname = String.Empty;    //Kerätään info tähän tyhjään stringiin.
+
+                OleDbDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    taskname += reader.GetString(0) + "\n";
+                }
+                reader.Close();
+                cmd.ExecuteNonQuery();
+
+                return taskname;
+            }
+        }
 
         //<-----------------------------------TASK READERS------------------------------------>
         public String DBBackLogReader()
@@ -668,6 +688,214 @@ namespace Kanbanboard
                 return taskname;
             }
         }
+        public String DBTaskUserStoryReader()
+        {
+            using (OleDbConnection con = DataServices.DBConnection())   //Käytetään DataServices.cs tiedostoon luotua tietokantayhteyttä.
+            {                                                           //Using-komennolla yhteys suljetaan automaattisesti suorituksen jälkeen.
+                OleDbCommand cmd;
+
+                cmd = new OleDbCommand("SELECT user_stories.user_story_nimi FROM tasks INNER JOIN user_stories ON tasks.user_story_id = user_stories.user_story_id WHERE tasks.task_nimi='" + name + "';");
+                cmd.Connection = con;   //Yhteys avataan OleDb-komennolla.
+                string teams = String.Empty;    //Kerätään info tähän tyhjään stringiin.
+
+                OleDbDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    teams += reader.GetString(0) + "\n";
+                }
+                reader.Close();
+                cmd.ExecuteNonQuery();
+
+                return teams;
+            }
+        }
+        public String DBTaskSprintReader()
+        {
+            using (OleDbConnection con = DataServices.DBConnection())   //Käytetään DataServices.cs tiedostoon luotua tietokantayhteyttä.
+            {                                                           //Using-komennolla yhteys suljetaan automaattisesti suorituksen jälkeen.
+                OleDbCommand cmd;
+
+                cmd = new OleDbCommand("SELECT sprints.sprint_nimi FROM tasks INNER JOIN sprints ON tasks.sprint_id = sprints.sprint_id WHERE tasks.task_nimi='" + name + "';");
+                cmd.Connection = con;   //Yhteys avataan OleDb-komennolla.
+                string teams = String.Empty;    //Kerätään info tähän tyhjään stringiin.
+
+                OleDbDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    teams += reader.GetString(0) + "\n";
+                }
+                reader.Close();
+                cmd.ExecuteNonQuery();
+
+                return teams;
+            }
+        }
+        public String DBTaskUserReader()
+        {
+            using (OleDbConnection con = DataServices.DBConnection())   //Käytetään DataServices.cs tiedostoon luotua tietokantayhteyttä.
+            {                                                           //Using-komennolla yhteys suljetaan automaattisesti suorituksen jälkeen.
+                OleDbCommand cmd;
+
+                cmd = new OleDbCommand("SELECT users.user_nimi FROM tasks INNER JOIN users ON users.user_id = tasks.user_id WHERE tasks.task_nimi='" + name + "';");
+                cmd.Connection = con;   //Yhteys avataan OleDb-komennolla.
+                string teams = String.Empty;    //Kerätään info tähän tyhjään stringiin.
+
+                OleDbDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    teams += reader.GetString(0) + "\n";
+                }
+                reader.Close();
+                cmd.ExecuteNonQuery();
+
+                return teams;
+            }
+        }
+        public String DBTaskInfoReader()
+        {
+            using (OleDbConnection con = DataServices.DBConnection())   //Käytetään DataServices.cs tiedostoon luotua tietokantayhteyttä.
+            {                                                           //Using-komennolla yhteys suljetaan automaattisesti suorituksen jälkeen.
+                OleDbCommand cmd;
+
+                cmd = new OleDbCommand("SELECT task_info FROM tasks WHERE task_nimi='" + name + "';");
+                cmd.Connection = con;   //Yhteys avataan OleDb-komennolla.
+                string teams = String.Empty;    //Kerätään info tähän tyhjään stringiin.
+
+                OleDbDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    teams += reader.GetString(0) + "\n";
+                }
+                reader.Close();
+                cmd.ExecuteNonQuery();
+
+                return teams;
+            }
+        }
+        public String DBTaskPrioReader()
+        {
+            using (OleDbConnection con = DataServices.DBConnection())   //Käytetään DataServices.cs tiedostoon luotua tietokantayhteyttä.
+            {                                                           //Using-komennolla yhteys suljetaan automaattisesti suorituksen jälkeen.
+                OleDbCommand cmd;
+
+                cmd = new OleDbCommand("SELECT task_prioriteetti FROM tasks WHERE task_nimi='" + name + "';");
+                cmd.Connection = con;   //Yhteys avataan OleDb-komennolla.
+                string teams = String.Empty;    //Kerätään info tähän tyhjään stringiin.
+
+                OleDbDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    teams += reader.GetInt32(0) + "\n";
+                }
+                reader.Close();
+                cmd.ExecuteNonQuery();
+
+                return teams;
+            }
+        }
+        public String DBTaskStateReader()
+        {
+            using (OleDbConnection con = DataServices.DBConnection())   //Käytetään DataServices.cs tiedostoon luotua tietokantayhteyttä.
+            {                                                           //Using-komennolla yhteys suljetaan automaattisesti suorituksen jälkeen.
+                OleDbCommand cmd;
+
+                cmd = new OleDbCommand("SELECT task_tila FROM tasks WHERE task_nimi='" + name + "';");
+                cmd.Connection = con;   //Yhteys avataan OleDb-komennolla.
+                string teams = String.Empty;    //Kerätään info tähän tyhjään stringiin.
+
+                OleDbDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    teams += reader.GetInt32(0) + "\n";
+                }
+                reader.Close();
+                cmd.ExecuteNonQuery();
+
+                return teams;
+            }
+        }
+        public String DBTaskDifficultyReader()
+        {
+            using (OleDbConnection con = DataServices.DBConnection())   //Käytetään DataServices.cs tiedostoon luotua tietokantayhteyttä.
+            {                                                           //Using-komennolla yhteys suljetaan automaattisesti suorituksen jälkeen.
+                OleDbCommand cmd;
+
+                cmd = new OleDbCommand("SELECT task_vaikeustaso FROM tasks WHERE task_nimi='" + name + "';");
+                cmd.Connection = con;   //Yhteys avataan OleDb-komennolla.
+                string teams = String.Empty;    //Kerätään info tähän tyhjään stringiin.
+
+                OleDbDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    teams += reader.GetInt32(0) + "\n";
+                }
+                reader.Close();
+                cmd.ExecuteNonQuery();
+
+                return teams;
+            }
+        }
+        public String DBTaskDurationReader()
+        {
+            using (OleDbConnection con = DataServices.DBConnection())   //Käytetään DataServices.cs tiedostoon luotua tietokantayhteyttä.
+            {                                                           //Using-komennolla yhteys suljetaan automaattisesti suorituksen jälkeen.
+                OleDbCommand cmd;
+
+                cmd = new OleDbCommand("SELECT task_kesto FROM tasks WHERE task_nimi='" + name + "';");
+                cmd.Connection = con;   //Yhteys avataan OleDb-komennolla.
+                string teams = String.Empty;    //Kerätään info tähän tyhjään stringiin.
+
+                OleDbDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    teams += reader.GetInt32(0) + "\n";
+                }
+                reader.Close();
+                cmd.ExecuteNonQuery();
+
+                return teams;
+            }
+        }
+        public DateTime DBTaskStartDateReader()
+        {
+            using (OleDbConnection con = DataServices.DBConnection())   //Käytetään DataServices.cs tiedostoon luotua tietokantayhteyttä.
+            {                                                           //Using-komennolla yhteys suljetaan automaattisesti suorituksen jälkeen.
+                OleDbCommand cmd;
+                cmd = new OleDbCommand("SELECT task_aloitus_pvm FROM tasks WHERE task_nimi='" + name + "';");
+                cmd.Connection = con;   //Yhteys avataan OleDb-komennolla.
+                DateTime startdate = DateTime.Now;
+
+                OleDbDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    startdate = reader.GetDateTime(0);
+                }
+                reader.Close();
+                cmd.ExecuteNonQuery();
+
+                return startdate;
+            }
+        }
+        public DateTime DBTaskEndDateReader() 
+        {
+            using (OleDbConnection con = DataServices.DBConnection())   //Käytetään DataServices.cs tiedostoon luotua tietokantayhteyttä.
+            {                                                           //Using-komennolla yhteys suljetaan automaattisesti suorituksen jälkeen.
+                OleDbCommand cmd;
+                cmd = new OleDbCommand("SELECT task_lopetus_pvm FROM tasks WHERE task_nimi='" + name + "';");
+                cmd.Connection = con;   //Yhteys avataan OleDb-komennolla.
+                DateTime startdate = DateTime.Now;
+
+                OleDbDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    startdate = reader.GetDateTime(0);
+                }
+                reader.Close();
+                cmd.ExecuteNonQuery();
+
+                return startdate;
+            }
+        }
 
         //<-----------------------------------TEAM READERS------------------------------------>
         public String DBTeamUserReader()
@@ -722,6 +950,48 @@ namespace Kanbanboard
                 cmd.ExecuteNonQuery();
 
                 return teams;
+            }
+        }
+        public String DBTeamProjectReader()
+        {
+            using (OleDbConnection con = DataServices.DBConnection())   //Käytetään DataServices.cs tiedostoon luotua tietokantayhteyttä.
+            {                                                           //Using-komennolla yhteys suljetaan automaattisesti suorituksen jälkeen.
+                OleDbCommand cmd;
+
+                cmd = new OleDbCommand("SELECT project_nimi FROM projects INNER JOIN teams ON projects.project_id = teams.project_id WHERE teams.team_nimi='" + name + "';");
+                cmd.Connection = con;   //Yhteys avataan OleDb-komennolla.
+                string teams = String.Empty;    //Kerätään info tähän tyhjään stringiin.
+
+                OleDbDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    teams += reader.GetString(0) + "\n";
+                }
+                reader.Close();
+                cmd.ExecuteNonQuery();
+
+                return teams;
+            }
+        }
+        public String DBTeamInfoReader()
+        {
+            using (OleDbConnection con = DataServices.DBConnection())   //Käytetään DataServices.cs tiedostoon luotua tietokantayhteyttä.
+            {                                                           //Using-komennolla yhteys suljetaan automaattisesti suorituksen jälkeen.
+                OleDbCommand cmd;
+
+                cmd = new OleDbCommand("SELECT team_info FROM teams WHERE teams.team_nimi='" + name + "';");
+                cmd.Connection = con;   //Yhteys avataan OleDb-komennolla.
+                string teaminfo = String.Empty;    //Kerätään info tähän tyhjään stringiin.
+
+                OleDbDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    teaminfo += reader.GetString(0) + "\n";
+                }
+                reader.Close();
+                cmd.ExecuteNonQuery();
+
+                return teaminfo;
             }
         }
 

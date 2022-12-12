@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Kanbanboard"
         mc:Ignorable="d"
-        Title="UserReport" Height="450" Width="350">
+        Title="UserReport" Height="450" Width="350"
+        WindowStartupLocation="CenterOwner">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="3*"/>
