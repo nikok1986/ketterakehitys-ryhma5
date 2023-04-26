@@ -69,10 +69,6 @@ namespace Kanbanboard
             foreach (string s in completeList)
                 TaskDoneListBox.Items.Add(s);
         }
-        public void UpdateTaskLists(object sender, RoutedEventArgs e)
-        {
-
-        }   //Mietinnän alla
         //<-----------------------------------DOUBLECLICKS-------------------------------------------> DONE
         private void ProjectListing_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
@@ -298,6 +294,22 @@ namespace Kanbanboard
                 {
                     if (pjName != null)
                     {
+
+                        Reader reader = new Reader(pjName);
+                        int projectId = reader.ProjectIdReader();
+
+                        cmd = new OleDbCommand("UPDATE teams SET project_id=null WHERE project_id =" + projectId + ";");
+                        cmd.Connection = con;   //Yhteys avataan OleDb-komennolla.
+                        cmd.ExecuteNonQuery();
+
+                        cmd = new OleDbCommand("UPDATE user_stories SET project_id=null WHERE project_id =" + projectId + ";");
+                        cmd.Connection = con;   //Yhteys avataan OleDb-komennolla.
+                        cmd.ExecuteNonQuery();
+
+                        cmd = new OleDbCommand("UPDATE sprints SET project_id=null WHERE project_id =" + projectId + ";");
+                        cmd.Connection = con;   //Yhteys avataan OleDb-komennolla.
+                        cmd.ExecuteNonQuery();
+
                         cmd = new OleDbCommand("DELETE FROM projects WHERE project_nimi='" + pjName + "';");
                         cmd.Connection = con;   //Yhteys avataan OleDb-komennolla.
                         cmd.ExecuteNonQuery();
@@ -361,10 +373,22 @@ namespace Kanbanboard
                 {
                     if (UsersBox.SelectedItem != null)
                     {
-                        cmd = new OleDbCommand("DELETE FROM users WHERE user_nimi='" + UsersBox.SelectedItem + "';");
+                        string name = UsersBox.SelectedItem.ToString();
+                        Reader reader = new Reader(name);
+                        int userId = reader.UserIdReader();
+
+                        cmd = new OleDbCommand("DELETE FROM users_teams_link WHERE user_id=" + userId + ";");
                         cmd.Connection = con;   //Yhteys avataan OleDb-komennolla.
                         cmd.ExecuteNonQuery();
-                        MessageBox.Show("Käyttäjä " + UsersBox.SelectedItem + " poistettu.");
+
+                        cmd = new OleDbCommand("UPDATE tasks SET user_id=null WHERE user_id=" + userId + ";");
+                        cmd.Connection = con;   //Yhteys avataan OleDb-komennolla.
+                        cmd.ExecuteNonQuery();
+
+                        cmd = new OleDbCommand("DELETE FROM users WHERE user_nimi='" + name + "';");
+                        cmd.Connection = con;   //Yhteys avataan OleDb-komennolla.
+                        cmd.ExecuteNonQuery();
+                        MessageBox.Show("Käyttäjä " + name + " poistettu.");
                     }
                     else
                     {
@@ -418,7 +442,16 @@ namespace Kanbanboard
                 {
                     if (UserStoryGridList.SelectedItem != null)
                     {
-                        cmd = new OleDbCommand("DELETE FROM user_stories WHERE user_story_nimi='" + UserStoryGridList.SelectedItem + "';");
+                        string userstoryName = UserStoryGridList.SelectedItem.ToString();
+                        Reader reader = new Reader(userstoryName);
+                        int userstoryId = reader.UserStoryIdReader();
+
+                        cmd = new OleDbCommand("UPDATE tasks SET user_story_id=null WHERE user_id=" + userstoryId + ";");
+                        cmd.Connection = con;   //Yhteys avataan OleDb-komennolla.
+                        cmd.ExecuteNonQuery();
+
+
+                        cmd = new OleDbCommand("DELETE FROM user_stories WHERE user_story_nimi='" + userstoryName + "';");
                         cmd.Connection = con;   //Yhteys avataan OleDb-komennolla.
                         cmd.ExecuteNonQuery();
                         MessageBox.Show("Projekti " + UserStoryGridList.SelectedItem + " poistettu.");

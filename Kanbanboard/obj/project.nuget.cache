@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "wOIBSuAS2vaNUjaMA4DcIS34Gtg/r6DjR1qIGWq13fWv2B0JmrScjU+MHGu6NE9RNtwThEmRXUZKql4YpKfJ0A==",
+  "dgSpecHash": "GWJ6M9nIuiXWS8nOogbvTL999nXVAD7NjtKGCrScm7EUYvAgZbpykeji0rtXj4P+GrV0gBWLeHcnf6YbRLxofg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\storm\\OneDrive\\Documents\\koulu\\2022 syksy\\Ketterä ohjelmistoprojekti\\ketterakehitys-ryhma5\\Kanbanboard\\Kanbanboard.csproj",
+  "projectFilePath": "C:\\Users\\storm\\OneDrive\\Documents\\koulu\\vanhat\\2022 syksy\\Ketterä ohjelmistoprojekti\\ketterakehitys-ryhma5\\Kanbanboard\\Kanbanboard.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\storm\\.nuget\\packages\\microsoft.win32.systemevents\\7.0.0\\microsoft.win32.systemevents.7.0.0.nupkg.sha512",
     "C:\\Users\\storm\\.nuget\\packages\\system.configuration.configurationmanager\\7.0.0\\system.configuration.configurationmanager.7.0.0.nupkg.sha512",

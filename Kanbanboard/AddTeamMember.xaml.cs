@@ -43,7 +43,6 @@ namespace Kanbanboard
                     cmd.Connection = con;   //Yhteys avataan OleDb-komennolla.
                      cmd.ExecuteNonQuery();
 
-                    
                 }
                 else
                 {
@@ -67,6 +66,7 @@ namespace Kanbanboard
                 OleDbCommand cmd;
                 if (TeamListBox.SelectedItem != null || SelectedProjectTeamsBox.Text != test)
                 {
+
                     Reader reader1 = new Reader(SelectedProjectTeamsBox.Text);
                     int teamId = reader1.TeamIdReader();
                     reader1 = new Reader(TeamListBox.SelectedItem.ToString());

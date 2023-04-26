@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\storm\\OneDrive\\Documents\\koulu\\2022 syksy\\Ketterä ohjelmistoprojekti\\ketterakehitys-ryhma5\\Kanbanboard\\Kanbanboard.csproj": {}
+    "C:\\Users\\storm\\OneDrive\\Documents\\koulu\\vanhat\\2022 syksy\\Ketterä ohjelmistoprojekti\\ketterakehitys-ryhma5\\Kanbanboard\\Kanbanboard.csproj": {}
   },
   "projects": {
-    "C:\\Users\\storm\\OneDrive\\Documents\\koulu\\2022 syksy\\Ketterä ohjelmistoprojekti\\ketterakehitys-ryhma5\\Kanbanboard\\Kanbanboard.csproj": {
+    "C:\\Users\\storm\\OneDrive\\Documents\\koulu\\vanhat\\2022 syksy\\Ketterä ohjelmistoprojekti\\ketterakehitys-ryhma5\\Kanbanboard\\Kanbanboard.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\storm\\OneDrive\\Documents\\koulu\\2022 syksy\\Ketterä ohjelmistoprojekti\\ketterakehitys-ryhma5\\Kanbanboard\\Kanbanboard.csproj",
+        "projectUniqueName": "C:\\Users\\storm\\OneDrive\\Documents\\koulu\\vanhat\\2022 syksy\\Ketterä ohjelmistoprojekti\\ketterakehitys-ryhma5\\Kanbanboard\\Kanbanboard.csproj",
         "projectName": "Kanbanboard",
-        "projectPath": "C:\\Users\\storm\\OneDrive\\Documents\\koulu\\2022 syksy\\Ketterä ohjelmistoprojekti\\ketterakehitys-ryhma5\\Kanbanboard\\Kanbanboard.csproj",
+        "projectPath": "C:\\Users\\storm\\OneDrive\\Documents\\koulu\\vanhat\\2022 syksy\\Ketterä ohjelmistoprojekti\\ketterakehitys-ryhma5\\Kanbanboard\\Kanbanboard.csproj",
         "packagesPath": "C:\\Users\\storm\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\storm\\OneDrive\\Documents\\koulu\\2022 syksy\\Ketterä ohjelmistoprojekti\\ketterakehitys-ryhma5\\Kanbanboard\\obj\\",
+        "outputPath": "C:\\Users\\storm\\OneDrive\\Documents\\koulu\\vanhat\\2022 syksy\\Ketterä ohjelmistoprojekti\\ketterakehitys-ryhma5\\Kanbanboard\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\storm\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -64,7 +64,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
         }
       }
     }
